@@ -6,7 +6,7 @@ var io = require('socket.io').listen(server);
 var path = require('path');
 var routes = require('./routes/index');
 
-server.listen(8080);
+server.listen(process.env.port || 8080);
 
 // routing
 // app.get('/', function (req, res) {
