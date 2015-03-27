@@ -1,60 +1,45 @@
 var express = require('express');
 var app = express();
+// app.set('port', process.env.PORT || 8080);
 var http = require('http');
 var server = http.createServer(app);
-var io = require('socket.io').listen(server);
+var io = require('socket.io')(server);
 var path = require('path');
 var routes = require('./routes/index');
-
-server.listen(8080);
-
-// routing
-// app.get('/', function (req, res) {
-//   res.sendfile(__dirname + '/views/index.html');
-// });
-
+var fs = require('fs');
+var port = process.env.PORT || 8080;
+server.listen(port);
 
 app.set('views', path.join(__dirname, 'views'));
+app.use(express.static(path.join(__dirname, 'public')));
 app.set('view engine', 'jade');
+
 app.use('/', routes);
 
-app.use(express.static(path.join(__dirname, 'public')));
+// var sio = require('./config/socket.js')();
 
-// app.use('/', routes)
-// usernames which are currently connected to the chat
-var usernames = {};
-io.sockets.on('connection', function (socket) {
-  // when the client emits 'sendchat', this listens and executes
-  socket.on('sendchat', function (data) {
-    // we tell the client to execute 'updatechat' with 2 parameters
-    io.sockets.emit('updatechat', socket.username, data);
-  });
+io.on('connection', function(socket){
+	var message = ' ';
+	var outputFilename = './data/log.json';
 
-  // when the client emits 'adduser', this listens and executes
-  socket.on('adduser', function(username){
-    // we store the username in the socket session for this client
-    socket.username = username;
-    // add the client's username to the global list
-    usernames[username] = username;
-    // echo to client they've connected
-    socket.emit('updatechat', 'SERVER', 'you have connected');
-    // echo globally (all clients) that a person has connected
-    socket.broadcast.emit('updatechat', 'SERVER', username + ' has connected');
-    // update the list of users in chat, client-side
-    io.sockets.emit('updateusers', usernames);
-  });
+	socket.on('chat message', function(input){
+		var usr = input[0];
+		var msg = input[1];
+		io.emit('chat message', msg);
 
-  // when the user disconnects.. perform this
-  socket.on('disconnect', function(){
-    // remove the username from global usernames list
-    delete usernames[socket.username];
-    // update list of users in chat, client-side
-    io.sockets.emit('updateusers', usernames);
-    // echo globally that this client has left
-    socket.broadcast.emit('updatechat', 'SERVER', socket.username + ' has disconnected');
-  });
-});
-
-console.log('Express server listening on port ' + server.address().port);
-// module.exports = app;
-
+	  	var myData = {
+		  name:'test',
+		  version:'1.0',
+		  user : usr,
+		  content: msg
+		}
+		
+		fs.appendFile(outputFilename, JSON.stringify(myData, null, 4), function(err) {
+		    if(err) {
+		      console.log(err);
+		    } else {
+		      console.log("JSON saved to " + outputFilename + " "+ usr + " " + msg);
+		    }
+		}); 
+	});
+}) ;

@@ -1,13 +1,10 @@
+doctype html
 extends layout
 
 block content
-   div#user
-      b USERS
-      |   
-      div#users
-   div#conversationBox
-      div#conversation
-      |   
-      input#data(style='width:200px;')
-      |   
-      input#datasend(type='button', value='send')
+   div#content 
+     ul#messages
+     form#inputBar(action='')
+      input#m(autocomplete='off')
+      button Send
+   script(src='/javascripts/script.js')
