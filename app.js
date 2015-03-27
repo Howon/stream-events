@@ -1,12 +1,13 @@
 var express = require('express');
 var app = express();
+app.set('port', process.env.PORT || 8080);
 var http = require('http');
 var server = http.createServer(app);
 var io = require('socket.io')(server);
 var path = require('path');
 var routes = require('./routes/index');
 
-server.listen(process.env.port || 8080);
+server.listen(app.get('port'));
 
 // routing
 // app.get('/', function (req, res) {
