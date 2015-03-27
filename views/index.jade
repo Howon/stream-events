@@ -2,8 +2,9 @@ doctype html
 extends layout
 
 block content
-   ul#messages
-   form(action='')
-    input#m(autocomplete='off')
-    button Send
+   div#content 
+     ul#messages
+     form#inputBar(action='')
+      input#m(autocomplete='off')
+      button Send
    script(src='/javascripts/script.js')
