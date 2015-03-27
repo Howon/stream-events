@@ -32,18 +32,16 @@ body {
 form input { 
 	border: 0; 
 	width: 80%; 
-	margin-right: .5%; 
-	padding: 3px; 
+	margin-right: 0.7%; 
+	padding: 1%;
 	height: 100%;
 }
 
 form button { 
-	width: 18.5%; 
-	margin-left: .5%;
-	margin-right: .5%;
+	width: 19%; 
 	background: rgb(130, 224, 255); 
 	border: none; 
-	padding: 3px; 
+	padding: 1%; 
 	height: 100%;
 }
 
@@ -62,4 +60,7 @@ form button {
 
 #messages li:nth-child(odd){ 
 	background: #eee; 
+}
+#messages li:nth-child(even){ 
+	background: #ccc; 
 }
