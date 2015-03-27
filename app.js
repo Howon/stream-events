@@ -7,7 +7,7 @@ var io = require('socket.io')(server);
 var path = require('path');
 var routes = require('./routes/index');
 var fs = require('fs');
-var port = process.env.PORT || 8080;
+var port = process.env.PORT || 3000;
 server.listen(port);
 
 app.set('views', path.join(__dirname, 'views'));
@@ -33,7 +33,7 @@ io.on('connection', function(socket){
 		  user : usr,
 		  content: msg
 		}
-		
+
 		fs.appendFile(outputFilename, JSON.stringify(myData, null, 4), function(err) {
 		    if(err) {
 		      console.log(err);
