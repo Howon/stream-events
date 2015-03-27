@@ -19,12 +19,7 @@ app.set('view engine', 'jade');
 app.use('/', routes);
 
 app.use(express.static(path.join(__dirname, 'public')));
-io.set('transports', ['websocket', 
-                  'flashsocket', 
-                  'htmlfile', 
-                  'xhr-polling', 
-                  'jsonp-polling', 
-                  'polling']);
+
 // usernames which are currently connected to the chat
 var usernames = {};
 io.sockets.on('connection', function (socket) {
