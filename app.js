@@ -1,10 +1,19 @@
-var app = require('express')();
-var http = require('http').Server(app);
-var io = require('socket.io')(http);
+var express = require('express');
+var app = express();
+app.set('port', process.env.PORT || 8080);
+var http = require('http');
+var server = http.createServer(app);
+var io = require('socket.io')(server);
+var path = require('path');
+var routes = require('./routes/index');
 
-app.get('/', function(req, res){
-  res.sendFile(__dirname + '/index.html');
-});
+server.listen(app.get('port'));
+
+app.set('views', path.join(__dirname, 'views'));
+app.use(express.static(path.join(__dirname, 'public')));
+app.set('view engine', 'jade');
+
+app.use('/', routes);
 
 io.on('connection', function(socket){
   socket.on('chat message', function(msg){
@@ -12,7 +21,4 @@ io.on('connection', function(socket){
   });
 });
 
-http.listen(3000, function(){
-  console.log('listening on *:3000');
-});
 
