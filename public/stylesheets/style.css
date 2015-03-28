@@ -32,8 +32,9 @@ body {
 }
 
 #statusbar #users li{
-	padding: 5px 25px; 
+	padding: 0;
 	height: 8%;
+	width: 100%;
 }
 
 #statusbar #users li.user {
@@ -86,8 +87,9 @@ form button {
 }
 
 #messages li{ 
-	padding: 5px 25px; 
+	padding: 0; 
 	height: 8%;
+	width: 100%;
 }
 
 #messages li.user {
