@@ -10,7 +10,6 @@
     "jade": "^1.9.2",
     "morgan": "*",
     "socket.io": "latest",
-    "mogoose": "4.0.0",
     "mongodb": "~2.0"
   },
   "subdomain": "stream-events",
