@@ -8,9 +8,10 @@
   "dependencies": {
     "express": "^4.12.3",
     "jade": "^1.9.2",
-    "mongoose": "latest",
     "morgan": "*",
-    "socket.io": "latest"
+    "socket.io": "latest",
+    "mogoose": "4.0.0",
+    "mongodb": "~2.0"
   },
   "subdomain": "stream-events",
   "engines": {
