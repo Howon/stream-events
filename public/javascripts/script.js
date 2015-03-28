@@ -1,10 +1,28 @@
 var socket = io();
 
 $(window).load(function() {
-	var person = prompt("Please enter your name");
-	
-	if(person != null){
-		var time = new Date();
+	var userRegistered = false;
+	while(!userRegistered){
+		var person = prompt("Please enter your name");
+		if(person != null && person != ""){
+			userRegistered = true;
+			startChat(person);
+		}
+	}
+});
+
+var startChat = function(person){
+	var time = new Date();
+		var user_info = [person, time]
+		socket.emit('user joined', user_info);
+		socket.on('user joined', function(usr){
+			if (person == usr){
+				$('#users').append($('<li class="user">').text(usr));	
+			}
+			else {
+				$('#users').append($('<li class="user">').text(usr));	
+			}
+		});
 
 		$('form').submit(function(){
 			input = [person, $('#m').val(), time];
@@ -15,16 +33,14 @@ $(window).load(function() {
 
 		socket.on('chat message', function(msg, usr){
 			if (person == usr){
-				$('#messages').append($('<li class="user">').text(usr + ": " +msg));	
+				$('#messages').append($('<li class="user">').text(usr + ": " +msg));
 			}
 			else {
 				$('#messages').append($('<li class="other">').text(usr + ": " +msg));
 			}
-
 			var myDiv = $("#messages");
 			myDiv.animate({ 
 				scrollTop: myDiv.prop("scrollHeight") + myDiv.height() 
 			}, 10);
-		});
-	}
-});
+	});
+}

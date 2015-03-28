@@ -1,10 +1,13 @@
 doctype html
 extends layout
 
-block content
+block body
    div#content 
-     ul#messages
-     form#inputBar(action='')
-      input#m(autocomplete='off')
-      button Send
+     div#statusbar
+      ul#users    
+     div#chatarea
+      ul#messages
+      form#inputBar(action='')
+       input#m(autocomplete='off')
+       button Send
    script(src='/javascripts/script.js')
