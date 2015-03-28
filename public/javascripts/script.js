@@ -20,6 +20,11 @@ $(window).load(function() {
 			else {
 				$('#messages').append($('<li class="other">').text(usr + ": " +msg));
 			}
+
+			var myDiv = $("#messages");
+			myDiv.animate({ 
+				scrollTop: myDiv.prop("scrollHeight") + myDiv.height() 
+			}, 10);
 		});
 	}
 });
