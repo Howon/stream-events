@@ -6,7 +6,6 @@ var server = http.createServer(app);
 var io = require('socket.io')(server);
 var path = require('path');
 var routes = require('./routes/index');
-var fs = require('fs');
 var port = process.env.PORT || 3000;
 
 var mongo = require('mongodb').MongoClient;
@@ -20,8 +19,6 @@ app.set('view engine', 'jade');
 app.use('/', routes);
 
 io.on('connection', function(socket){
-	var message = ' ';
-	var outputFilename = './data/log.json';
 	
 	var CUSTOMCONNSTR_MONGOLAB_URI = 'mongodb://pioneer1625:95023680a@ds035617.mongolab.com:35617/stream-events';
 
@@ -51,7 +48,7 @@ io.on('connection', function(socket){
                 else { console.log("chat message inserted into db: " + msg); }
             });
         });
-		io.emit('chat message', msg);
+		io.emit('chat message', msg, usr);
 
 	});
 	socket.on('disconnect',function(){

@@ -13,8 +13,9 @@ $(window).load(function() {
 			return false;
 		});
 
-		socket.on('chat message', function(msg){
-			$('#messages').append($('<li>').text(person + ": " +msg));
+		socket.on('chat message', function(msg, usr){
+
+			$('#messages').append($('<li>').text(usr + ": " +msg));
 		});
 	}
 });
