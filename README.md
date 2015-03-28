@@ -11,6 +11,7 @@ Immediate goals: <br>
 Short term goals: <br>
 1. Register domain <br>
 2. Image support? <br>
+3. Store event-/topic-specific keywords in chat for search later
 
 Long-term goal: expand
 
