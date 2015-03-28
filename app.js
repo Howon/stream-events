@@ -101,3 +101,5 @@ io.on('connection', function(socket){
 		console.log("User disconnected");
 	})
 });
+
+console.log("Conneted to: " + port);
