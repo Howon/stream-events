@@ -65,9 +65,15 @@ form button {
 	height: 8%;
 }
 
-#messages li:nth-child(odd){ 
-	background: #eee; 
+#messages li.user {
+	background: #ccc;
 }
-#messages li:nth-child(even){ 
-	background: #ccc; 
+
+#messages li.other {
+	background: #eee;
 }
+
+#messages li:nth-last-child(1) {
+   background: #ADD8E6;
+}
+

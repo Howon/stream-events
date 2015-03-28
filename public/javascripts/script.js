@@ -14,8 +14,12 @@ $(window).load(function() {
 		});
 
 		socket.on('chat message', function(msg, usr){
-
-			$('#messages').append($('<li>').text(usr + ": " +msg));
+			if (person == usr){
+				$('#messages').append($('<li class="user">').text(usr + ": " +msg));	
+			}
+			else {
+				$('#messages').append($('<li class="other">').text(usr + ": " +msg));
+			}
 		});
 	}
 });
