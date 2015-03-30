@@ -15,7 +15,6 @@ Short term goals: <br>
 
 Long-term goal: expand
 
-
 Collaborators: <br>
 Howon Byun <br>
 Ken Aizawa <br>

@@ -6,7 +6,8 @@ var path = require('path');
 var routes = require('./routes/index');
 var port = process.env.PORT || 3000;
 
-var chatservice = require('./config/chat');
+// var chatservice = require('./config/chat');
+var chatservice = require('./config/chat_tester');
 
 server.listen(port);
 
