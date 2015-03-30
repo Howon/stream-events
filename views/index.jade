@@ -6,8 +6,9 @@ block body
      div#statusbar
       ul#users    
      div#chatarea
+      button#bring(type = "button") Bring more messages
       ul#messages
-      form#inputBar(action='')
-       input#m(autocomplete='off')
-       button Send
+      div#inputBar
+        textarea#name(placeholder='Type your name')
+        textarea#text(placeholder='Type your mesage')
    script(src='/javascripts/script.js')

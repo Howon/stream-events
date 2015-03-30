@@ -7,63 +7,73 @@ module.exports = {
   
         var CUSTOMCONNSTR_MONGOLAB_URI = 'mongodb://pioneer1625:95023680a@ds035617.mongolab.com:35617/stream-events';
 
-        socket.on('user joined', function(input){
-          var usr = input[0];
-          var time = input[1];
-          var data = {
-            user: usr,
-            time: time,
-          }
-
+        socket.on('user joined', function(data){
           mongo.connect(CUSTOMCONNSTR_MONGOLAB_URI, function (err, db) {
-              var collection = db.collection('current_users');
+              var collection = db.collection('current_names');
               var not_in = false;
 
-              // collection.findOne({user: usr}, function(err, document) {
-              //   if(err){
-              //     console.log('error');
-              //     not_in = true;
-              //     console.log(document.user);
-              //   }
-              // });  
-
-              // if(not_in){
                 collection.insert(data, function (err, o) {
                     if (err) { console.warn(err.message); }
-                    else { console.log(usr + " joined chat");}
-                });
-              // }        
+                    else { console.log(data.name + " joined chat");}
+                });   
             });
   
-            io.emit('user joined', usr);
+            io.emit('user joined', data.name);
         });
 
-        socket.on('chat message', function(input){
-          var usr = input[0];
-          var msg = input[1];
-          var time = input[2];
-          var data = {
-            user: usr,
-              time: time,
-              content: msg
-          }
-         
-          mongo.connect(CUSTOMCONNSTR_MONGOLAB_URI, function (err, db) {
+        var sendStatus = function(data){
+            socket.emit('status', data)
+        }
+
+        socket.on('send chat message', function(data){
+            var whiteSpaceChecker = /^\s*&/;
+
+            if(data.name === '\n'||data.name === ''){
+              sendStatus({
+                 status: "need username"
+              });
+              }else{
+                mongo.connect(CUSTOMCONNSTR_MONGOLAB_URI, function (err, db) {
                   var collection = db.collection('chat_messages_tester');
                   collection.insert(data, function (err, o) {
                       if (err) { console.warn(err.message); }
-                      else { console.log("chat message inserted into db: " + msg); }
+                      sendStatus({
+                        status: "valid input"
+                      });
                   });
               });
-          io.emit('chat message', msg, usr);
+            io.emit('send chat message', data.message, data.name);
+          }
         });
 
-        socket.on('disconnect',function(user){
+        socket.on('disconnect', function(name){
           mongo.connect(CUSTOMCONNSTR_MONGOLAB_URI, function (err, db) {
               var collection = db.collection('chat_messages_tester');
-                  collection.deleteOne
+                  collection.remove({name: name}, function(err, result){
+                    if(err){
+                      console.log(err);
+                    }
+                    console.log(result.name);
+                    db.close()
+                  })
           });
-          console.log("User disconnected");
+          io.emit('disconnect', name)
+          console.log(name + " disconnected");
+          io.emit('disconnect', name)
+        });
+
+        socket.on("bring previous messages",function(){
+          mongo.connect(CUSTOMCONNSTR_MONGOLAB_URI, function (err, db) {
+              var collection = db.collection('chat_messages_tester');
+                  collection.find().limit(10).sort({_id:1}).toArray(function(err, result){
+                    if(err){
+                      console.log(err);
+                    }
+                    socket.emit('bring previous messages', result);
+                    console.log(result);
+                  })
+              // db.close()    
+          });
         });
     });
   }
