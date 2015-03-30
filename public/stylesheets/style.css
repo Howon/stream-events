@@ -11,10 +11,10 @@ body {
 
 #content{
 	position: fixed;
-	top: 50%;
-	transform: translateY(-50%);
+	top: 90%;
+	transform: translateY(-80%);
 	width: 90%;
-	height: 80%;
+	height: 30%;
 	left: 50%;
 	margin-left: -45%;
 	background-color: white;
@@ -23,7 +23,7 @@ body {
 
 #statusbar{
 	float: left;
-	width: 10%;
+	width: 8%;
 	height: 100%;
 	border-right: solid;
 }
@@ -50,12 +50,12 @@ body {
 
 #chatarea{
 	float: left;
-	width: 90%
+	width: 92%
 }
 
 div#inputBar{
-	width: 90%;
-	height: 10%;
+	width: 92%;
+	height: 15%;
 	border-top: solid;
 	background: white; 
 	position: fixed; 
@@ -92,7 +92,7 @@ textarea#text{
 	list-style-type: none; 
 	margin: 0; 
 	padding: 0; 
-	height: 84%;
+	height: 79%;
     overflow: scroll;
 }
 

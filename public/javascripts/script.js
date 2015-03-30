@@ -49,31 +49,28 @@ var startChat = function(){
 		}
 	});
 
-	var add_user = true;
+
 	socket.on('status', function(data){
 		if(data.status === 'need username'){
 			alert("Input a valid username")
-		}else if(data.status == 'duplicate current user')
-			add_user = false;
+		}
 	});
 
 	socket.on('user joined', function(usr, status){
-		console.log('called')
-		// if(add_user){
 			if (person == usr){
-				$('#users').append($('<li class="user">').text(usr));	
+				$('#users').append($('<li class="user">').text(" "+usr));	
 			}
 			else {
-				$('#users').append($('<li class="user">').text(usr));	
+				$('#users').append($('<li class="user">').text(" "+usr));	
 			}
 	});
 
 	socket.on('send chat message', function(msg, usr){
 		if (person == usr){
-			$('#messages').append($('<li class="user">').text(usr + ": " +msg));
+			$('#messages').append($('<li class="user"> ').text(" "+usr + ": " +msg));
 		}
 		else {
-			$('#messages').append($('<li class="other">').text(usr + ": " +msg));
+			$('#messages').append($('<li class="other"> ').text(" "+usr + ": " +msg));
 		}
 		var myDiv = $("#messages");
 		myDiv.animate({ 
@@ -83,8 +80,9 @@ var startChat = function(){
 		textarea.value = '';
 	});
 
-	socket.on('disconnect',function(usr){
-
+	socket.on('disconnect',function(){
+		console.log(name.value)
+		$('#users> li:contains("' +name.value+ '" )').remove();
 	})
 }
 

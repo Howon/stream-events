@@ -51,18 +51,19 @@ module.exports = {
         });
 
         socket.on('disconnect', function(name){
-          mongo.connect(CUSTOMCONNSTR_MONGOLAB_URI, function (err, db) {
-              var collection = db.collection('chat_messages_tester');
-                  collection.remove({name: name}, function(err, result){
-                    if(err){
-                      console.log(err);
-                    }else{
-                      console.log(name + " left the chat")
-                    }
-                    db.close()
-                  })
-          });
-          io.emit('disconnect', name)
+          // mongo.connect(CUSTOMCONNSTR_MONGOLAB_URI, function (err, db) {
+          //     var collection = db.collection('chat_messages_tester');
+          //         collection.remove({name: name}, function(err, result){
+          //           if(err){
+          //             console.log(err);
+          //           }else{
+          //             console.log(name + " left the chat")
+          //           }
+          //           db.close()
+          //         })
+          // });
+          // console.log(name);
+          io.emit('disconnect')
         });
 
         socket.on("bring previous messages",function(){
