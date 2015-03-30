@@ -32,10 +32,11 @@ module.exports = {
                   var collection = db.collection('current_user_base');
                   collection.find().toArray(function(err, result){
                       if(err){console.log(err);}
-                      else{io.emit('get online users', result);}
+                      else{socket.emit('get online users', result);}
                     })
                   });
               });
+        
         var sendStatus = function(data){
             socket.emit('status', data)
         }
