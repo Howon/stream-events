@@ -11,10 +11,10 @@ body {
 
 #content{
 	position: fixed;
-	top: 90%;
-	transform: translateY(-80%);
+	top: 50%;
+	transform: translateY(-50%);
 	width: 90%;
-	height: 30%;
+	height: 80%;
 	left: 50%;
 	margin-left: -45%;
 	background-color: white;

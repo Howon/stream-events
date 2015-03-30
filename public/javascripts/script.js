@@ -5,6 +5,12 @@ $(window).load(function() {
 });
 
 var startChat = function(){
+	socket.emit('get online users');
+	socket.on('get online users', function(data){
+		for(var i = 0; i < data.length; i++){
+			$('#users').append($('<li class="user">').text(" "+data[i].name));
+		}
+	});
 
 	var time = new Date();
 	var name = document.querySelector("textarea#name")
@@ -57,12 +63,9 @@ var startChat = function(){
 	});
 
 	socket.on('user joined', function(usr, status){
-			if (person == usr){
+			// if (person == usr){
 				$('#users').append($('<li class="user">').text(" "+usr));	
-			}
-			else {
-				$('#users').append($('<li class="user">').text(" "+usr));	
-			}
+			// }
 	});
 
 	socket.on('send chat message', function(msg, usr){

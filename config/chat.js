@@ -27,6 +27,15 @@ module.exports = {
               });
         });
 
+        socket.on('get online users', function(){
+          mongo.connect(CUSTOMCONNSTR_MONGOLAB_URI, function (err, db) {
+                  var collection = db.collection('current_user_base');
+                  collection.find().toArray(function(err, result){
+                      if(err){console.log(err);}
+                      else{io.emit('get online users', result);}
+                    })
+                  });
+              });
         var sendStatus = function(data){
             socket.emit('status', data)
         }
@@ -51,17 +60,17 @@ module.exports = {
         });
 
         socket.on('disconnect', function(name){
-          mongo.connect(CUSTOMCONNSTR_MONGOLAB_URI, function (err, db) {
-              var collection = db.collection('chat_messages');
-                  collection.remove({name: name}, function(err, result){
-                    if(err){
-                      console.log(err);
-                    }else{
-                      console.log(name + " left the chat")
-                    }
-                    db.close()
-                  })
-          });
+          // mongo.connect(CUSTOMCONNSTR_MONGOLAB_URI, function (err, db) {
+          //     var collection = db.collection('chat_messages');
+          //         collection.remove({name: name}, function(err, result){
+          //           if(err){
+          //             console.log(err);
+          //           }else{
+          //             console.log(name + " left the chat")
+          //           }
+          //           db.close()
+          //         })
+          // });
           io.emit('disconnect', name)
         });
 
