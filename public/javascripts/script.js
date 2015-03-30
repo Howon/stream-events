@@ -2,11 +2,6 @@ var socket = io();
 
 $(window).load(function() {
 	startChat();
-
-	socket.on('disconnect', function(name){
-			$("#users").remove(("li:contains('"+name+"')"));
-			console.log(name+ "disconnected");
-		})
 });
 
 var startChat = function(){
@@ -36,14 +31,7 @@ var startChat = function(){
 
 	textarea.addEventListener('keydown',function(event){
 		var self = this;
-			person = name.value
-		
-
-		socket.on('status', function(data){
-			if(data.status === 'need username'){
-				alert("Input a valid username")
-			}
-		});
+		var	person = name.value
 
 		if(event.which === 13 && event.shiftKey === false){
 			socket.emit('send chat message',{
@@ -51,23 +39,33 @@ var startChat = function(){
 				time : time,
 				message: self.value
 			});
-			socket.emit('namejoined', {
+
+			socket.emit('user joined', {
 				name: person,
 				time : time
 			});
+
 			event.preventDefault();
 		}
 	});
 
+	var add_user = true;
+	socket.on('status', function(data){
+		if(data.status === 'need username'){
+			alert("Input a valid username")
+		}else if(data.status == 'duplicate current user')
+			add_user = false;
+	});
+
 	socket.on('user joined', function(usr, status){
-		// if(status){
+		console.log('called')
+		// if(add_user){
 			if (person == usr){
 				$('#users').append($('<li class="user">').text(usr));	
 			}
 			else {
 				$('#users').append($('<li class="user">').text(usr));	
 			}
-		// }
 	});
 
 	socket.on('send chat message', function(msg, usr){
@@ -84,6 +82,10 @@ var startChat = function(){
 
 		textarea.value = '';
 	});
+
+	socket.on('disconnect',function(usr){
+
+	})
 }
 
 

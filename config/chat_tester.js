@@ -9,16 +9,22 @@ module.exports = {
 
         socket.on('user joined', function(data){
           mongo.connect(CUSTOMCONNSTR_MONGOLAB_URI, function (err, db) {
-              var collection = db.collection('current_names');
-              var not_in = false;
+                  var collection = db.collection('current_user_base');
 
-                collection.insert(data, function (err, o) {
-                    if (err) { console.warn(err.message); }
-                    else { console.log(data.name + " joined chat");}
-                });   
-            });
-  
-            io.emit('user joined', data.name);
+                  collection.find({name : data.name}).toArray(function(err, result){
+                    if(result.length > 0){
+                      sendStatus({
+                        status : "duplicate current user"
+                      })
+                    }else{
+                      collection.insert(data, function(err, o){
+                        if(err){console.log(err)}
+                        else{console.log(data.name + " joined chat")}
+                      })
+                      io.emit('user joined', data.name);
+                  }  
+                  });
+              });
         });
 
         var sendStatus = function(data){
@@ -26,8 +32,6 @@ module.exports = {
         }
 
         socket.on('send chat message', function(data){
-            var whiteSpaceChecker = /^\s*&/;
-
             if(data.name === '\n'||data.name === ''){
               sendStatus({
                  status: "need username"
@@ -52,13 +56,12 @@ module.exports = {
                   collection.remove({name: name}, function(err, result){
                     if(err){
                       console.log(err);
+                    }else{
+                      console.log(name + " left the chat")
                     }
-                    console.log(result.name);
                     db.close()
                   })
           });
-          io.emit('disconnect', name)
-          console.log(name + " disconnected");
           io.emit('disconnect', name)
         });
 
