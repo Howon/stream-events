@@ -4,61 +4,77 @@ module.exports = {
       var io = require('socket.io')(server);
       
       io.on('connection', function(socket){
-        socket.on('load users',function(){
-
-        });
-
+  
         var CUSTOMCONNSTR_MONGOLAB_URI = 'mongodb://pioneer1625:95023680a@ds035617.mongolab.com:35617/stream-events';
 
-         mongo.connect(CUSTOMCONNSTR_MONGOLAB_URI, function (err, db) {
-             var collection = db.collection('chat_message');
-             var stream = collection.find().sort({ _id : -1 }).limit(10).stream();
-             var stream = collection.find().sort().limit(10).stream();
-         stream.on('data', function (chat) { 
-           socket.emit('chat', chat.content); 
-           console.log(chat.content);
-          });
-         });
-
-        socket.on('user joined', function(input){
-          var usr = input[0];
-          var time = input[1];
-          var data = {
-            user: usr,
-            time: time,
-          }
+        socket.on('user joined', function(data){
           mongo.connect(CUSTOMCONNSTR_MONGOLAB_URI, function (err, db) {
-                  var collection = db.collection('current_users');
-                  collection.insert(data, function (err, o) {
-                      if (err) { console.warn(err.message); }
-                      else { console.log(usr + " joined chat"); }
+                  var collection = db.collection('current_user_base');
+
+                  collection.find({name : data.name}).toArray(function(err, result){
+                    if(result.length > 0){
+                      sendStatus({
+                        status : "duplicate current user"
+                      })
+                    }else{
+                      collection.insert(data, function(err, o){
+                        if(err){console.log(err)}
+                        else{console.log(data.name + " joined chat")}
+                      })
+                      io.emit('user joined', data.name);
+                  }  
                   });
               });
-              io.emit('user joined', usr);
         });
 
-        socket.on('chat message', function(input){
-          var usr = input[0];
-          var msg = input[1];
-          var time = input[2];
-          var data = {
-            user: usr,
-              time: time,
-              content: msg
+        var sendStatus = function(data){
+            socket.emit('status', data)
+        }
+
+        socket.on('send chat message', function(data){
+            if(data.name === '\n'||data.name === ''){
+              sendStatus({
+                 status: "need username"
+              });
+              }else{
+                mongo.connect(CUSTOMCONNSTR_MONGOLAB_URI, function (err, db) {
+                  var collection = db.collection('chat_messages');
+                  collection.insert(data, function (err, o) {
+                      if (err) { console.warn(err.message); }
+                      sendStatus({
+                        status: "valid input"
+                      });
+                  });
+              });
+            io.emit('send chat message', data.message, data.name);
           }
-          
-          mongo.connect(CUSTOMCONNSTR_MONGOLAB_URI, function (err, db) {
-                var collection = db.collection('chat_messages');
-                collection.insert(data, function (err, o) {
-                    if (err) { console.warn(err.message); }
-                    else { console.log("chat message inserted into db: " + msg); }
-                });
-            });
-          io.emit('chat message', msg, usr);
         });
 
-        socket.on('disconnect',function(){
-          console.log("User disconnected");
+        socket.on('disconnect', function(name){
+          mongo.connect(CUSTOMCONNSTR_MONGOLAB_URI, function (err, db) {
+              var collection = db.collection('chat_messages');
+                  collection.remove({name: name}, function(err, result){
+                    if(err){
+                      console.log(err);
+                    }else{
+                      console.log(name + " left the chat")
+                    }
+                    db.close()
+                  })
+          });
+          io.emit('disconnect', name)
+        });
+
+        socket.on("bring previous messages",function(){
+          mongo.connect(CUSTOMCONNSTR_MONGOLAB_URI, function (err, db) {
+              var collection = db.collection('chat_messages');
+                  collection.find().limit(10).sort({_id:1}).toArray(function(err, result){
+                    if(err){
+                      console.log(err);
+                    }
+                    socket.emit('bring previous messages', result);
+                  })
+          });
         });
     });
   }
