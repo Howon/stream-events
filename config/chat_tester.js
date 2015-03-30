@@ -70,9 +70,7 @@ module.exports = {
                       console.log(err);
                     }
                     socket.emit('bring previous messages', result);
-                    console.log(result);
                   })
-              // db.close()    
           });
         });
     });
