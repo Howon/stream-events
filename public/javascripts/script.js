@@ -49,25 +49,35 @@ var startChat = function(){
 	});
 
 	$('#logout').unbind().click(function(){
-		// window.location="/logout";
-		// socket.emit("logged out", {
-		// 	name: person,
-		// 	time: time
-		// });
 		console.log("logout")
 	});
 
-	$( "#bringEvents" )
+	$("#bringEvents")
 	  .on( "mouseenter", function() {
-	    $("#chatarea").stop(true, false).animate({
-	    	width:"80%"
-	    },400)
-	    console.log("hover")
+	    // $("#chatarea").stop(true, false).animate({
+	    // 	width:"90%"
+	    // },400);
+	    $("#eventBar").stop(true, false).animate({
+	    	"margin-left":"85%",
+	    	width:"15%"
+	    },400);
+	    $("#eventBar").on("mouseenter",function(){
+	    	this.css({
+	    		"margin-left":"85%",
+	    		width:"15%"
+	    	});
+	    })
 	  })
 	  .on( "mouseleave", function() {
-	    $("#chatarea").stop(true, false).animate({
-	    	width:"90%"
-	    },400)
+	    // $("#chatarea").stop(true, false).animate({
+	    // 	width:"90%"
+	    // },400)
+	    $("#eventBar").stop(true, false).animate({
+	    	
+	    	width:"0%",
+	    	"margin-left":"100%"
+	    },400);
+	  	// $("#eventBar").css("display","none");
 	  });
 
 	textarea.addEventListener('keydown',function(event){

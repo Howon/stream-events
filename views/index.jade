@@ -1,7 +1,7 @@
 doctype html
 extends layout
 block body
-   div#content 
+   div#body 
      div#statusbar
       ul#users    
      div#chatarea
@@ -10,4 +10,6 @@ block body
       div#inputBar
         textarea#name(placeholder='Type your name')
         textarea#text(placeholder='Type your mesage')
+   div#eventBar
+     ul#eventStream           
    script(src='/javascripts/script.js')
