@@ -49,7 +49,7 @@ var startChat = function(){
 			});
 
 			socket.emit('user joined', {
-				name: person,
+				name : person,
 				time : time
 			});
 
@@ -65,9 +65,9 @@ var startChat = function(){
 	});
 
 	socket.on('user joined', function(usr, status){
-			// if (person == usr){
-				$('#users').append($('<li class="user">').text(" "+usr));	
-			// }
+			// if (person 	== usr){
+		$('#users').append($('<li class="user">').text(" "+usr));	
+			// }		
 	});
 
 	socket.on('send chat message', function(msg, usr){
