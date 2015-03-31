@@ -59,7 +59,7 @@ header#bar #bringEvents:hover{
 }
 
 #content{
-	position: fixed;
+	position: absolute;
 	top: 50%;
 	transform: translateY(-50%);
 	width: 90%;
@@ -67,7 +67,7 @@ header#bar #bringEvents:hover{
 	left: 50%;
 	margin-left: -45%;
 	background-color: white;
-	border-style: solid;
+	border-left: solid;
 }
 
 #statusbar{
@@ -75,6 +75,8 @@ header#bar #bringEvents:hover{
 	width: 8%;
 	height: 100%;
 	border-right: solid;
+	border-top: solid;
+	border-bottom: solid;
 }
 
 #statusbar #users{
@@ -99,16 +101,19 @@ header#bar #bringEvents:hover{
 
 #chatarea{
 	float: left;
-	width: 92%
+	width: 92%;
+	border-right:solid;
+	height: 100%;
+	border-top: solid;
+	border-bottom: solid;
 }
 
 div#inputBar{
-	width: 92%;
-	height: 15%;
+	height: 15.3%;
 	border-top: solid;
 	background: white; 
-	position: fixed; 
-	bottom: 0; 
+	position: relative; 
+	/*bottom: 0; */
 }
 
 textarea#name{
@@ -138,10 +143,12 @@ textarea#text{
 }
 
 #messages { 
+	position: relative;
 	list-style-type: none; 
 	margin: 0; 
 	padding: 0; 
 	padding-top: 0.5%;
+	padding-bottom: 0.5%;
 	height: 79%;
     overflow: scroll;
 }

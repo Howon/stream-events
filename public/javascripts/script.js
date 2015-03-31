@@ -59,15 +59,15 @@ var startChat = function(){
 
 	$( "#bringEvents" )
 	  .on( "mouseenter", function() {
-	    $("#content").stop(true, false).animate({
+	    $("#chatarea").stop(true, false).animate({
 	    	width:"80%"
-	    },700)
+	    },400)
 	    console.log("hover")
 	  })
 	  .on( "mouseleave", function() {
-	    $("#content").stop(true, false).animate({
+	    $("#chatarea").stop(true, false).animate({
 	    	width:"90%"
-	    },700)
+	    },400)
 	  });
 
 	textarea.addEventListener('keydown',function(event){
