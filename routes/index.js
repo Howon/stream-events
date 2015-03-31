@@ -7,4 +7,10 @@ router.get('/', function(req, res) {
   });
 });
 
+router.get('/logout', function(req, res){
+	res.render('auth',{
+		title: 'Login'
+	})
+});
+
 module.exports = router;

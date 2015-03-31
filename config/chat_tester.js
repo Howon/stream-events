@@ -7,6 +7,8 @@ module.exports = {
   
         var CUSTOMCONNSTR_MONGOLAB_URI = 'mongodb://master:master@ds059471.mongolab.com:59471/stream-events';
 
+        var userArr = []; 
+
         socket.on('user joined', function(data){
           mongo.connect(CUSTOMCONNSTR_MONGOLAB_URI, function (err, db) {
                   var collection = db.collection('current_user_base');
@@ -26,6 +28,7 @@ module.exports = {
                         if(err){console.log(err)}
                         else{console.log(data.name + " joined chat")}
                       })
+                      // userArr.add(data.name)
                       io.emit('user joined', data.name);
                   }  
                   });
@@ -68,6 +71,14 @@ module.exports = {
         socket.on('disconnect', function(name){
           io.emit('disconnect')
         });
+
+        // socket.on("ping connection", function(name){
+        //   if(){
+
+        //   }else{
+        //     io.emit("user disconnected", remove_user)
+        //   }
+        // })
 
         socket.on("bring previous messages",function(){
           mongo.connect(CUSTOMCONNSTR_MONGOLAB_URI, function (err, db) {
