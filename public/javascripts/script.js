@@ -8,6 +8,7 @@ $(window).load(function() {
 //
 var startChat = function(){
 	socket.emit('get online users');
+
 	socket.on('get online users', function(data){
 		for(var i = 0; i < data.length; i++){
 			$('#users').append($('<li class="user">').text(" "+data[i].name));
@@ -20,12 +21,21 @@ var startChat = function(){
 	person = ""
 	var textarea = document.querySelector("textarea#text")
 
-	$('#bring').click(function(){
+	$('#bring').unbind().click(function(){
 		console.log('clicked');
 		socket.emit("bring previous messages");
 		socket.on("bring previous messages", function(data){
+		
 		if(data.length){
 			for(var i=0; i< data.length; i++){
+				// if (data[i].name === person ){
+				// 	var message = $('<li class="user"> ').text(" "+ data[i].name + ": " + data[i].message)
+				// 	$('#messages').append($('<li class="user"> ').text(" "+ data[i].name + ": " + data[i].message));
+				// }
+				// else {
+				// 	$('#messages').append($('<li class="other"> ').text(" "+ data[i].name + ": " + data[i].message));
+				// }
+
 				var message = document.createElement('li');
 				message.setAttribute('class', 'chat-message');
 				message.textContent = data[i].name+ ": " + data[i].message;
@@ -34,8 +44,31 @@ var startChat = function(){
 				messages.insertBefore(message, messages.firstChild);
 			}
 		}
+
 	  });
 	});
+
+	$('#logout').unbind().click(function(){
+		// window.location="/logout";
+		// socket.emit("logged out", {
+		// 	name: person,
+		// 	time: time
+		// });
+		console.log("logout")
+	});
+
+	$( "#bringEvents" )
+	  .on( "mouseenter", function() {
+	    $("#content").stop(true, false).animate({
+	    	width:"80%"
+	    },700)
+	    console.log("hover")
+	  })
+	  .on( "mouseleave", function() {
+	    $("#content").stop(true, false).animate({
+	    	width:"90%"
+	    },700)
+	  });
 
 	textarea.addEventListener('keydown',function(event){
 		var self = this;
@@ -56,7 +89,10 @@ var startChat = function(){
 			event.preventDefault();
 		}
 	});
-
+	
+	socket.on("user disconnected", function(name){
+		$('#users> li:contains("' +name.value+ '" )').remove();
+	})
 
 	socket.on('status', function(data){
 		if(data.status === 'need username'){
@@ -65,9 +101,7 @@ var startChat = function(){
 	});
 
 	socket.on('user joined', function(usr, status){
-			// if (person 	== usr){
-		$('#users').append($('<li class="user">').text(" "+usr));	
-			// }		
+		$('#users').append($('<li class="user">').text(" "+usr));
 	});
 
 	socket.on('send chat message', function(msg, usr){
@@ -86,8 +120,7 @@ var startChat = function(){
 	});
 
 	socket.on('disconnect',function(){
-		console.log(name.value)
-		$('#users> li:contains("' +name.value+ '" )').remove();
+		console.log("User disconnected")
 	})
 }
 
