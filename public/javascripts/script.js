@@ -3,7 +3,9 @@ var socket = io();
 $(window).load(function() {
 	startChat();
 });
-
+//
+//have it emit name of the current user at a uniform interval
+//
 var startChat = function(){
 	socket.emit('get online users');
 	socket.on('get online users', function(data){
