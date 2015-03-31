@@ -35,39 +35,38 @@ header#bar #logout:hover{
 }
 
 header#bar #name{
-	width: 50%;
 	position: relative;
 	margin-left: auto;
 	margin-right: auto;
 	color: white;
-	top: 50%;
-	transform: translateY(-50%);
+	top: 35%;
 }
 
 header#bar #bringEvents{
-	color: white;
-	width: 7%;
+	transform: translateY(-50%);
+	top: 50%;	
 	position: relative;
 	float: right;
 	color: #ccc;
-	/*margin-left: auto;*/
-	margin-right:3%;
+	margin-left: auto;
+	margin-right:5%;
 }
 
 header#bar #bringEvents:hover{
 	color: white
 }
 
-#content{
-	position: absolute;
+div#body{
+	float: left;
+	position: relative;
 	top: 50%;
-	transform: translateY(-50%);
-	width: 90%;
+	transform: translateY(-50%) translateX(-50%);
+	width: 80%;
 	height: 80%;
 	left: 50%;
-	margin-left: -45%;
 	background-color: white;
 	border-left: solid;
+	padding: 0;
 }
 
 #statusbar{
@@ -101,7 +100,7 @@ header#bar #bringEvents:hover{
 
 #chatarea{
 	float: left;
-	width: 92%;
+	width: 90%;
 	border-right:solid;
 	height: 100%;
 	border-top: solid;
@@ -109,22 +108,20 @@ header#bar #bringEvents:hover{
 }
 
 div#inputBar{
-	height: 15.3%;
+	height: 14.6%;
 	border-top: solid;
 	background: white; 
 	position: relative; 
-	/*bottom: 0; */
 }
 
 textarea#name{
 	float: left;
 	height: 100%;
-	width : 10%;
+	width: 10%;
 	border-right: solid;
 }
 
 textarea#text{ 
-	/*float: left;*/
 	width: 90%; 
 	height: 100%;
 }
@@ -147,7 +144,8 @@ textarea#text{
 	list-style-type: none; 
 	margin: 0; 
 	padding: 0; 
-	padding-top: 0.5%;
+	margin-top: 0.5%;
+	/*padding-top: 0.5%;*/
 	padding-bottom: 0.5%;
 	height: 79%;
     overflow: scroll;
@@ -187,4 +185,17 @@ button#bring:hover{
 #messages li:nth-last-child(1) {
    background: #ADD8E6;
 }
+
+div#eventbar{
+	position:relative;
+	/*float: right;*/
+	top:5%;
+	/*width: 10%;*/
+	height: 95%;
+	margin-left: 100%;
+	background-color:black;
+	/*display: none;*/
+	/*border-left: solid;*/
+}
+
 
