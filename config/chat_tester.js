@@ -5,7 +5,7 @@ module.exports = {
       
       io.on('connection', function(socket){
   
-        var CUSTOMCONNSTR_MONGOLAB_URI = 'mongodb://pioneer1625:95023680a@ds035617.mongolab.com:35617/stream-events';
+        var CUSTOMCONNSTR_MONGOLAB_URI = 'mongodb://master:master@ds059471.mongolab.com:59471/stream-events';
 
         socket.on('user joined', function(data){
           mongo.connect(CUSTOMCONNSTR_MONGOLAB_URI, function (err, db) {
@@ -16,6 +16,11 @@ module.exports = {
                       sendStatus({
                         status : "duplicate current user"
                       })
+                    }else if(data.name === '\n' || data.name === ''){
+                      sendStatus({
+                        status : "need username"
+                      })
+                      console.log("no user name")
                     }else{
                       collection.insert(data, function(err, o){
                         if(err){console.log(err)}
@@ -61,18 +66,6 @@ module.exports = {
         });
 
         socket.on('disconnect', function(name){
-          // mongo.connect(CUSTOMCONNSTR_MONGOLAB_URI, function (err, db) {
-          //     var collection = db.collection('chat_messages_tester');
-          //         collection.remove({name: name}, function(err, result){
-          //           if(err){
-          //             console.log(err);
-          //           }else{
-          //             console.log(name + " left the chat")
-          //           }
-          //           db.close()
-          //         })
-          // });
-          // console.log(name);
           io.emit('disconnect')
         });
 
