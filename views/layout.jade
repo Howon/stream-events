@@ -1,13 +1,16 @@
 html
   head
-   title Socket.IO chat
-   link(rel='stylesheet', href='stylesheets/style.css')  
+   title Stream Events
+   link(rel='stylesheet', href='stylesheets/style.css') 
+   link(rel='stylesheet', href='//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css') 
    script(src='https://cdn.socket.io/socket.io-1.2.0.js')
-   script(src='http://code.jquery.com/jquery-1.11.1.js')
+   script(src='http://code.jquery.com/jquery-1.11.1.js') 
+   link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css')
+   meta(name='viewport', content='width=device-width, initial-scale=1')
+   block head
   body
    header#bar
-     button#logout log out
-     span#bringEvents Events
-     span#name Stream Events
+     block header
+     span#title Stream Events
+   div#toolbar
    block body
-   footer#aboutus
