@@ -3,9 +3,7 @@ var socket = io();
 $(window).load(function() {
 	startChat();
 });
-//
-//have it emit name of the current user at a uniform interval
-//
+
 var startChat = function(){
 	socket.emit('get online users');
 
@@ -26,7 +24,7 @@ var startChat = function(){
 		socket.emit("bring previous messages");
 		socket.on("bring previous messages", function(data){
 		
-		if(data.length){
+		  if(data.length){
 			for(var i=0; i< data.length; i++){
 				// if (data[i].name === person ){
 				// 	var message = $('<li class="user"> ').text(" "+ data[i].name + ": " + data[i].message)
@@ -43,42 +41,33 @@ var startChat = function(){
 				messages.appendChild(message);
 				messages.insertBefore(message, messages.firstChild);
 			}
-		}
-
+		  }
 	  });
 	});
 
-	$('#logout').unbind().click(function(){
-		console.log("logout")
-	});
-
-	$("#bringEvents")
-	  .on( "mouseenter", function() {
-	    // $("#chatarea").stop(true, false).animate({
-	    // 	width:"90%"
-	    // },400);
-	    $("#eventBar").stop(true, false).animate({
-	    	"margin-left":"85%",
-	    	width:"15%"
+	$("#bringEvents, #eventBar").hover(
+		function() {
+	    $("#body").stop(true, false).animate({
+	    	"left":"58%"
 	    },400);
-	    $("#eventBar").on("mouseenter",function(){
-	    	this.css({
-	    		"margin-left":"85%",
-	    		width:"15%"
-	    	});
-	    })
-	  })
-	  .on( "mouseleave", function() {
-	    // $("#chatarea").stop(true, false).animate({
-	    // 	width:"90%"
-	    // },400)
 	    $("#eventBar").stop(true, false).animate({
-	    	
+	    	"margin-right":"82%",
+	    	width:"18%"
+	    },400);
+	    $("#bringEvents").html(
+	    	"Events <i class='fa fa-chevron-left'></i>")
+		},
+		function() {
+	    $("#body").stop(true, false).animate({
+	    	"left":"50%"
+	    },400);
+	    $("#eventBar").stop(true, false).animate({
 	    	width:"0%",
-	    	"margin-left":"100%"
+	    	"margin-right":"100%"
 	    },400);
-	  	// $("#eventBar").css("display","none");
-	  });
+	    $("#bringEvents").html(
+	    	"Events <i class='fa fa-chevron-right'></i>")
+	});
 
 	textarea.addEventListener('keydown',function(event){
 		var self = this;
@@ -95,7 +84,6 @@ var startChat = function(){
 				name : person,
 				time : time
 			});
-
 			event.preventDefault();
 		}
 	});
@@ -125,7 +113,6 @@ var startChat = function(){
 		myDiv.animate({ 
 			scrollTop: myDiv.prop("scrollHeight") + myDiv.height() 
 		}, 10);
-
 		textarea.value = '';
 	});
 
