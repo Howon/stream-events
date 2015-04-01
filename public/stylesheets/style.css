@@ -231,6 +231,7 @@ div#eventbar{
 
 #loginform #log-in-button:hover{
 	color:black;
+	border-color: black;
 }
 
 #loginform #inputArea{
@@ -253,10 +254,20 @@ div#eventbar{
 	border-right: 0;
 }
 
+#loginform #inputArea .input-group .input-group-addon:hover{
+	color: black;
+	border-color: black;
+}
+
 input.form-control{
 	border-radius: 0;
 	border-right: 0;
 	border-color: #808080;
+}
+
+input.form-control:hover{
+	color: black;
+	border-color: black;
 }
 
 footer#aboutus{
@@ -278,13 +289,11 @@ footer#aboutus #contributors{
 	position: absolute;
 	padding-top: 0.5%;
 }
-/*
-#github-link{
-	position: relative;
-}*/
+
 footer#aboutus #github-icon{
 	position: relative;
 	margin-top: 2%;
+	color: white;
 }
 
 footer#aboutus #github-icon:hover{
