@@ -11,7 +11,7 @@ body {
 header#bar{
 	width: 100%;
 	height: 6.5%;
-	background-color: #C4D8E2;
+	background-color: #99CCFF;
 	text-align: center;
 	position: fixed;
 	z-index: 1;
@@ -248,8 +248,8 @@ div#eventbar{
 }
 
 #loginform #login-information .input-group .input-group-addon:hover{
-	color: #C4D8E2;
-	border-color: #C4D8E2;
+	color: #99CCFF;
+	border-color: #99CCFF;
 }
 
 #loginform #login-information .input-group .form-control{
@@ -288,8 +288,8 @@ div#eventbar{
 }
 
 #loginform #log-in-button:hover{
-	color:#C4D8E2;
-	border-color: #C4D8E2;
+	color:#99CCFF;
+	border-color: #99CCFF;
 }
 /*-----------------------------------*/
 
@@ -303,14 +303,14 @@ div#eventbar{
 /*-----------------------------------*/
 
 input.form-control:hover{
-	color: #C4D8E2;
-	border-color: #C4D8E2;
+	color: #99CCFF;
+	border-color: #99CCFF;
 }
 
 footer#aboutus{
 	font: 13px Helvetica;
 	clear: both;
-    background: #C4D8E2;
+    background: #99CCFF;
     color: black;
     padding: 0;
     padding-top: 1.5%;
