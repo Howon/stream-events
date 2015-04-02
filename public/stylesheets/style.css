@@ -23,7 +23,7 @@ header#bar #logout{
     text-decoration: none;
 	top: 27%;
 	display: block;
-    color: black;
+    color: white;
     background-color: transparent;
     border: 0 none;
 	float: right;
@@ -31,7 +31,7 @@ header#bar #logout{
 }
 
 header#bar #logout:hover{
-	color: white;
+	color: black;
 }
 
 header#bar #bringEvents{
@@ -40,7 +40,7 @@ header#bar #bringEvents{
 	font: 14px Helvetica;
 	top: 40%;	
 	position: relative;
-	color: black;
+	color: white;
 }
 
 header#bar #title{
@@ -52,12 +52,12 @@ header#bar #title{
 	right: 0;
 	bottom: 0;
 	margin: auto;
-    color: black;
+    color: white;
 	z-index: -5;
 }
 
 header#bar #title:hover{
-    color: black;
+    color: white;
 }
 
 div#body{
@@ -117,7 +117,7 @@ div#body{
 div#inputBar{
 	height: 10%;
 	border-top: solid;
-	background: black; 
+	background: white; 
 	position: relative; 
 }
 
@@ -242,14 +242,16 @@ div#eventbar{
 	padding: 0;
 	height: 100%;
 	border-radius: 0;
+	border-left: 0;
 	border-right: 1px;
 	border-color: #808080;
 	border-bottom: 1px;
 }
 
 #loginform #login-information .input-group .input-group-addon:hover{
-	color: #99CCFF;
-	border-color: #99CCFF;
+	color: black;
+	border-bottom: 1px solid;
+	border-color: black;
 }
 
 #loginform #login-information .input-group .form-control{
@@ -259,6 +261,12 @@ div#eventbar{
 	border-bottom: 0;
 	border-radius: 0;
 	border-color: #808080;
+}
+
+#loginform #login-information .input-group .form-control:hover{
+	color: black;
+	border-bottom: 1px solid;
+	border-color: black;
 }
 /*-----------------------------------*/
 
@@ -288,8 +296,9 @@ div#eventbar{
 }
 
 #loginform #log-in-button:hover{
-	color:#99CCFF;
-	border-color: #99CCFF;
+	color: black;
+	border-bottom: 1px solid;
+	border-color: black;
 }
 /*-----------------------------------*/
 
@@ -311,7 +320,7 @@ footer#aboutus{
 	font: 13px Helvetica;
 	clear: both;
     background: #99CCFF;
-    color: black;
+    color: white;
     padding: 0;
     padding-top: 1.5%;
     text-align: center;
@@ -332,7 +341,7 @@ footer#aboutus #contributors{
 
 footer#aboutus #github-icon{
 	padding-top: 0.5%;
-	color: black;
+	color: white;
 }
 
 footer#aboutus #github-icon:hover{
