@@ -48,31 +48,49 @@ var startChat = function(){
 	$("#bringEvents, #eventBar").hover(
 		function() {
 	    $("#body").stop(true, false).animate({
-	    	"left":"18%"
-	    },400);
+	    	"opacity":"0.6"
+	    },450);
+	    // $("#body").css({
+	    // 	"opacity":"0.7"
+	    // })
 	    $("#eventBar").stop(true, false).animate({
-	    	"margin-right":"82%",
-	    	width:"18%"
-	    },400);
+	    	"margin-right":"70%",
+	    	width:"25%"
+	    },450);
+	    $("#eventBar").css({
+	    	"z-index":"1"
+	   	})
 	    $("#bringEvents").css({
 	    	"color":"white",
 	    	"padding-bottom":"1%"
 	    })
+	    $("#bringEvents").stop(true, false).animate({
+	    	"padding-left":"4%"
+	    },450)
 	    $("#bringEvents").html(
 	    	"<i class='fa fa-chevron-left'></i> Events ")
 		},
 		function() {
 	    $("#body").stop(true, false).animate({
-	    	"left":"10%"
-	    },400);
+	    	"opacity":"1"
+	    },450);
+	    // $("#body").css({
+	    // 	"opacity":"1"
+	    // })
 	    $("#eventBar").stop(true, false).animate({
 	    	width:"0%",
 	    	"margin-right":"100%"
-	    },400);
+	    },450);
+	    $("#eventBar").css({
+	    	"z-index":"0"
+	    });
 	    $("#bringEvents").css({
-	    	"color":"#ccc",
+	    	"color":"black",
 	    	"padding-bottom":"0"
 	    });
+	    $("#bringEvents").stop(true, false).animate({
+	    	"padding-left":"0%"
+	    },450)
 	    $("#bringEvents").html(
 	    	"Events <i class='fa fa-chevron-right'></i>")
 	});

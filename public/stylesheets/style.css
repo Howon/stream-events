@@ -10,8 +10,8 @@ body {
 
 header#bar{
 	width: 100%;
-	height: 6%;
-	background-color: black;
+	height: 6.5%;
+	background-color: #C4D8E2;
 	text-align: center;
 	position: fixed;
 	z-index: 1;
@@ -23,7 +23,7 @@ header#bar #logout{
     text-decoration: none;
 	top: 27%;
 	display: block;
-    color: #ccc;
+    color: black;
     background-color: transparent;
     border: 0 none;
 	float: right;
@@ -40,7 +40,7 @@ header#bar #bringEvents{
 	font: 14px Helvetica;
 	top: 40%;	
 	position: relative;
-	color: #ccc;
+	color: black;
 }
 
 header#bar #title{
@@ -52,12 +52,12 @@ header#bar #title{
 	right: 0;
 	bottom: 0;
 	margin: auto;
-    color: white;
+    color: black;
 	z-index: -5;
 }
 
 header#bar #title:hover{
-    color: white;
+    color: black;
 }
 
 div#body{
@@ -117,7 +117,7 @@ div#body{
 div#inputBar{
 	height: 10%;
 	border-top: solid;
-	background: white; 
+	background: black; 
 	position: relative; 
 }
 
@@ -190,12 +190,12 @@ button#bring:hover{
 div#eventbar{
 	position:absolute;
 	float: left;
-	top: 5%;
-	height: 95%;
+	top: 6.5%;
+	height: 93.5%;
 	margin-left: 0;
 	margin-right: 100%;
 	background-color:black;
-	opacity: 0.5;
+	opacity: 0.85;
 }
 
 #loginform{
@@ -248,8 +248,8 @@ div#eventbar{
 }
 
 #loginform #login-information .input-group .input-group-addon:hover{
-	color: black;
-	border-color: black;
+	color: #C4D8E2;
+	border-color: #C4D8E2;
 }
 
 #loginform #login-information .input-group .form-control{
@@ -288,8 +288,8 @@ div#eventbar{
 }
 
 #loginform #log-in-button:hover{
-	color:black;
-	border-color: black;
+	color:#C4D8E2;
+	border-color: #C4D8E2;
 }
 /*-----------------------------------*/
 
@@ -303,15 +303,15 @@ div#eventbar{
 /*-----------------------------------*/
 
 input.form-control:hover{
-	color: black;
-	border-color: black;
+	color: #C4D8E2;
+	border-color: #C4D8E2;
 }
 
 footer#aboutus{
 	font: 13px Helvetica;
 	clear: both;
-    background: black;
-    color: White;
+    background: #C4D8E2;
+    color: black;
     padding: 0;
     padding-top: 1.5%;
     text-align: center;
@@ -332,7 +332,7 @@ footer#aboutus #contributors{
 
 footer#aboutus #github-icon{
 	padding-top: 0.5%;
-	color: white;
+	color: black;
 }
 
 footer#aboutus #github-icon:hover{
