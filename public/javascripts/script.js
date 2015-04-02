@@ -48,14 +48,18 @@ var startChat = function(){
 	$("#bringEvents, #eventBar").hover(
 		function() {
 	    $("#body").stop(true, false).animate({
-	    	"left":"58%"
+	    	"left":"55.5%"
 	    },400);
 	    $("#eventBar").stop(true, false).animate({
 	    	"margin-right":"82%",
 	    	width:"18%"
 	    },400);
+	    $("#bringEvents").css({
+	    	"color":"white",
+	    	"padding-bottom":"1%"
+	    })
 	    $("#bringEvents").html(
-	    	"Events <i class='fa fa-chevron-left'></i>")
+	    	"<i class='fa fa-chevron-left'></i> Events ")
 		},
 		function() {
 	    $("#body").stop(true, false).animate({
@@ -65,6 +69,10 @@ var startChat = function(){
 	    	width:"0%",
 	    	"margin-right":"100%"
 	    },400);
+	    $("#bringEvents").css({
+	    	"color":"#ccc",
+	    	"padding-bottom":"0"
+	    });
 	    $("#bringEvents").html(
 	    	"Events <i class='fa fa-chevron-right'></i>")
 	});
