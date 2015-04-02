@@ -48,7 +48,7 @@ var startChat = function(){
 	$("#bringEvents, #eventBar").hover(
 		function() {
 	    $("#body").stop(true, false).animate({
-	    	"left":"55.5%"
+	    	"left":"18%"
 	    },400);
 	    $("#eventBar").stop(true, false).animate({
 	    	"margin-right":"82%",
@@ -63,7 +63,7 @@ var startChat = function(){
 		},
 		function() {
 	    $("#body").stop(true, false).animate({
-	    	"left":"50%"
+	    	"left":"10%"
 	    },400);
 	    $("#eventBar").stop(true, false).animate({
 	    	width:"0%",
