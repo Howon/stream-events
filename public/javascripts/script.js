@@ -61,7 +61,7 @@ var startChat = function(){
 	    	"z-index":"1"
 	   	})
 	    $("#bringEvents").css({
-	    	"color":"white",
+	    	"color":"black",
 	    	"padding-bottom":"1%"
 	    })
 	    $("#bringEvents").stop(true, false).animate({
@@ -85,7 +85,7 @@ var startChat = function(){
 	    	"z-index":"0"
 	    });
 	    $("#bringEvents").css({
-	    	"color":"black",
+	    	"color":"white",
 	    	"padding-bottom":"0"
 	    });
 	    $("#bringEvents").stop(true, false).animate({
