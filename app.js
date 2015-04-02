@@ -16,7 +16,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.set('view engine', 'jade');
 
 app.use('/', routes);
-app.use('/login', routes);
+// app.use('/home', routes);
 
 chatservice.setServer(server);
 
