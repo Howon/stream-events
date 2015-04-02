@@ -18,40 +18,41 @@ header#bar{
 
 header#bar #logout{
 	font: 14px Helvetica;
-	position: relative;
+	position: absolute;
     text-decoration: none;
-	top: 50%;
-	transform: translateY(-50%);
+	top: 27%;
 	display: block;
     color: #ccc;
     background-color: black;
     border: 0 none;
 	float: right;
-	margin-left: auto;
-	margin-right:5%;
+	right: 5.5%;
 }
 
 header#bar #logout:hover{
 	color: white;
 }
 
-header#bar #title{
-	font: 15px Helvetica;
-	position: relative;
-	margin-left: auto;
-	margin-right: auto;
-	color: white;
-	top: 35%;
-}
-
 header#bar #bringEvents{
 	float: left;
-    margin-left: 5.5%;
+    left: 5.5%;
 	font: 14px Helvetica;
-	transform: translateY(0%);
-	top: 35%;	
+	top: 40%;	
 	position: relative;
 	color: #ccc;
+}
+
+header#bar #title{
+	font: 15px Helvetica;
+	position: absolute;
+	padding: 0;
+	top:40%;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	margin: auto;
+	color: white;
+	z-index: -900;
 }
 
 div#body{
@@ -121,7 +122,7 @@ input{
 	border-radius: 0;
 }
 
-input#name{
+textarea#name{
 	float: left;
 	height: 100%;
 	width: 15%;
@@ -129,7 +130,7 @@ input#name{
 	border-radius: 0;
 }
 
-input#text{ 
+textarea#text{ 
 	width: 85%; 
 	height: 100%;
 	border-radius: 0;
@@ -141,7 +142,6 @@ input#text{
 	margin: 0; 
 	padding: 0; 
 	margin-top: 0.1%;
-	/*padding-top: 0.5%;*/
 	padding-bottom: 0.5%;
 	height: 84%;
     overflow: auto;
@@ -194,21 +194,26 @@ div#eventbar{
 }
 
 #loginform{
-	width: 25%;
-	top: 25%;
-	left: 37.5%;
-	/*margin-left: -12.5%;*/
-	position: fixed;
-	height: 40%;
-	/*border-style: solid;*/
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: auto;
+    position: absolute;
+    top: 20%; 
+    left: 0; 
+    bottom: 0; 
+    right: 0;
+    width: 30%;
+    height: 60%;
+	border-style: solid;
 }
 
 #loginform #inputArea{
-	position: relative;
-	top: 70%;
-	height: 30%;
+	position: absolute;
+	/*top: 76.5%;*/
+	height: 100px;
 	width: 100%;
 	border:0;
+	bottom: 0;
 }
 /*INPUT PASSWORD AND EMAIL*/
 /*-----------------------------------*/
@@ -222,8 +227,8 @@ div#eventbar{
 
 #inputArea #login-information .input-group{
 	float: left;
-	width: 101%;
-	height: 50.5%;
+	width: 100%;
+	height: 50px;
 }
 
 #inputArea #login-information .input-group .input-group-addon{
@@ -241,7 +246,7 @@ div#eventbar{
 
 #loginform #login-information .input-group .form-control{
 	padding: 0;
-	height: 104%;
+	height: 50px;
 	border-radius: 0;
 	border-color: #808080;
 }
@@ -277,7 +282,7 @@ div#eventbar{
 
 /*FIREFOX COMPATIBILITY*/
 /*-----------------------------------*/
-@-moz-document url-prefix() {	
+/*@-moz-document url-prefix() {	
 	#inputArea #login-information .input-group{
 		float: left;
 		width: 100%;
@@ -290,7 +295,7 @@ div#eventbar{
 		border-radius: 0;
 		border-color: #808080;
 	}	
-}
+}*/
 /*-----------------------------------*/
 
 input.form-control:hover{
@@ -310,15 +315,18 @@ footer#aboutus{
     bottom: 0px;
     height: 12%;
     width: 100%;
+    z-index: 10;
+}
+footer#aboutus #footer-info{
+	margin-left: auto;
+	margin-right: auto;
 }
 
 footer#aboutus #contributors{
-	position: relative;
 	padding-top: 0.3%;
 }
 
 footer#aboutus #github-icon{
-	position: relative;
 	padding-top: 0.2%;
 	color: white;
 }
@@ -326,8 +334,6 @@ footer#aboutus #github-icon{
 footer#aboutus #github-icon:hover{
 	color: #808080;
 }
-
-
 
 
 
