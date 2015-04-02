@@ -14,6 +14,7 @@ header#bar{
 	background-color: black;
 	text-align: center;
 	position: fixed;
+	z-index: 1;
 }
 
 header#bar #logout{
@@ -23,7 +24,7 @@ header#bar #logout{
 	top: 27%;
 	display: block;
     color: #ccc;
-    background-color: black;
+    background-color: transparent;
     border: 0 none;
 	float: right;
 	right: 5.5%;
@@ -51,8 +52,12 @@ header#bar #title{
 	right: 0;
 	bottom: 0;
 	margin: auto;
-	color: white;
-	z-index: -900;
+    color: white;
+	z-index: -5;
+}
+
+header#bar #title:hover{
+    color: white;
 }
 
 div#body{
@@ -60,8 +65,8 @@ div#body{
 	position: absolute;
 	top: 12.5%;
 	width: 80%;
-	left: 50%;
-	margin-left: -37.5%;
+	left: 10%;
+	/*margin-left: -37.5%;*/
 	height: 80%;
 	background-color: white;
 	border-left: solid;
@@ -186,7 +191,7 @@ div#eventbar{
 	position:absolute;
 	float: left;
 	top: 5%;
-	height: 90%;
+	height: 95%;
 	margin-left: 0;
 	margin-right: 100%;
 	background-color:black;
@@ -198,13 +203,14 @@ div#eventbar{
     margin-right: auto;
     margin-bottom: auto;
     position: absolute;
-    top: 20%; 
+    top: 17%; 
     left: 0; 
     bottom: 0; 
     right: 0;
     width: 30%;
     height: 60%;
 	border-style: solid;
+	z-index: 0;
 }
 
 #loginform #inputArea{
@@ -228,7 +234,7 @@ div#eventbar{
 #inputArea #login-information .input-group{
 	float: left;
 	width: 100%;
-	height: 50px;
+	height: 50%;
 }
 
 #inputArea #login-information .input-group .input-group-addon{
@@ -236,7 +242,9 @@ div#eventbar{
 	padding: 0;
 	height: 100%;
 	border-radius: 0;
+	border-right: 1px;
 	border-color: #808080;
+	border-bottom: 1px;
 }
 
 #loginform #login-information .input-group .input-group-addon:hover{
@@ -246,7 +254,9 @@ div#eventbar{
 
 #loginform #login-information .input-group .form-control{
 	padding: 0;
-	height: 50px;
+	height: 100%;
+	border-right: 0;
+	border-bottom: 0;
 	border-radius: 0;
 	border-color: #808080;
 }
@@ -260,15 +270,18 @@ div#eventbar{
 	width: 20%;
 	padding: 0;
 	border: 0;
+	border-left: 1px;
 	margin-right: 0;
 }
 
 #loginform #log-in-button{
+	position: relative;
 	width: 100%;
 	height: 100%;
 	border-radius: 0;
 	padding: 0;
-	padding-top: 37.5%;
+	padding-top: 37%;
+	border-bottom: 0;
 	background-color: white;
 	border-color: #808080;
 	color:#808080;
@@ -282,20 +295,11 @@ div#eventbar{
 
 /*FIREFOX COMPATIBILITY*/
 /*-----------------------------------*/
-/*@-moz-document url-prefix() {	
-	#inputArea #login-information .input-group{
-		float: left;
-		width: 100%;
-		height: 50%;
-	}
-
-	#loginform #login-information .input-group .form-control{
-		padding: 0;
-		height: 100%;
-		border-radius: 0;
-		border-color: #808080;
-	}	
-}*/
+@-moz-document url-prefix() {	
+	#loginform #log-in-button{
+	padding-top: 27%;
+}
+}
 /*-----------------------------------*/
 
 input.form-control:hover{
@@ -309,13 +313,13 @@ footer#aboutus{
     background: black;
     color: White;
     padding: 0;
-    padding-top: 0.5%;
+    padding-top: 1.5%;
     text-align: center;
     position: fixed;
     bottom: 0px;
     height: 12%;
     width: 100%;
-    z-index: 10;
+    z-index: 5;
 }
 footer#aboutus #footer-info{
 	margin-left: auto;
@@ -323,11 +327,11 @@ footer#aboutus #footer-info{
 }
 
 footer#aboutus #contributors{
-	padding-top: 0.3%;
+	padding-top: 0.5%;
 }
 
 footer#aboutus #github-icon{
-	padding-top: 0.2%;
+	padding-top: 0.5%;
 	color: white;
 }
 
