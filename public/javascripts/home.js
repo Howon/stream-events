@@ -5,6 +5,10 @@ $(window).load(function() {
 });
 
 var startChat = function(){
+	$("#title").click(function(){
+		window.location = '/home'
+	});
+
 	socket.emit('get online users');
 
 	socket.on('get online users', function(data){
@@ -18,25 +22,19 @@ var startChat = function(){
 
 	person = ""
 	var textarea = document.querySelector("textarea#text")
-
-	$('#bring').unbind().click(function(){
-		console.log('clicked');
+	var counter = 0;
+	$('#bring').stop(true, false).click(function(){
+		console.log(counter)
+		counter++;
 		socket.emit("bring previous messages");
+
 		socket.on("bring previous messages", function(data){
-		
 		  if(data.length){
 			for(var i=0; i< data.length; i++){
-				// if (data[i].name === person ){
-				// 	var message = $('<li class="user"> ').text(" "+ data[i].name + ": " + data[i].message)
-				// 	$('#messages').append($('<li class="user"> ').text(" "+ data[i].name + ": " + data[i].message));
-				// }
-				// else {
-				// 	$('#messages').append($('<li class="other"> ').text(" "+ data[i].name + ": " + data[i].message));
-				// }
-
 				var message = document.createElement('li');
 				message.setAttribute('class', 'chat-message');
 				message.textContent = data[i].name+ ": " + data[i].message;
+				console.log(data[i].message)
 				var messages = document.querySelector("#messages");
 				messages.appendChild(message);
 				messages.insertBefore(message, messages.firstChild);
@@ -50,22 +48,17 @@ var startChat = function(){
 	    $("#body").stop(true, false).animate({
 	    	"opacity":"0.6"
 	    },450);
-	    // $("#body").css({
-	    // 	"opacity":"0.7"
-	    // })
 	    $("#eventBar").stop(true, false).animate({
-	    	"margin-right":"70%",
-	    	width:"25%"
+	    	"margin-right":"78%",
+	    	width:"22%"
 	    },450);
 	    $("#eventBar").css({
 	    	"z-index":"1"
 	   	})
-	    $("#bringEvents").css({
+	    $("#bringEvents").stop(true, false).animate({
+	    	"padding-left":"3%",
 	    	"color":"black",
 	    	"padding-bottom":"1%"
-	    })
-	    $("#bringEvents").stop(true, false).animate({
-	    	"padding-left":"4%"
 	    },450)
 	    $("#bringEvents").html(
 	    	"<i class='fa fa-chevron-left'></i> Events ")
@@ -74,9 +67,7 @@ var startChat = function(){
 	    $("#body").stop(true, false).animate({
 	    	"opacity":"1"
 	    },450);
-	    // $("#body").css({
-	    // 	"opacity":"1"
-	    // })
+
 	    $("#eventBar").stop(true, false).animate({
 	    	width:"0%",
 	    	"margin-right":"100%"
@@ -84,12 +75,10 @@ var startChat = function(){
 	    $("#eventBar").css({
 	    	"z-index":"0"
 	    });
-	    $("#bringEvents").css({
+	    $("#bringEvents").stop(true, false).animate({
+	    	"padding-left":"0%",
 	    	"color":"white",
 	    	"padding-bottom":"0"
-	    });
-	    $("#bringEvents").stop(true, false).animate({
-	    	"padding-left":"0%"
 	    },450)
 	    $("#bringEvents").html(
 	    	"Events <i class='fa fa-chevron-right'></i>")
@@ -105,11 +94,6 @@ var startChat = function(){
 				time : time,
 				message: self.value
 			});
-
-			socket.emit('user joined', {
-				name : person,
-				time : time
-			});
 			event.preventDefault();
 		}
 	});
@@ -123,11 +107,11 @@ var startChat = function(){
 			alert("Input a valid username")
 		}
 	});
-
+	
 	socket.on('user joined', function(usr, status){
 		$('#users').append($('<li class="user">').text(" "+usr));
 	});
-
+	
 	socket.on('send chat message', function(msg, usr){
 		if (person == usr){
 			$('#messages').append($('<li class="user"> ').text(" "+usr + ": " +msg));

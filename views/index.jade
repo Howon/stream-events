@@ -1,5 +1,7 @@
 doctype html
 extends layout
+block head
+ link(rel='stylesheet', href='stylesheets/messaging.css')  
 block header
   span#bringEvents Events 
    i.fa.fa-chevron-right
@@ -17,4 +19,4 @@ block body
        textarea#text(placeholder='Type your message')
    div#eventBar
      ul#eventStream           
-   script(src='/javascripts/script.js')
+   script(src='/javascripts/home.js')
