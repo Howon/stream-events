@@ -1,0 +1,151 @@
+
+#loginform{
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: auto;
+    position: absolute;
+    top: 17%; 
+    left: 0; 
+    bottom: 0; 
+    right: 0;
+    width: 30%;
+    height: 60%;
+	border-style: solid;
+	z-index: 0;
+}
+
+#loginform #inputArea{
+	position: absolute;
+	/*top: 76.5%;*/
+	height: 100px;
+	width: 100%;
+	border:0;
+	bottom: 0;
+}
+/*INPUT PASSWORD AND EMAIL*/
+/*-----------------------------------*/
+#inputArea #login-information{
+	float: left;
+	height: 100%;
+	width: 80%;
+	padding: 0;
+	border:0;
+}
+
+#inputArea #login-information .input-group{
+	float: left;
+	width: 100%;
+	height: 50%;
+}
+
+#inputArea #login-information .input-group .input-group-addon{
+	width: 20%;
+	padding: 0;
+	height: 100%;
+	border-radius: 0;
+	border-left: 0;
+	border-right: 1px;
+	border-color: #808080;
+	border-bottom: 1px;
+}
+
+#loginform #login-information .input-group .input-group-addon:hover{
+	color: black;
+	border-bottom: 1px solid;
+	border-color: black;
+}
+
+#loginform #login-information .input-group .form-control{
+	padding: 0;
+	height: 100%;
+	border-right: 0;
+	border-bottom: 0;
+	border-radius: 0;
+	border-color: #808080;
+}
+
+#loginform #login-information .input-group .form-control:hover{
+	color: black;
+	border-bottom: 1px solid;
+	border-color: black;
+}
+/*-----------------------------------*/
+
+/*LOGIN BUTTON*/
+/*-----------------------------------*/
+#loginform #log-in{
+	float: right;
+	min-height: 100%;
+	width: 20%;
+	padding: 0;
+	/*border: 0;*/
+	border-left: 1px black;
+	margin-right: 0;
+}
+
+#loginform #log-in-button{
+	position: relative;
+	width: 100%;
+	height: 100%;
+	border-radius: 0;
+	padding: 0;
+	padding-top: 37%;
+	border-bottom: 0;
+	background-color: white;
+	border-color: #808080;
+	color:#808080;
+}
+
+#loginform #log-in-button:hover{
+	color: black;
+	border-bottom: 1px solid;
+	border-color: black;
+}
+/*-----------------------------------*/
+
+/*FIREFOX COMPATIBILITY*/
+/*-----------------------------------*/
+@-moz-document url-prefix() {	
+	#loginform #log-in-button{
+	padding-top: 27%;
+}
+}
+/*-----------------------------------*/
+
+input.form-control:hover{
+	color: #99CCFF;
+	border-color: #99CCFF;
+}
+
+footer#aboutus{
+	font: 13px Helvetica;
+	clear: both;
+    background: #99CCFF;
+    color: white;
+    padding: 0;
+    padding-top: 1.5%;
+    text-align: center;
+    position: fixed;
+    bottom: 0px;
+    height: 12%;
+    width: 100%;
+    z-index: 5;
+}
+footer#aboutus #footer-info{
+	margin-left: auto;
+	margin-right: auto;
+}
+
+footer#aboutus #contributors{
+	padding-top: 0.5%;
+}
+
+footer#aboutus #github-icon{
+	padding-top: 0.5%;
+	color: white;
+}
+
+footer#aboutus #github-icon:hover{
+	color: #808080;
+}
+

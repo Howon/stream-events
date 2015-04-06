@@ -1,18 +1,31 @@
-function login() {
-    var params = {
-        'callback': signinCallback,
-        'clientid': '590481571447-e8rd481uo2mcspc6vuck5mndkpbfro6a.apps.googleusercontent.com',
-        'scope': 'https://www.googleapis.com/auth/plus.profile.emails.read',
-        'requestvisibleactions': 'http://schema.org/AddAction',
-        'cookiepolicy': 'single_host_origin'
-    };
-    gapi.auth.signIn(params);
-}
+var socket = io();
 
-function signinCallback(authResult) {
-    if (authResult['status']['signed_in']) {
-    // Update the app to reflect a signed in user
-    // Hide the sign-in button now that the user is authorized, for example:
-    document.location.href = '/auth?code=' + authResult.code
-  }
+$(window).load(function(){
+    login_call();
+});
+
+var login_call = function(){
+    $("#title").click(function(){
+        window.location = '/'
+    });
+
+    // var CU_EMAIL_REGEX = "^(?P<uni>[a-z\d]+)@.*(columbia|barnard)\.edu$";
+    var form_password = document.querySelector("input.form-control#password");
+
+    form_password.addEventListener('keydown',function(event){
+        var form_email = document.querySelector("input.form-control#email");
+        
+        if(event.which === 13){
+            socket.emit('user joined',{
+                email : form_email.value,
+                password: form_password.value,
+                time : time
+            });
+            
+            console.log(form_email.value);
+            console.log(form_password.value);
+
+            event.preventDefault();
+        }
+    });
 }

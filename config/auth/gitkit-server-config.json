@@ -1,0 +1,7 @@
+{
+  "clientId" : "290334048960-pnbarpbfkcbscb5nree6mms60ace8og6.apps.googleusercontent.com",
+  "serviceAccountEmail" : "290334048960-qo0c7dgev23gloj7h4719pmprfakqpmm@developer.gserviceaccount.com",
+  "serviceAccountPrivateKeyFile" : "/config/venter-1d437dc6d9ea.p12",
+  "widgetUrl" : "http://localhost:3000/home",
+  "cookieName" : "gtoken"
+}

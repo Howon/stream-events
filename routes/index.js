@@ -3,13 +3,13 @@ var router = express.Router();
 
 router.get('/', function(req, res) {
   res.render('login',{
-  	title: 'Stream Events'
+  	title: 'Venter'
   });
 });
 
 router.get('/home', function(req, res){
 	res.render('index',{
-		title: 'Stream Events'
+		title: 'Venter'
 	})
 });
 
