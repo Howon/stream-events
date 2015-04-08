@@ -43,47 +43,52 @@ var startChat = function(){
 	  });
 	});
 
-	$("#bringEvents, #eventBar").hover(
+	$("#eventBar, #bringEvents, #post_event").hover(
 		function() {
-	    $("#body").stop(true, false).animate({
-	    	"opacity":"0.6"
-	    },450);
-	    $("#eventBar").stop(true, false).animate({
-	    	"margin-right":"78%",
-	    	width:"22%"
-	    },450);
-	    $("#eventBar").css({
-	    	"z-index":"1"
-	   	})
-	    $("#bringEvents").stop(true, false).animate({
-	    	"padding-left":"3%",
-	    	"color":"black",
-	    	"padding-bottom":"1%"
-	    },450)
-	    $("#bringEvents").html(
-	    	"<i class='fa fa-chevron-left'></i> Events ")
+		    $("#body").stop(true, false).animate({
+		    	"opacity":"0.6"
+		    },450);
+		    $("#eventBar").stop(true, false).animate({
+		    	"left":"0"
+		    },450);
+		    $("#eventBar").css({
+		    	"z-index":"1"
+		   	})
+		    $("#bringEvents").stop(true, false).animate({
+		    	"padding-left":"3%",
+		    	"padding-right":"2%",
+		    	"padding-bottom":"2%"
+		    },450);
+		    $("#post_event").css({
+		    	'display': "block"
+		    });
+		    $("#bringEvents").html("<i class='fa fa-chevron-left'></i> Events ")
 		},
-		function() {
-	    $("#body").stop(true, false).animate({
-	    	"opacity":"1"
-	    },450);
+		function(){
+			console.log("moust leave")
+		    $("#body").stop(true, false).animate({
+		    	"opacity":"1"
+		    },450);
+		    $("#eventBar").stop(true, false).animate({
+		    	"left":"-22%"
+		    },450);
+		    $("#eventBar").css({
+		    	"z-index":"0"
+		    });
+		    $("#bringEvents").stop(true, false).animate({
+		    	"padding-left":"0%",
+		    	"padding-bottom":"0%"
+		    },450);
+		    $("#post_event").css({
+		    	'display': "none"
+		    });
+		    $("#bringEvents").html("Events <i class='fa fa-chevron-right'></i>")
+		}
+	);
 
-	    $("#eventBar").stop(true, false).animate({
-	    	width:"0%",
-	    	"margin-right":"100%"
-	    },450);
-	    $("#eventBar").css({
-	    	"z-index":"0"
-	    });
-	    $("#bringEvents").stop(true, false).animate({
-	    	"padding-left":"0%",
-	    	"color":"white",
-	    	"padding-bottom":"0"
-	    },450)
-	    $("#bringEvents").html(
-	    	"Events <i class='fa fa-chevron-right'></i>")
-	});
-
+	$("#post_event").click(function(){
+		alert("Post Event!");	
+	})
 	textarea.addEventListener('keydown',function(event){
 		var self = this;
 		var	person = name.value

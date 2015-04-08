@@ -1,16 +1,19 @@
 doctype html
 extends layout
 block head
- link(rel='stylesheet', href='stylesheets/messaging.css')  
+ link(rel='stylesheet', href='stylesheets/messaging.css') 
+ link(rel='stylesheet', href='stylesheets/event_bar.css')   
 block header
   span#bringEvents Events 
    i.fa.fa-chevron-right
+  a.btn.btn-danger(id = "post_event")
+   i.fa.fa-plus.fa-lg
   a.btn.btn-danger(id = "logout", href='/') Log Out &nbsp;
-    i.fa.fa-sign-out.fa-lg 
+   i.fa.fa-sign-out.fa-lg 
 block body
    div#body 
-     div#statusbar
-      ul#users    
+     //- div#statusbar
+     //-  ul#users    
      div#chatarea
       button#bring Bring More Messages
       ul#messages
@@ -18,5 +21,12 @@ block body
        textarea#name(placeholder='Type your name')
        textarea#text(placeholder='Type your message')
    div#eventBar
-     ul#eventStream           
+     ul#eventStream
+      li.event 1  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis adipisci a earum voluptatem ipsum, non, laboriosam laudantium est ea, corporis ut explicabo doloribus dolor optio placeat, aliquam officiis assumenda obcaecati.
+      li.event 2  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo ab placeat veniam ratione hic atque impedit facilis, possimus, tenetur praesentium earum doloremque deleniti illum totam optio deserunt dolorem aperiam repellat.
+      li.event 3  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptate optio aspernatur obcaecati quidem doloribus odit dolores saepe ullam architecto qui sed eum, distinctio a ex hic dolor corporis fugiat eligendi.
+      li.event 4  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi reiciendis ducimus at ipsam, possimus accusantium ratione aliquam laboriosam perspiciatis esse nam minus quasi, dicta recusandae atque mollitia? Aperiam, corporis, possimus.
+      li.event 5  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt quas iure veniam consequuntur nulla, aspernatur temporibus, numquam quis ex, recusandae dolorum aut laborum in ipsam velit fuga voluptatum iste. Quidem.
+
+     div#getMoreEvents   
    script(src='/javascripts/home.js')

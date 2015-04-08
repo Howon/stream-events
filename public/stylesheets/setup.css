@@ -34,17 +34,7 @@ header#bar #logout:hover{
     color: #808080;
 }
 
-header#bar #bringEvents{
-	float: left;
-    left: 5.5%;
-	font: 14px Helvetica;
-	top: 40%;	
-	position: relative;
-	color: white;
-}
-header#bar #bringEvents:hover{
-	color: #808080;
-}
+
 header#bar #title{
 	font: 18px Helvetica;
 	position: absolute;
