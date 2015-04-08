@@ -1,0 +1,60 @@
+header#bar #bringEvents{
+	float: left;
+    left: 5.5%;
+	font: 14px Helvetica;
+	top: 40%;	
+	position: relative;
+	color: white;
+}
+
+header#bar #post_event{
+	float: left;
+    left: 13%;
+	font: 14px Helvetica;
+	top: 42.5%;		
+	position: absolute;
+	background-color: transparent;
+	border: 0;	
+	padding: 0;
+	padding-bottom: 3%;	
+	padding-left: 1.5%;
+	color: white;
+	display: none;	
+}
+
+header#bar #post_event:hover{
+	color: #CC0099;
+}
+
+header#bar #bringEvents:hover{
+	color: #808080;
+}
+
+div#eventbar{
+	position:relative;
+	float: left;
+	top: 6.5%;
+	height: 93.5%;
+	margin-left: 0;
+	margin-right: 100%;
+	background-color:black;
+	opacity: 0.85;
+	overflow: hidden;
+	left: -22%;
+	width: 22%;
+}
+
+div#eventbar ul{
+	position: absolute;	
+	overflow: auto;
+	width: 100%;
+}
+
+div#eventbar li.event{
+	width: 99%;
+	height: 150px;
+	background-color: white;
+	border-top: 4px solid;
+	overflow: auto;
+	margin-left: 4px;
+}
