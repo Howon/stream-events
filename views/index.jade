@@ -6,8 +6,6 @@ block head
 block header
   span#bringEvents Events 
    i.fa.fa-chevron-right
-  a.btn.btn-danger(id = "post_event")
-   i.fa.fa-plus.fa-lg
   a.btn.btn-danger(id = "logout", href='/') Log Out &nbsp;
    i.fa.fa-sign-out.fa-lg 
 block body
@@ -27,6 +25,7 @@ block body
       li.event 3  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptate optio aspernatur obcaecati quidem doloribus odit dolores saepe ullam architecto qui sed eum, distinctio a ex hic dolor corporis fugiat eligendi.
       li.event 4  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi reiciendis ducimus at ipsam, possimus accusantium ratione aliquam laboriosam perspiciatis esse nam minus quasi, dicta recusandae atque mollitia? Aperiam, corporis, possimus.
       li.event 5  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt quas iure veniam consequuntur nulla, aspernatur temporibus, numquam quis ex, recusandae dolorum aut laborum in ipsam velit fuga voluptatum iste. Quidem.
-
-     div#getMoreEvents   
+     a.btn.btn-danger(id = "post_event") Post Event &nbsp 
+      i.fa.fa-plus.fa-lg
+   div#eventPostArea
    script(src='/javascripts/home.js')

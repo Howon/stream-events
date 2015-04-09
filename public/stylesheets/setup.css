@@ -7,7 +7,8 @@ body {
 	padding: 0; 
 	box-sizing: border-box; 
 }
-
+/*Header bar*/
+/*-----------------------------------*/
 header#bar{
 	width: 100%;
 	height: 6.5%;
@@ -16,6 +17,10 @@ header#bar{
 	position: fixed;
 	z-index: 1;
 }
+/*-----------------------------------*/
+
+/*Logout button*/
+/*-----------------------------------*/
 
 header#bar #logout{
 	font: 14px Helvetica;
@@ -25,32 +30,38 @@ header#bar #logout{
 	display: block;
     color: white;
     background-color: transparent;
-    border: 0 none;
+    border: 0;
 	float: right;
 	right: 5.5%;
+	padding-left: 0;
+	padding-right: 0;
 }
 
 header#bar #logout:hover{
     color: #808080;
 }
+/*-----------------------------------*/
 
-
+/*Title button*/
+/*-----------------------------------*/
 header#bar #title{
 	font: 18px Helvetica;
 	position: absolute;
 	padding: 0;
-	top:40%;
+	top:25%;
+	height: 50%;
 	width: 6%;
 	left: 0;
 	right: 0;
 	bottom: 0;
 	margin: auto;
     color: white;
-	z-index: -5;
+	z-index: -50;
 }
 
 header#bar #title:hover{
     color: #808080;
     cursor: pointer;
 }
+/*-----------------------------------*/
 

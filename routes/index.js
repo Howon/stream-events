@@ -13,4 +13,10 @@ router.get('/home', function(req, res){
 	})
 });
 
+router.get('/test', function(req, res){
+	res.render('facebook',{
+		title: 'Venter'
+	})
+});
+
 module.exports = router;

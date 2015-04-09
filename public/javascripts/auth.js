@@ -21,10 +21,8 @@ var login_call = function(){
                 password: form_password.value,
                 time : time
             });
-            
             console.log(form_email.value);
             console.log(form_password.value);
-
             event.preventDefault();
         }
     });
