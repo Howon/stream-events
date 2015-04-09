@@ -1,14 +1,77 @@
 var socket = io();
 
 $(window).load(function() {
-	startChat();
+	manipulate_elements();
+	socket_handling();
 });
 
-var startChat = function(){
+var manipulate_elements = function(){
+	control_sidebar();
+}
+var control_sidebar = function(){
+	$("#bringEvents, #eventBar").hover(
+		function() {
+		    $("#body").stop(true, false).animate({
+		    	"opacity":"0.4"
+		    },350);
+		    $("#eventBar").stop(true, false).animate({
+		    	"left":"0"
+		    },350);
+		    $("#bringEvents").css({
+		    	"padding-right":"3%",
+		    	"padding-bottom":"4%"
+		    })
+		    $("#bringEvents").stop(true, false).animate({
+		    	"padding-left":"4%"
+		    },350);
+		    $("#bringEvents").html("<i class='fa fa-chevron-left'></i> Events ")
+		},
+		function(){
+		    $("#body").stop(true, false).animate({
+		    	"opacity":"1"
+		    },350);
+		    $("#eventBar").stop(true, false).animate({
+		    	"left":"-23%"
+		    },350);
+		    $("#eventBar").css({
+		    	"z-index":"0"
+		    });
+		    $("#bringEvents").css({
+		    	"padding-right":"0",
+		    	"padding-bottom":"0"
+		    })
+		    $("#bringEvents").stop(true, false).animate({
+		    	"padding-left":"0"
+		    },350, "linear");
+		    $("#bringEvents").html("Events <i class='fa fa-chevron-right'></i>")
+		}
+	);
+
+	$("#post_event").click(function(){
+		$("#eventPostArea").animate({
+			"opacity": "0.9"
+		}, 350, "linear");
+
+		control_event_posting();
+	});
+}
+
+var control_event_posting = function(){
+	$(document).mouseup(function (e){
+		var container = $("#eventPostArea");
+		if (!container.is(e.target) && container.has(e.target).length === 0){ // ... nor a descendant of the container
+        	container.animate({
+        		"opacity" : "0"
+        	}, 350)
+	    }
+	});
+}
+
+var socket_handling = function(){
 	$("#title").click(function(){
 		window.location = '/home'
 	});
-
+	
 	socket.emit('get online users');
 
 	socket.on('get online users', function(data){
@@ -21,8 +84,10 @@ var startChat = function(){
 	var name = document.querySelector("textarea#name")
 
 	person = ""
+
 	var textarea = document.querySelector("textarea#text")
 	var counter = 0;
+
 	$('#bring').stop(true, false).click(function(){
 		console.log(counter)
 		counter++;
@@ -43,52 +108,6 @@ var startChat = function(){
 	  });
 	});
 
-	$("#eventBar, #bringEvents, #post_event").hover(
-		function() {
-		    $("#body").stop(true, false).animate({
-		    	"opacity":"0.6"
-		    },450);
-		    $("#eventBar").stop(true, false).animate({
-		    	"left":"0"
-		    },450);
-		    $("#eventBar").css({
-		    	"z-index":"1"
-		   	})
-		    $("#bringEvents").stop(true, false).animate({
-		    	"padding-left":"3%",
-		    	"padding-right":"2%",
-		    	"padding-bottom":"2%"
-		    },450);
-		    $("#post_event").css({
-		    	'display': "block"
-		    });
-		    $("#bringEvents").html("<i class='fa fa-chevron-left'></i> Events ")
-		},
-		function(){
-			console.log("moust leave")
-		    $("#body").stop(true, false).animate({
-		    	"opacity":"1"
-		    },450);
-		    $("#eventBar").stop(true, false).animate({
-		    	"left":"-22%"
-		    },450);
-		    $("#eventBar").css({
-		    	"z-index":"0"
-		    });
-		    $("#bringEvents").stop(true, false).animate({
-		    	"padding-left":"0%",
-		    	"padding-bottom":"0%"
-		    },450);
-		    $("#post_event").css({
-		    	'display': "none"
-		    });
-		    $("#bringEvents").html("Events <i class='fa fa-chevron-right'></i>")
-		}
-	);
-
-	$("#post_event").click(function(){
-		alert("Post Event!");	
-	})
 	textarea.addEventListener('keydown',function(event){
 		var self = this;
 		var	person = name.value
@@ -135,5 +154,4 @@ var startChat = function(){
 		console.log("User disconnected")
 	})
 }
-
 
