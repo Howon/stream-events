@@ -66,7 +66,7 @@ div#eventbar ul#eventStream li.event{
 /*-----------------------------------*/
 #post_event{
 	float: bottom;
-	top: 94%;
+	top: 94.5%;
 	left: 33%;
     margin: 0;
     padding: 0;
@@ -89,7 +89,7 @@ div#eventPostArea{
 	width: 50%;
 	height: 80%;
 	background-color: #4B4B4B;
-	opacity: 0;
+	display: none;
 }
 
 

@@ -1,13 +1,14 @@
 var socket = io();
 
 $(window).load(function() {
-	manipulate_elements();
 	socket_handling();
+	manipulate_elements();
 });
 
 var manipulate_elements = function(){
 	control_sidebar();
 }
+
 var control_sidebar = function(){
 	$("#bringEvents, #eventBar").hover(
 		function() {
@@ -48,10 +49,7 @@ var control_sidebar = function(){
 	);
 
 	$("#post_event").click(function(){
-		$("#eventPostArea").animate({
-			"opacity": "0.9"
-		}, 350, "linear");
-
+		$("#eventPostArea").fadeIn(300);
 		control_event_posting();
 	});
 }
@@ -60,9 +58,7 @@ var control_event_posting = function(){
 	$(document).mouseup(function (e){
 		var container = $("#eventPostArea");
 		if (!container.is(e.target) && container.has(e.target).length === 0){ // ... nor a descendant of the container
-        	container.animate({
-        		"opacity" : "0"
-        	}, 350)
+        	container.fadeOut(300);
 	    }
 	});
 }
@@ -87,12 +83,11 @@ var socket_handling = function(){
 
 	var textarea = document.querySelector("textarea#text")
 	var counter = 0;
-
-	$('#bring').stop(true, false).click(function(){
-		console.log(counter)
-		counter++;
+	$("#bring").mouseenter(function(event) {
+		console.log("pressed")	/* Act on the event */
+	});
+	$('#bring').off().click(function(){
 		socket.emit("bring previous messages");
-
 		socket.on("bring previous messages", function(data){
 		  if(data.length){
 			for(var i=0; i< data.length; i++){
@@ -118,6 +113,10 @@ var socket_handling = function(){
 				time : time,
 				message: self.value
 			});
+			socket.emit('user joined',{
+				name : person,
+				time : time
+			})
 			event.preventDefault();
 		}
 	});
