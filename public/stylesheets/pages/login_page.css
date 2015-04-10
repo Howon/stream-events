@@ -124,8 +124,8 @@ footer#aboutus{
     padding-top: 1.5%;
     text-align: center;
     position: fixed;
-    height: 15%;
-    bottom: -3%;
+    height: 13%;
+    bottom: 0%;
     width: 100%;
     z-index: 5;
 }

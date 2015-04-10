@@ -1,8 +1,8 @@
 doctype html
 extends layout
 block head
- link(rel='stylesheet', href='stylesheets/messaging.css') 
- link(rel='stylesheet', href='stylesheets/event_bar.css')   
+ link(rel='stylesheet', href='stylesheets/pages/messaging.css') 
+ link(rel='stylesheet', href='stylesheets/pages/event_bar.css')   
 block header
   span#bringEvents Events 
    i.fa.fa-chevron-right
@@ -13,11 +13,16 @@ block body
      //- div#statusbar
      //-  ul#users   4 
      div#chatarea
-      button#bring Bring More Messages
+      button#bringMessages Bring More Messages
       ul#messages
       div#inputBar     
        textarea#name(placeholder='Type your name')
        textarea#text(placeholder='Type your message')
+   div#menuSelector
+    div.menu#eventInfo
+    div.menu#Thread
+    div.menu#messageStream
+      i.fa.fa-list.fa-2x
    div#eventBar
      ul#eventStream
       li.event 1  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis adipisci a earum voluptatem ipsum, non, laboriosam laudantium est ea, corporis ut explicabo doloribus dolor optio placeat, aliquam officiis assumenda obcaecati.
@@ -28,4 +33,9 @@ block body
      a.btn.btn-danger(id = "post_event") Post Event &nbsp 
       i.fa.fa-plus.fa-lg
    div#eventPostArea
+    textarea.eventPost#Title(placeholder = 'Event Title')
+    textarea.eventPost#Time(placeholder = 'Event Time')
+    textarea.eventPost#Location(placeholder = 'Event Location')
+    textarea.eventPost#Description(placeholder = 'Event Description')
+    div.eventPost#Image Event Image
    script(src='/javascripts/home.js')
