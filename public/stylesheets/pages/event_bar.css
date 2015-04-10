@@ -81,19 +81,80 @@ div#eventbar ul#eventStream li.event{
 	color: #A68EDE;
 }
 /*-----------------------------------*/
-
 div#eventPostArea{
 	position: absolute;
-	top: 10%;
-	left: 25%;
-	width: 50%;
-	height: 80%;
+	top: 30%;
+	left: 35%;
+	width: 30%;
+	height: 40%;
+	opacity: 0.9;
 	background-color: #4B4B4B;
 	display: none;
+	border-radius: 5px;
 }
 
+.eventPost{
+    resize: none;
+    background-color: #D1D1D1;
+}
 
+.eventPost#Image{
+	position: relative;
+	top: 6%;
+	left: 5%;
+	height: 40%;
+	width: 30%;
+}
 
+.eventPost#Title{
+	position: absolute;	
+	float: right;
+	top: 6%;
+	right: 5%;
+	height: 8%;
+	width: 58%;
+}
 
+.eventPost#Time{
+	position: relative;
+	float: right;
+	top: 22%;
+	right: 5%;
+	height: 8%;
+	width: 58%;
+}
 
+.eventPost#Location{
+	position: relative;
+	float: right;
+	top: 30%;
+	right: 5%;
+	height: 8%;
+	width: 58%;
+}
+
+.eventPost#Description{
+	position: absolute;
+	float: right;
+	top: 52%;
+	height: 40%;
+	left: 5%;
+	width: 90%;
+}
+
+::-webkit-input-placeholder {
+   color: black;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+   color: black;  
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+   color: black;  
+}
+
+:-ms-input-placeholder {  
+   color: black;  
+}
 

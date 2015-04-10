@@ -10,8 +10,7 @@ var manipulate_elements = function(){
 }
 
 var control_sidebar = function(){
-	$("#bringEvents, #eventBar").hover(
-		function() {
+	var eventbar_on = function(){
 		    $("#body").stop(true, false).animate({
 		    	"opacity":"0.4"
 		    },350);
@@ -26,32 +25,36 @@ var control_sidebar = function(){
 		    	"padding-left":"4%"
 		    },350);
 		    $("#bringEvents").html("<i class='fa fa-chevron-left'></i> Events ")
-		},
-		function(){
-		    $("#body").stop(true, false).animate({
-		    	"opacity":"1"
-		    },350);
-		    $("#eventBar").stop(true, false).animate({
-		    	"left":"-23%"
-		    },350);
-		    $("#eventBar").css({
-		    	"z-index":"0"
-		    });
-		    $("#bringEvents").css({
-		    	"padding-right":"0",
-		    	"padding-bottom":"0"
-		    })
-		    $("#bringEvents").stop(true, false).animate({
-		    	"padding-left":"0"
-		    },350, "linear");
-		    $("#bringEvents").html("Events <i class='fa fa-chevron-right'></i>")
 		}
-	);
+
+	var eventbar_out = function(){
+	    $("#body").stop(true, false).animate({
+	    	"opacity":"1"
+	    },350);
+	    $("#eventBar").stop(true, false).animate({
+	    	"left":"-23%"
+	    },350);
+	    $("#eventBar").css({
+	    	"z-index":"0"
+	    });
+	    $("#bringEvents").css({
+	    	"padding-right":"0",
+	    	"padding-bottom":"0"
+	    })
+	    $("#bringEvents").stop(true, false).animate({
+	    	"padding-left":"0"
+	    },350, "linear");
+	    $("#bringEvents").html("Events <i class='fa fa-chevron-right'></i>")
+	}
+
+	$("#bringEvents, #eventBar").hover(eventbar_on, eventbar_out);
 
 	$("#post_event").click(function(){
 		$("#eventPostArea").fadeIn(300);
+		eventbar_out();
 		control_event_posting();
 	});
+
 }
 
 var control_event_posting = function(){
@@ -86,7 +89,7 @@ var socket_handling = function(){
 	$("#bring").mouseenter(function(event) {
 		console.log("pressed")	/* Act on the event */
 	});
-	$('#bring').off().click(function(){
+	$('#bringMessages').off().click(function(){
 		socket.emit("bring previous messages");
 		socket.on("bring previous messages", function(data){
 		  if(data.length){
