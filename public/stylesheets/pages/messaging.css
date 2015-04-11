@@ -1,3 +1,7 @@
+body{
+    background-color: #FAF4FF;
+}
+
 div#body{
     float: left;
     position: absolute;
@@ -5,27 +9,49 @@ div#body{
     width: 75%;
     left: 12.5%;
     height: 80%;
-    background-color: white;
     padding: 0;
-    border: 0;
 }
 
 div#menuSelector{
     float: right;
     position: absolute;
-    top: 12.5%;
+    top: 13.5%;
     width: 3%;
     right: 9.5%;
-    height: 80%;
-    background-color: #AAAAAA;
+    height: 20%;
 }
 
 div.menu{
     height: 20%;
-    margin-bottom: 5%;
+    width: 100%;
     widows: 100%;
-    background-color: red;
+    padding-left: 17%;
+    padding-bottom: 0;
+    cursor: pointer;
+    position: absolute;
 }
+
+#eventThread{
+    top: 33%;
+}
+
+#messageStream{
+    top: 66%;
+}
+
+#eventInfo:hover{
+    color: #D347A8;
+    padding-bottom: 0;
+}
+
+#eventThread:hover{
+    color: #5ED3D2;
+}
+
+#messageStream:hover{
+    color: #D37C19;
+}
+
 /*
 #statusbar{
     float: left;
@@ -59,25 +85,29 @@ div.menu{
     float: left;
     width: 100%;
     height: 100%;
-    /*border-style: solid;*/
+    background-color: #F5F5F5;
 }
 
 button#bringMessages{
     width: 100%;
-    height: 6%;
+    height: 4%;
     padding: 0;
     color:black;
+    border: 0;
     text-decoration:none;
+    outline: none;
+    background-color: #A5A5A5;
 }
 
 button#bringMessages:hover{
-    background-color: #ADD8E6
+    background-color: #AD93EA
 }
 
 div#inputBar{
-    height: 10%;
-    background: white; 
+    height: 6%;
     position: relative; 
+    /*border-top: #CDD1CF;*/
+    border-top: 1px #AFB6BF solid;
 }
 
 input{
@@ -86,52 +116,54 @@ input{
     border-radius: 0;
 }
 
-textarea#name{
+textarea.messaging{
     float: left;
-    height: 100%;
-    width: 15%;
+    height: 80%;
     border-radius: 0;
     padding: 3px;
-    margin: 0;
+    top: 10%;
+    border:0px;
+    position: relative;
     resize: none;
+    outline: none;
+}
+
+textarea#name{
+    left: 0.8%;
+    width: 15%;
+    border: 0px;
 }
 
 textarea#text{ 
-    width: 85%; 
-    height: 100%;
-    border-radius: 0;
-    resize: none;
-    padding: 3px;
+    float: right; 
+    right: 0.8%;
+    width: 82%;
 }
 
-#messages{ 
+ul#messages{ 
     position: relative;
     list-style-type: none; 
-    margin: 0; 
-    padding: 0; 
-    margin-top: 0.1%;
-    padding-bottom: 0.5%;
-    height: 84%;
+    margin: 0;  
+    padding: 5px;
+    height: 90%;
     overflow: auto;
-    background-color: #F5F5F5;
 }
 
-#messages li{ 
+ul#messages li{ 
     padding: 0; 
     height: 5%;
     width: 100%;
 }
 
-
-#messages li.user{
-    color: #ccc;
+ul#messages li.user{
+    /*color: #ccc;*/
 }
 
-#messages li.other{
+ul#messages li.other{
     color: #eee;
 }
 
-#messages li:nth-last-child(1) {
+ul#messages li:nth-last-child(1) {
    color: #ADD8E6;
 }
 

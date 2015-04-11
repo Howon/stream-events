@@ -16,13 +16,17 @@ block body
       button#bringMessages Bring More Messages
       ul#messages
       div#inputBar     
-       textarea#name(placeholder='Type your name')
-       textarea#text(placeholder='Type your message')
+       textarea.messaging#name(placeholder='Type your name')
+       textarea.messaging#text(placeholder='Type your message')
+     div#eventHome
+     div#thread
    div#menuSelector
     div.menu#eventInfo
-    div.menu#Thread
+      i.fa.fa-tasks.fa-2x
+    div.menu#eventThread
+      i.fa.fa-list-alt.fa-2x
     div.menu#messageStream
-      i.fa.fa-list.fa-2x
+      i.fa.fa-comments-o.fa-2x
    div#eventBar
      ul#eventStream
       li.event 1  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis adipisci a earum voluptatem ipsum, non, laboriosam laudantium est ea, corporis ut explicabo doloribus dolor optio placeat, aliquam officiis assumenda obcaecati.
@@ -37,5 +41,5 @@ block body
     textarea.eventPost#Time(placeholder = 'Event Time')
     textarea.eventPost#Location(placeholder = 'Event Location')
     textarea.eventPost#Description(placeholder = 'Event Description')
-    div.eventPost#Image Event Image
+    div.eventPost#Image
    script(src='/javascripts/home.js')

@@ -20,13 +20,8 @@ header#bar #bringEvents{
 	}
 }
 /*-----------------------------------*/
-
-header#bar #post_event:hover{
-	color: #CC0099;
-}
-
 header#bar #bringEvents:hover{
-	color: #808080;
+	color: #AD93EA;
 }
 /*Bar itself*/
 /*-----------------------------------*/
@@ -78,7 +73,7 @@ div#eventbar ul#eventStream li.event{
 }
 
 #post_event:hover{
-	color: #A68EDE;
+	color: #AD93EA;
 }
 /*-----------------------------------*/
 div#eventPostArea{
@@ -143,18 +138,18 @@ div#eventPostArea{
 }
 
 ::-webkit-input-placeholder {
-   color: black;
+   color: #A5A5A5;
 }
 
 :-moz-placeholder { /* Firefox 18- */
-   color: black;  
+   color: #A5A5A5;  
 }
 
 ::-moz-placeholder {  /* Firefox 19+ */
-   color: black;  
+   color: #A5A5A5;  
 }
 
 :-ms-input-placeholder {  
-   color: black;  
+   color: #A5A5A5;  
 }
 

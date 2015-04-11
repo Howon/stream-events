@@ -13,17 +13,17 @@ var control_sidebar = function(){
 	var eventbar_on = function(){
 		    $("#body").stop(true, false).animate({
 		    	"opacity":"0.4"
-		    },350);
+		    },300);
 		    $("#eventBar").stop(true, false).animate({
 		    	"left":"0"
-		    },350);
+		    },300);
 		    $("#bringEvents").css({
 		    	"padding-right":"3%",
 		    	"padding-bottom":"4%"
 		    })
 		    $("#bringEvents").stop(true, false).animate({
 		    	"padding-left":"4%"
-		    },350);
+		    },300);
 		    $("#bringEvents").html("<i class='fa fa-chevron-left'></i> Events ")
 		}
 
@@ -43,7 +43,7 @@ var control_sidebar = function(){
 	    })
 	    $("#bringEvents").stop(true, false).animate({
 	    	"padding-left":"0"
-	    },350, "linear");
+	    },300);
 	    $("#bringEvents").html("Events <i class='fa fa-chevron-right'></i>")
 	}
 
