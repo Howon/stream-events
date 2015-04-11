@@ -7,11 +7,12 @@ $(window).load(function() {
 
 var manipulate_elements = function(){
 	control_sidebar();
+	$('.dropdown-toggle').dropdown();
 }
 
 var control_sidebar = function(){
 	var eventbar_on = function(){
-		    $("#body").stop(true, false).animate({
+		    $("#body, #menuSelector").stop(true, false).animate({
 		    	"opacity":"0.4"
 		    },300);
 		    $("#eventBar").stop(true, false).animate({
@@ -28,7 +29,7 @@ var control_sidebar = function(){
 		}
 
 	var eventbar_out = function(){
-	    $("#body").stop(true, false).animate({
+	    $("#body, #menuSelector").stop(true, false).animate({
 	    	"opacity":"1"
 	    },350);
 	    $("#eventBar").stop(true, false).animate({

@@ -1,5 +1,5 @@
 body { 
-	font: 10px Helvetica, Arial; 
+	font: 15px Helvetica, Arial; 
 }
 
 * { 
@@ -7,6 +7,7 @@ body {
 	padding: 0; 
 	box-sizing: border-box; 
 }
+
 /*Header bar*/
 /*-----------------------------------*/
 header#bar{
@@ -21,42 +22,87 @@ header#bar{
 
 /*Logout button*/
 /*-----------------------------------*/
-
-header#bar #logout{
-	font: 14px Helvetica;
+header#bar #userToggle{
 	position: absolute;
-    text-decoration: none;
-	top: 27%;
-	display: block;
-    color: white;
-    background-color: transparent;
-    border: 0;
+	border-radius: 0;
+	margin: 0;
+	top: 40%;
+	width: 10%;
 	float: right;
 	right: 5.5%;
-	padding-left: 0;
-	padding-right: 0;
 }
 
-header#bar #logout:hover{
-    color: #A68EDE;
+header#bar #userToggle #userName{
+	font: 17px Helvetica, Arial; 
+	width: 85%;
+	border-radius: 0;
+	border: 0;
+	padding: 0;
+	background-color: transparent;
+}
+
+header#bar #userToggle #userName #name{
+	float: left;
+	padding: 0;	
+	margin-left: 0;
+}	
+
+header#bar #userToggle #userName #name:hover{
+	color: #AD93EA;
+}
+
+header#bar #userToggle #userMenu{
+	width: 15%;
+	border-radius: 0;
+	margin: 0;
+	padding: 0;
+	border: 0;
+	background-color: #84B0DF;
+}
+
+header#bar #userToggle #userMenu:hover{
+	color: #AD93EA;
+}
+
+header#bar #userToggle .dropdown-menu{
+	margin-top: 11%;
+	border-radius: 0;
+	padding: 0;
+	padding-top: 5%;
+	padding-bottom: 5%;
+	border: 0;
+	left: -10%;
+	position: absolute;
+	width: 50%;
+}
+
+header#bar #userToggle .dropdown-men li{
+	width: 50%;
+	border-style: solid;
+}
+
+header#bar #userToggle .dropdown-men li a{
+	width: 100%;
+	padding: 0;
+	border-style: solid;
 }
 /*-----------------------------------*/
 
 /*Title button*/
 /*-----------------------------------*/
 header#bar #title{
-	font: 18px Helvetica;
+	font: 20px Helvetica;
 	position: absolute;
 	padding: 0;
-	top:25%;
-	height: 50%;
+	top:30%;
+	/*height: 50%;*/
 	width: 6%;
 	left: 0;
 	right: 0;
 	bottom: 0;
 	margin: auto;
     color: white;
-	z-index: -50;
+	z-index: -500;
 }
 
 header#bar #title:hover{
