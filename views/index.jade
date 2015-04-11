@@ -2,12 +2,28 @@ doctype html
 extends layout
 block head
  link(rel='stylesheet', href='stylesheets/pages/messaging.css') 
- link(rel='stylesheet', href='stylesheets/pages/event_bar.css')   
+ link(rel='stylesheet', href='stylesheets/pages/event_bar.css')    
+ script(src='//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js')
 block header
-  span#bringEvents Events 
-   i.fa.fa-chevron-right
-  a.btn.btn-danger(id = "logout", href='/') Log Out &nbsp;
-   i.fa.fa-sign-out.fa-lg 
+  span#bringEvents Events &nbsp
+   i.fa.fa-chevron-right 
+  div#userToggle
+   a.btn.btn-primary#userName
+     i.fa.fa-user.fa-fw#name
+        | &nbsp User
+   a.btn.btn-primary.dropdown-toogle#userMenu(data-toggle='dropdown')
+        span.fa.fa-caret-down   
+      ul.dropdown-menu#list
+        li
+          a() Edit   
+        li
+          a(href='#') Delete 
+        li
+          a(href='#') Ban    
+        li.divider
+        li
+          a(href='/') Log Out &nbsp;
+           i.fa.fa-sign-out
 block body
    div#body 
      //- div#statusbar
@@ -16,7 +32,7 @@ block body
       button#bringMessages Bring More Messages
       ul#messages
       div#inputBar     
-       textarea.messaging#name(placeholder='Type your name')
+       //- textarea.messaging#name(placeholder='Type your name')
        textarea.messaging#text(placeholder='Type your message')
      div#eventHome
      div#thread
