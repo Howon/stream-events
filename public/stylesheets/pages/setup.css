@@ -38,7 +38,7 @@ header#bar #logout{
 }
 
 header#bar #logout:hover{
-    color: #808080;
+    color: #A68EDE;
 }
 /*-----------------------------------*/
 
@@ -60,7 +60,7 @@ header#bar #title{
 }
 
 header#bar #title:hover{
-    color: #808080;
+    color: #AD93EA;
     cursor: pointer;
 }
 /*-----------------------------------*/
