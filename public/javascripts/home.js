@@ -7,7 +7,7 @@ $(window).load(function() {
 
 var manipulate_elements = function(){
 	control_sidebar();
-	$('.dropdown-toggle').dropdown();
+	control_main_body_load();
 }
 
 var control_sidebar = function(){
@@ -65,6 +65,80 @@ var control_event_posting = function(){
         	container.fadeOut(300);
 	    }
 	});
+}
+
+var control_main_body_load = function(){
+	$("#eventInfo").click(
+		function(){
+			$("#eventInfo").css({
+				"color": "#D347A8"
+			});
+			$("#messageStream").css({
+				"color": "#000000"
+			});$("#eventThread").css({
+				"color": "#000000"
+			});
+			$("#thread").animate({
+				"margin-left": "100%",
+				"width" : "0%"
+			},300)
+			$("#chatarea").animate({
+				"margin-left": "100%",
+				"width" : "0%"
+			},300)
+		}
+	);
+
+    $("#eventThread").click(
+		function(){
+			$("#eventThread").css({
+				"color": "#5ED3D2"
+			});
+			$("#eventInfo").css({
+				"color": "#000000"
+			});
+			$("#messageStream").css({
+				"color": "#000000"
+			});
+			$("#thread").animate({
+				"margin-left":"0.5%",
+				"width": "99.5%"
+			}, 300);
+			$("#chatarea").animate({
+				"margin-left": "100%",
+				"width" : "0"
+			}, 300);
+		}
+	);
+
+    $("#messageStream").click(
+		function(){
+			$("#messageStream").css({
+				"color": "#D37C19"
+			});
+			$("#eventThread").css({
+				"color": "#000000"
+			});
+			$("#eventInfo").css({
+				"color": "#000000"
+			});
+			$("#thread").animate({
+				"margin-left":"0.5%",
+				"width": "99.5%"
+			}, 300);
+			$("#chatarea").animate({
+				"margin-left":"1%",
+				"width": "99%"
+			}, 300);
+			// $("#eventHome").animate({
+			// 	"width" : "0.5%"
+			// }, 300);
+			// $("#thread").animate({
+			// 	"margin-left": "0.5%",
+			// 	"width" : "0.5%"
+			// }, 300);
+		}
+	);
 }
 
 var socket_handling = function(){

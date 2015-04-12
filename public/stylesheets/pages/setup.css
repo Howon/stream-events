@@ -26,38 +26,46 @@ header#bar #userToggle{
 	position: absolute;
 	border-radius: 0;
 	margin: 0;
-	top: 40%;
+	top: 35%;
 	width: 10%;
 	float: right;
 	right: 5.5%;
 }
 
 header#bar #userToggle #userName{
-	font: 17px Helvetica, Arial; 
+	font: 16px Helvetica, Arial; 
 	width: 85%;
 	border-radius: 0;
 	border: 0;
+    /*border : 1px #AFB6BF solid;*/
 	padding: 0;
+	padding-top: 2%;
+	padding-bottom: 2%;
+	padding-left: 4%;
 	background-color: transparent;
+}
+header#bar #userToggle #userName:hover{
+	color: #AD93EA;
 }
 
 header#bar #userToggle #userName #name{
 	float: left;
 	padding: 0;	
 	margin-left: 0;
+	padding-left: 2%;
 }	
-
-header#bar #userToggle #userName #name:hover{
-	color: #AD93EA;
-}
 
 header#bar #userToggle #userMenu{
 	width: 15%;
 	border-radius: 0;
 	margin: 0;
 	padding: 0;
+	padding-top: 3%;
+	padding-bottom: 3%;
 	border: 0;
 	background-color: #84B0DF;
+	height: 500%;
+    /*border : 1px #AFB6BF solid;*/
 }
 
 header#bar #userToggle #userMenu:hover{
@@ -91,7 +99,7 @@ header#bar #userToggle .dropdown-men li a{
 /*Title button*/
 /*-----------------------------------*/
 header#bar #title{
-	font: 20px Helvetica;
+	font: 22px Helvetica;
 	position: absolute;
 	padding: 0;
 	top:30%;
