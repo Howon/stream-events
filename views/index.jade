@@ -1,8 +1,11 @@
 doctype html
 extends layout
 block head
- link(rel='stylesheet', href='stylesheets/pages/messaging.css') 
- link(rel='stylesheet', href='stylesheets/pages/event_bar.css')    
+ link(rel='stylesheet', href='stylesheets/pages/event_bar.css') 
+ link(rel='stylesheet', href='stylesheets/pages/event_home.css') 
+ link(rel='stylesheet', href='stylesheets/pages/event_thread.css')
+ link(rel='stylesheet', href='stylesheets/pages/event_chat.css')    
+ link(rel='stylesheet', href='stylesheets/pages/main_body.css')        
  script(src='//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js')
 block header
   span#bringEvents Events &nbsp
@@ -12,14 +15,14 @@ block header
      i.fa.fa-user.fa-fw#name
         | &nbsp User
    a.btn.btn-primary.dropdown-toogle#userMenu(data-toggle='dropdown')
-        span.fa.fa-caret-down   
+        span.fa.fa-caret-down.fa-lg   
       ul.dropdown-menu#list
         li
           a() Edit   
         li
-          a(href='#') Delete 
+          a() Delete 
         li
-          a(href='#') Ban    
+          a() Ban    
         li.divider
         li
           a(href='/') Log Out &nbsp;
@@ -28,14 +31,14 @@ block body
    div#body 
      //- div#statusbar
      //-  ul#users   4 
+     div#eventHome
+     div#thread
      div#chatarea
       button#bringMessages Bring More Messages
       ul#messages
       div#inputBar     
        //- textarea.messaging#name(placeholder='Type your name')
        textarea.messaging#text(placeholder='Type your message')
-     div#eventHome
-     div#thread
    div#menuSelector
     div.menu#eventInfo
       i.fa.fa-tasks.fa-2x
@@ -50,6 +53,7 @@ block body
       li.event 3  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptate optio aspernatur obcaecati quidem doloribus odit dolores saepe ullam architecto qui sed eum, distinctio a ex hic dolor corporis fugiat eligendi.
       li.event 4  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi reiciendis ducimus at ipsam, possimus accusantium ratione aliquam laboriosam perspiciatis esse nam minus quasi, dicta recusandae atque mollitia? Aperiam, corporis, possimus.
       li.event 5  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt quas iure veniam consequuntur nulla, aspernatur temporibus, numquam quis ex, recusandae dolorum aut laborum in ipsam velit fuga voluptatum iste. Quidem.
+      li.event 6  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos aut, ipsam modi excepturi possimus odio, enim iste incidunt aperiam voluptate ex, beatae blanditiis id consectetur voluptatibus libero. Atque, architecto, dolorum?
      a.btn.btn-danger(id = "post_event") Post Event &nbsp 
       i.fa.fa-plus.fa-lg
    div#eventPostArea
@@ -59,3 +63,13 @@ block body
     textarea.eventPost#Description(placeholder = 'Event Description')
     div.eventPost#Image
    script(src='/javascripts/home.js')
+
+
+
+
+
+
+
+
+
+

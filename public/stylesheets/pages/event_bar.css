@@ -8,7 +8,7 @@ header#bar #bringEvents{
 	height: 40%;
 	position: relative;
 	color: white;
-    cursor: default;
+    cursor: pointer;
 }
 /*-----------------------------------*/
 
@@ -34,6 +34,8 @@ div#eventbar{
 	left: -23%;
 	width: 23%;
 	border:0;
+	margin: 0;
+	padding: 0;
 }
 /*Each event element*/
 /*-----------------------------------*/
@@ -50,9 +52,9 @@ div#eventbar ul#eventStream{
 div#eventbar ul#eventStream li.event{
 	padding-left: 2%;
 	width: 100%;
-	height: 20%;
+	height: 18%;
 	background-color: white;
-	border-bottom: 4px solid;
+	border: 0;
 	overflow: auto;
 }
 /*-----------------------------------*/
@@ -65,6 +67,7 @@ div#eventbar ul#eventStream li.event{
 	left: 33%;
     margin: 0;
     padding: 0;
+	border: 0;
 	font: 15px Helvetica;		
 	position: absolute;
 	background-color: transparent;

@@ -1,5 +1,5 @@
 body{
-    background-color: #FAF4FF;
+    background-color: #FFFFFD;
 }
 
 #loginform{
@@ -7,7 +7,7 @@ body{
     margin-right: auto;
     margin-bottom: auto;
     position: absolute;
-    top: 17%; 
+    top: 16.5%; 
     left: 0; 
     bottom: 0; 
     right: 0;
@@ -125,10 +125,10 @@ footer#aboutus{
     background: #99CCFF;
     color: #F4EEFF;
     padding: 0;
-    padding-top: 1.5%;
+    padding-top: 1%;
     text-align: center;
     position: fixed;
-    height: 13%;
+    height: 12.5%;
     bottom: 0%;
     width: 100%;
     z-index: 5;
