@@ -27,8 +27,8 @@ header#bar #bringEvents:hover{
 /*-----------------------------------*/
 div#eventbar{
 	position: absolute;
-	top: 6.5%;
-	height: 93.5%;
+	/*top: 6.5%;*/
+	height: 100%;
 	background-color: #888888;
 	opacity: 0.8;
 	left: -23%;
