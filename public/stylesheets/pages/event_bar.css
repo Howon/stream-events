@@ -3,11 +3,11 @@
 header#bar #bringEvents{
 	float: left;
     left: 5%;
-	font: 14px Helvetica;
+	font: 16px Helvetica;
 	top: 35%;
 	height: 40%;
 	position: relative;
-	color: white;
+	color: #FFFFFA;
     cursor: pointer;
 }
 /*-----------------------------------*/
