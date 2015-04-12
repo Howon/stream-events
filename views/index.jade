@@ -1,11 +1,11 @@
 doctype html
 extends layout
 block head
- link(rel='stylesheet', href='stylesheets/pages/event_bar.css') 
- link(rel='stylesheet', href='stylesheets/pages/event_home.css') 
- link(rel='stylesheet', href='stylesheets/pages/event_thread.css')
- link(rel='stylesheet', href='stylesheets/pages/event_chat.css')    
- link(rel='stylesheet', href='stylesheets/pages/main_body.css')        
+ link(rel='stylesheet', href='stylesheets/pages/main/event_bar.css') 
+ link(rel='stylesheet', href='stylesheets/pages/main/event_home.css') 
+ link(rel='stylesheet', href='stylesheets/pages/main/event_thread.css')
+ link(rel='stylesheet', href='stylesheets/pages/main/event_chat.css')    
+ link(rel='stylesheet', href='stylesheets/pages/main/main_body.css')        
  script(src='//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js')
 block header
   span#bringEvents Events &nbsp
@@ -15,26 +15,29 @@ block header
      i.fa.fa-user.fa-fw#name
         | &nbsp User
    a.btn.btn-primary.dropdown-toogle#userMenu(data-toggle='dropdown')
-        span.fa.fa-caret-down.fa-lg   
+        span.fa.fa-chevron-down   
       ul.dropdown-menu#list
         li
           a() Edit   
         li
           a() Delete 
         li
-          a() Ban    
+          a() Settings &nbsp;
+           i.fa.fa-cogs    
         li.divider
         li
           a(href='/') Log Out &nbsp;
            i.fa.fa-sign-out
 block body
+  div#panel
    div#body 
      //- div#statusbar
      //-  ul#users   4 
      div#eventHome
      div#thread
      div#chatarea
-      button#bringMessages Bring More Messages
+      button#bringMessages 
+       p Bring More Messages
       ul#messages
       div#inputBar     
        //- textarea.messaging#name(placeholder='Type your name')
