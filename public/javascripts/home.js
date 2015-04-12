@@ -101,8 +101,8 @@ var control_main_body_load = function(){
 				"color": "#000000"
 			});
 			$("#thread").animate({
-				"margin-left":"0.5%",
-				"width": "99.5%"
+				"margin-left":"1%",
+				"width": "99%"
 			}, 300);
 			$("#chatarea").animate({
 				"margin-left": "100%",
@@ -123,12 +123,12 @@ var control_main_body_load = function(){
 				"color": "#000000"
 			});
 			$("#thread").animate({
-				"margin-left":"0.5%",
-				"width": "99.5%"
-			}, 300);
-			$("#chatarea").animate({
 				"margin-left":"1%",
 				"width": "99%"
+			}, 300);
+			$("#chatarea").animate({
+				"margin-left":"2%",
+				"width": "98%"
 			}, 300);
 			// $("#eventHome").animate({
 			// 	"width" : "0.5%"
