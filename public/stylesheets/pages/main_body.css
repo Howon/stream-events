@@ -1,5 +1,5 @@
 body{
-    background-color: #FFFFFD;
+    background-color: #FFFFFA   ;
 }
 
 div#body{
@@ -10,7 +10,7 @@ div#body{
     left: 12.5%;
     height: 80%;
     padding: 0;
-    border : 2px #AFB6BF solid;
+    border : 1px #AFB6BF solid;
 }
 
 div#menuSelector{
@@ -31,6 +31,7 @@ div.menu{
     cursor: pointer;
     position: absolute;
 }
+
 #eventInfo{
     color: #D347A8;
 }

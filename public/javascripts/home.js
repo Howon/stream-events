@@ -1,8 +1,8 @@
 var socket = io();
 
 $(window).load(function() {
-	socket_handling();
 	manipulate_elements();
+	socket_handling();
 });
 
 var manipulate_elements = function(){
@@ -114,7 +114,7 @@ var control_main_body_load = function(){
     $("#messageStream").click(
 		function(){
 			$("#messageStream").css({
-				"color": "#D37C19"
+				"color": "#F5B07F"
 			});
 			$("#eventThread").css({
 				"color": "#000000"
@@ -130,13 +130,6 @@ var control_main_body_load = function(){
 				"margin-left":"2%",
 				"width": "98%"
 			}, 300);
-			// $("#eventHome").animate({
-			// 	"width" : "0.5%"
-			// }, 300);
-			// $("#thread").animate({
-			// 	"margin-left": "0.5%",
-			// 	"width" : "0.5%"
-			// }, 300);
 		}
 	);
 }
@@ -160,19 +153,18 @@ var socket_handling = function(){
 	person = ""
 
 	var textarea = document.querySelector("textarea#text")
-	var counter = 0;
-	$("#bring").mouseenter(function(event) {
-		console.log("pressed")	/* Act on the event */
-	});
+
 	$('#bringMessages').off().click(function(){
+		console.log("pressed")	/* Act on the event */
 		socket.emit("bring previous messages");
+
 		socket.on("bring previous messages", function(data){
 		  if(data.length){
 			for(var i=0; i< data.length; i++){
 				var message = document.createElement('li');
 				message.setAttribute('class', 'chat-message');
 				message.textContent = data[i].name+ ": " + data[i].message;
-				console.log(data[i].message)
+				// console.log(data[i].message)
 				var messages = document.querySelector("#messages");
 				messages.appendChild(message);
 				messages.insertBefore(message, messages.firstChild);

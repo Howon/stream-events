@@ -1,5 +1,5 @@
 body{
-    background-color: #FFFFFD;
+    background-color: #FFFFFA;
 }
 
 #loginform{
@@ -122,8 +122,8 @@ input.form-control:hover{
 footer#aboutus{
 	font: 14px Helvetica;
 	clear: both;
-    background: #99CCFF;
-    color: #F4EEFF;
+    background: #C4D8E2;
+    color: #FFFFFA;
     padding: 0;
     padding-top: 1%;
     text-align: center;

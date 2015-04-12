@@ -13,7 +13,7 @@ body {
 header#bar{
 	width: 100%;
 	height: 6.5%;
-	background-color: #99CCFF;
+	background-color: #C4D8E2;
 	text-align: center;
 	position: fixed;
 	z-index: 1;
@@ -26,7 +26,7 @@ header#bar #userToggle{
 	position: absolute;
 	border-radius: 0;
 	margin: 0;
-	top: 35%;
+	top: 33%;
 	width: 10%;
 	float: right;
 	right: 5.5%;
@@ -43,6 +43,7 @@ header#bar #userToggle #userName{
 	padding-bottom: 2%;
 	padding-left: 4%;
 	background-color: transparent;
+	color: #FFFFFA;
 }
 header#bar #userToggle #userName:hover{
 	color: #AD93EA;
@@ -65,6 +66,7 @@ header#bar #userToggle #userMenu{
 	border: 0;
 	background-color: #84B0DF;
 	height: 500%;
+	color: #FFFFFA;
     /*border : 1px #AFB6BF solid;*/
 }
 
@@ -109,7 +111,7 @@ header#bar #title{
 	right: 0;
 	bottom: 0;
 	margin: auto;
-    color: white;
+    color: #FFFFFA;
 	z-index: -500;
 }
 
