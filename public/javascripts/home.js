@@ -81,11 +81,14 @@ var control_main_body_load = function(){
 			$("#thread").animate({
 				"margin-left": "100%",
 				"width" : "0%"
-			},300)
+			},300);
 			$("#chatarea").animate({
 				"margin-left": "100%",
 				"width" : "0%"
-			},300)
+			},300);
+			$("#bringMessages>p").css({
+				"color":"transparent"
+			});
 		}
 	);
 
@@ -108,6 +111,9 @@ var control_main_body_load = function(){
 				"margin-left": "100%",
 				"width" : "0"
 			}, 300);
+			$("#bringMessages>p").css({
+				"color":"transparent"
+			});
 		}
 	);
 
@@ -130,6 +136,9 @@ var control_main_body_load = function(){
 				"margin-left":"2%",
 				"width": "98%"
 			}, 300);
+			$("#bringMessages>p").css({
+				"color":"#000000"
+			});
 		}
 	);
 }

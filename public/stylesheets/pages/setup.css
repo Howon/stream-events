@@ -27,14 +27,14 @@ header#bar #userToggle{
 	border-radius: 0;
 	margin: 0;
 	top: 33%;
-	width: 10%;
+	width: 12%;
 	float: right;
 	right: 5.5%;
 }
 
 header#bar #userToggle #userName{
 	font: 16px Helvetica, Arial; 
-	width: 85%;
+	width: 87%;
 	border-radius: 0;
 	border: 0;
     /*border : 1px #AFB6BF solid;*/
@@ -57,14 +57,14 @@ header#bar #userToggle #userName #name{
 }	
 
 header#bar #userToggle #userMenu{
-	width: 15%;
+	width: 13%;
 	border-radius: 0;
 	margin: 0;
 	padding: 0;
 	padding-top: 3%;
 	padding-bottom: 3%;
 	border: 0;
-	background-color: #84B0DF;
+	background-color: transparent;
 	height: 500%;
 	color: #FFFFFA;
     /*border : 1px #AFB6BF solid;*/
@@ -75,13 +75,13 @@ header#bar #userToggle #userMenu:hover{
 }
 
 header#bar #userToggle .dropdown-menu{
-	margin-top: 11%;
+	margin-top: 10%;
 	border-radius: 0;
 	padding: 0;
 	padding-top: 5%;
 	padding-bottom: 5%;
 	border: 0;
-	left: -10%;
+	left: 5%;
 	position: absolute;
 	width: 50%;
 }
