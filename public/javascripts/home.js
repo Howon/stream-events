@@ -173,8 +173,8 @@ var control_main_body_load = function(){
 				"display": "block"
 			});
 			$("#chatarea").animate({
-				"margin-left": "20%",
-				"width": "80%"
+				"margin-left": "10%",
+				"width": "90%"
 			},300);
 			if(infoOn){
 				$("#thread").delay(500).animate({
