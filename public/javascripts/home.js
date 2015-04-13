@@ -67,9 +67,13 @@ var control_event_posting = function(){
 	});
 }
 
+var threadOn = true;
+var chatOn = false;
+var infoOn = true;
 var control_main_body_load = function(){
 	$("#eventInfo").click(
 		function(){
+			infoOn = true;
 			$("#eventInfo").css({
 				"color": "#D347A8"
 			});
@@ -78,47 +82,78 @@ var control_main_body_load = function(){
 			});$("#eventThread").css({
 				"color": "#000000"
 			});
-			$("#thread").animate({
-				"margin-left": "100%",
-				"width" : "0%"
-			},300);
-			$("#chatarea").animate({
-				"margin-left": "100%",
-				"width" : "0%"
-			},300);
-			$("#bringMessages>p").css({
-				"color":"transparent"
-			});
+			if(threadOn){
+				$("#thread").animate({
+					"margin-left": "60%",
+					"width" : "40%"
+				},300);
+				$("#chatarea").animate({
+					"margin-left": "100%",
+					"width" : "0%"
+				},300);
+			}else if(chatOn){
+				$("#bringMessages").css({
+					"display":"block"
+				});
+				$("#thread").animate({
+					"margin-left": "100%",
+					"width" : "0%"
+				},500);
+				$("#chatarea").animate({
+					"margin-left": "60%",
+					"width" : "40%"
+				},300);
+			}
 		}
 	);
 
     $("#eventThread").click(
 		function(){
+			threadOn = true;
+			chaton = false;
+
 			$("#eventThread").css({
 				"color": "#5ED3D2"
-			});
-			$("#eventInfo").css({
-				"color": "#000000"
 			});
 			$("#messageStream").css({
 				"color": "#000000"
 			});
-			$("#thread").animate({
-				"margin-left":"1%",
-				"width": "99%"
-			}, 300);
-			$("#chatarea").animate({
-				"margin-left": "100%",
-				"width" : "0"
-			}, 300);
-			$("#bringMessages>p").css({
-				"color":"transparent"
+			$("#eventInfo").css({
+				"color": "#000000"
 			});
+			$("#thread").css({
+				"z-index":"10"
+			});
+			$("#chatarea").css({
+				"z-index":"0"
+			});
+			$("#thread").animate({
+				"margin-left": "10%",
+				"width": "90%"
+			},300);
+			$("#bringMessages, textarea.messaging").css({
+				"display": "none"
+			});
+			if(infoOn){
+				$("#chatarea").delay(500).animate({
+					"margin-left": "100%",
+					"width" : "0"
+				}, 300);
+			}else{
+				$("#chatarea").animate({
+					"margin-left": "100%",
+					"width" : "0"
+				}, 300);
+			}
+			infoOn = false;
 		}
 	);
 
     $("#messageStream").click(
 		function(){
+			threadOn = false;
+			chatOn = true;
+
 			$("#messageStream").css({
 				"color": "#F5B07F"
 			});
@@ -128,17 +163,32 @@ var control_main_body_load = function(){
 			$("#eventInfo").css({
 				"color": "#000000"
 			});
-			$("#thread").animate({
-				"margin-left":"1%",
-				"width": "99%"
-			}, 300);
-			$("#chatarea").animate({
-				"margin-left":"2%",
-				"width": "98%"
-			}, 300);
-			$("#bringMessages>p").css({
-				"color":"#000000"
+			$("#thread").css({
+				"z-index":"0"
 			});
+			$("#chatarea").css({
+				"z-index":"10"
+			});
+			$("#bringMessages, textarea.messaging").css({
+				"display": "block"
+			});
+			$("#chatarea").animate({
+				"margin-left": "10%",
+				"width": "90%"
+			},300);
+			if(infoOn){
+				$("#thread").delay(500).animate({
+					"margin-left": "100%",
+					"width" : "0"
+				}, 300);
+			}else{
+				$("#thread").animate({
+					"margin-left": "100%",
+					"width" : "0"
+				}, 300);
+			}
+			
+			infoOn = false;
 		}
 	);
 }
