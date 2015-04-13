@@ -11,7 +11,6 @@ div#panel{
 
 div#body{
     float: left;
-    z-index: 20;
     position: absolute;
     top: 7.5%;
     width: 80%;
@@ -45,10 +44,11 @@ div.menu{
 }
 
 #eventThread{
-    top: 33%;
+    /*top: 33%;*/
+    color: #5ED3D2;
 }
 
 #messageStream{
-    top: 66%;
+    top: 33%;
 }
 

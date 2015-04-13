@@ -3,11 +3,11 @@
 header#bar #bringEvents{
 	float: left;
     left: 5%;
-	font: 16px Helvetica;
+	font: 15px Helvetica;
 	top: 35%;
 	height: 40%;
 	position: relative;
-	color: #FFFFFA;
+	color: #FEFFFF;
     cursor: pointer;
 }
 /*-----------------------------------*/
@@ -26,8 +26,8 @@ header#bar #bringEvents:hover{
 /*Bar itself*/
 /*-----------------------------------*/
 div#eventbar{
+	z-index: 10;
 	position: absolute;
-	/*top: 6.5%;*/
 	height: 100%;
 	background-color: #888888;
 	opacity: 0.8;
