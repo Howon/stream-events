@@ -79,9 +79,12 @@ div#eventbar ul#eventStream li.event{
 	color: #AD93EA;
 }
 /*-----------------------------------*/
+
+/*Event posting form*/
+/*-----------------------------------*/
 div#eventPostArea{
 	position: absolute;
-	top: 30%;
+	top: 25%;
 	left: 35%;
 	width: 30%;
 	height: 40%;

@@ -1,5 +1,5 @@
 body{
-    background-color: #FFFFFA   ;
+    background-color: #FFFFFA;
 }
 
 div#panel{
@@ -11,11 +11,12 @@ div#panel{
 
 div#body{
     float: left;
+    z-index: 20;
     position: absolute;
-    top: 10%;
-    width: 75%;
-    left: 12.5%;
-    height: 80%;
+    top: 7.5%;
+    width: 80%;
+    left: 10%;
+    height: 85%;
     padding: 0;
     border : 1px #AFB6BF solid;
 }
@@ -23,9 +24,9 @@ div#body{
 div#menuSelector{
     float: right;
     position: absolute;
-    top: 12.8%;
+    top: 10%;
     width: 3%;
-    right: 9.5%;
+    right: 6.5%;
     height: 20%;
 }
 
