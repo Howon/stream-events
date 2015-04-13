@@ -20,9 +20,32 @@ header#bar{
 }
 /*-----------------------------------*/
 
-/*Logout button*/
+/*Title button*/
+/*-----------------------------------*/
+header#bar #title{
+	font: 24px Helvetica;
+	position: absolute;
+	padding: 0;
+	top: 28%;
+	width: 10%;
+	left: 45%;
+	right: 45%;
+	bottom: 0;
+	margin: auto;
+    color: #FEFFFF;
+	z-index: -500;
+}
+
+header#bar #title:hover{
+    color: #AD93EA;
+    cursor: pointer;
+}
+/*-----------------------------------*/
+
+/*User*/
 /*-----------------------------------*/
 header#bar #userToggle{
+	z-index: 5;
 	position: absolute;
 	border-radius: 0;
 	margin: 0;
@@ -40,7 +63,6 @@ header#bar #userToggle #userName{
 	padding: 0;
 	padding-top: 2%;
 	padding-bottom: 2%;
-	/*padding-left: 4%;*/
 	background-color: transparent;
 	color: #FEFFFF;
 }
@@ -50,6 +72,7 @@ header#bar #userToggle #userName:hover{
 }
 
 header#bar #userToggle #userMenu{
+	z-index: 10;
 	width: 13%;
 	border-radius: 0;
 	margin: 0;
@@ -65,20 +88,19 @@ header#bar #userToggle #userMenu:hover{
 	color: #AD93EA;
 }
 
-header#bar #userToggle .dropdown-menu{
+header#bar #userToggle #list{
 	z-index: 10;
 	margin-top: 10%;
 	border-radius: 0;
 	padding: 0;
-	padding-top: 5%;
 	padding-bottom: 5%;
 	border: 0;
 	left: 5%;
 	position: absolute;
-	width: 50%;
 }
 
 header#bar #userToggle .dropdown-men li{
+	z-index: 10;
 	width: 50%;
 	border-style: solid;
 }
@@ -87,29 +109,6 @@ header#bar #userToggle .dropdown-men li a{
 	width: 100%;
 	padding: 0;
 	border-style: solid;
-}
-/*-----------------------------------*/
-
-/*Title button*/
-/*-----------------------------------*/
-header#bar #title{
-	font: 24px Helvetica;
-	position: absolute;
-	padding: 0;
-	top: 28%;
-	/*height: 50%;*/
-	width: 6%;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	margin: auto;
-    color: #FEFFFF;
-	z-index: -500;
-}
-
-header#bar #title:hover{
-    color: #AD93EA;
-    cursor: pointer;
 }
 /*-----------------------------------*/
 
