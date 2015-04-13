@@ -135,7 +135,7 @@ var control_main_body_load = function(){
 				"display": "none"
 			});
 			if(infoOn){
-				$("#chatarea").delay(500).animate({
+				$("#chatarea").delay(400).animate({
 					"margin-left": "100%",
 					"width" : "0"
 				}, 300);
@@ -177,7 +177,7 @@ var control_main_body_load = function(){
 				"width": "90%"
 			},300);
 			if(infoOn){
-				$("#thread").delay(500).animate({
+				$("#thread").delay(400).animate({
 					"margin-left": "100%",
 					"width" : "0"
 				}, 300);
