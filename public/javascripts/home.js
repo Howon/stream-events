@@ -25,7 +25,7 @@ var control_sidebar = function(){
 		    $("#bringEvents").stop(true, false).animate({
 		    	"padding-left":"4%"
 		    },300);
-		    $("#bringEvents").html("<i class='fa fa-chevron-left'></i> Events ")
+		    $("#bringEvents").html("<i class='fa fa-chevron-left'></i> &nbsp; Events ")
 		}
 
 	var eventbar_out = function(){
@@ -45,7 +45,7 @@ var control_sidebar = function(){
 	    $("#bringEvents").stop(true, false).animate({
 	    	"padding-left":"0"
 	    },300);
-	    $("#bringEvents").html("Events <i class='fa fa-chevron-right'></i>")
+	    $("#bringEvents").html("Events &nbsp; <i class='fa fa-chevron-right'></i>")
 	}
 
 	$("#bringEvents, #eventBar").hover(eventbar_on, eventbar_out);
@@ -70,6 +70,7 @@ var control_event_posting = function(){
 var threadOn = true;
 var chatOn = false;
 var infoOn = true;
+
 var control_main_body_load = function(){
     $("#eventThread").click(
 		function(){
@@ -83,10 +84,10 @@ var control_main_body_load = function(){
 				"color": "#000000"
 			});
 			$("#thread").css({
-				"z-index":"10"
+				"z-index":"-5"
 			});
 			$("#chatarea").css({
-				"z-index":"0"
+				"z-index":"-10"
 			});
 			$("#thread").animate({
 				"margin-left": "40%",
@@ -118,10 +119,10 @@ var control_main_body_load = function(){
 				"color": "#000000"
 			});
 			$("#thread").css({
-				"z-index":"0"
+				"z-index":"-10"
 			});
 			$("#chatarea").css({
-				"z-index":"10"
+				"z-index":"-5"
 			});
 			$("#bringMessages, #inputBar").delay(100).queue( 
 			  	function(next){ 
