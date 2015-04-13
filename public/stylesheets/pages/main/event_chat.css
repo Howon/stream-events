@@ -28,13 +28,14 @@
 }*/
 
 #chatarea{
-    position: absolute;3
+    position: absolute;
     float: left;
     margin-left: 100%;
     width: 0%;
     height: 100%;
-    background-color: #FFF4DB;
+    background-color: #FFF6E4;
     padding: 0;
+    border-left: 1px #AFB6BF solid;
 }
 
 button#bringMessages{
