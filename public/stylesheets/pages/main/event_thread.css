@@ -1,8 +1,9 @@
 #thread{
 	float: left;
-	margin-left: 60%;
+	margin-left: 40%;
 	position: absolute;
-    width: 40%;
+    width: 60%;
     height: 100%;
-    background-color: #D9FAC5;
+    background-color: #FCFFFF;
+    border-left: 1px #AFB6BF solid;
 }

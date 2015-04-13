@@ -19,7 +19,7 @@ var control_sidebar = function(){
 		    	"left":"0"
 		    },300);
 		    $("#bringEvents").css({
-		    	"padding-right":"3%",
+		    	"padding-right":"7%",
 		    	"padding-bottom":"4%"
 		    })
 		    $("#bringEvents").stop(true, false).animate({
@@ -71,47 +71,8 @@ var threadOn = true;
 var chatOn = false;
 var infoOn = true;
 var control_main_body_load = function(){
-	$("#eventInfo").click(
-		function(){
-			infoOn = true;
-			$("#eventInfo").css({
-				"color": "#D347A8"
-			});
-			$("#messageStream").css({
-				"color": "#000000"
-			});$("#eventThread").css({
-				"color": "#000000"
-			});
-			if(threadOn){
-				$("#thread").animate({
-					"margin-left": "60%",
-					"width" : "40%"
-				},300);
-				$("#chatarea").animate({
-					"margin-left": "100%",
-					"width" : "0%"
-				},300);
-			}else if(chatOn){
-				$("#bringMessages").css({
-					"display":"block"
-				});
-				$("#thread").animate({
-					"margin-left": "100%",
-					"width" : "0%"
-				},500);
-				$("#chatarea").animate({
-					"margin-left": "60%",
-					"width" : "40%"
-				},300);
-			}
-		}
-	);
-
     $("#eventThread").click(
 		function(){
-			threadOn = true;
-			chaton = false;
-
 			$("#eventThread").css({
 				"color": "#5ED3D2"
 			});
@@ -128,32 +89,25 @@ var control_main_body_load = function(){
 				"z-index":"0"
 			});
 			$("#thread").animate({
-				"margin-left": "10%",
-				"width": "90%"
+				"margin-left": "40%",
+				"width": "60%"
 			},300);
-			$("#bringMessages, textarea.messaging").css({
-				"display": "none"
+			$("#chatarea").delay(300).animate({
+				"margin-left": "100%",
+				"width" : "0"
+			},1);
+			$("#bringMessages, #inputBar").delay(300).queue( 
+			  	function(next){ 
+				    $(this).css('display','none'); 
+				    next(); 
 			});
-			if(infoOn){
-				$("#chatarea").delay(400).animate({
-					"margin-left": "100%",
-					"width" : "0"
-				}, 300);
-			}else{
-				$("#chatarea").animate({
-					"margin-left": "100%",
-					"width" : "0"
-				}, 300);
-			}
-			infoOn = false;
+			threadOn = true;
+			chaton = false;
 		}
 	);
 
     $("#messageStream").click(
 		function(){
-			threadOn = false;
-			chatOn = true;
-
 			$("#messageStream").css({
 				"color": "#F5B07F"
 			});
@@ -169,25 +123,21 @@ var control_main_body_load = function(){
 			$("#chatarea").css({
 				"z-index":"10"
 			});
-			$("#bringMessages, textarea.messaging").css({
-				"display": "block"
+			$("#bringMessages, #inputBar").delay(100).queue( 
+			  	function(next){ 
+				    $(this).css('display','block'); 
+				    next(); 
 			});
 			$("#chatarea").animate({
-				"margin-left": "10%",
-				"width": "90%"
+				"margin-left": "40%",
+				"width": "60%"
 			},300);
-			if(infoOn){
-				$("#thread").delay(400).animate({
-					"margin-left": "100%",
-					"width" : "0"
-				}, 300);
-			}else{
-				$("#thread").animate({
-					"margin-left": "100%",
-					"width" : "0"
-				}, 300);
-			}
-			
+			$("#thread").delay(300).animate({
+				"margin-left": "100%",
+				"width" : "0"
+			}, 1);
+			threadOn = false;
+			chatOn = true;
 			infoOn = false;
 		}
 	);

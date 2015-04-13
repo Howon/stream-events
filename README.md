@@ -12,14 +12,13 @@ password: master <br>
 Immediate goals: <br>
 1. Better UI<br>
 2. Loading up previous messages<br>
-3. User authentication<br>
+3. User authentication (Ken)<br>
 4. Figure out how to detect user disconnect
 5. User color picker (?) <br>
-
-Short term goals: <br>
-1. Finish chat service <br>
-2. Event posting <br>
-3. Facebook API (Ken) <br>
+6. Finish chat service <br>
+7. Event posting (Howon)<br>
+8. Facebook API (Howon and Danny)<br>
+9. Polish Code (Ben)
 
 Long-term goals:<br>
 1. Register domain <br>
@@ -30,3 +29,4 @@ Collaborators: <br>
 Howon Byun <br>
 Ken Aizawa <br>
 Ben Low <br>
+Danny Benett

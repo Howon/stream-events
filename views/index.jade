@@ -11,11 +11,9 @@ block header
   span#bringEvents Events &nbsp
    i.fa.fa-chevron-right 
   div#userToggle
-   a.btn.btn-primary#userName
-     i.fa.fa-user.fa-fw#name
-        | &nbsp User
+   a.btn.btn-primary#userName User
    a.btn.btn-primary.dropdown-toogle#userMenu(data-toggle='dropdown')
-        span.fa.fa-chevron-down   
+      span.fa.fa-chevron-down   
       ul.dropdown-menu#list
         li
           a() Edit   
@@ -34,6 +32,11 @@ block body
      //- div#statusbar
      //-  ul#users   4 
      div#eventHome
+      div.eventHome#picture
+      div.eventHome#eventTitle
+      div.eventHome#time
+      div.eventHome#location
+      div.eventHome#description
      div#thread
      div#chatarea
       button#bringMessages 
@@ -43,8 +46,8 @@ block body
        //- textarea.messaging#name(placeholder='Type your name')
        textarea.messaging#text(placeholder='Type your message')
    div#menuSelector
-    div.menu#eventInfo
-      i.fa.fa-tasks.fa-2x
+    //- div.menu#eventInfo
+    //-   i.fa.fa-tasks.fa-2x
     div.menu#eventThread
       i.fa.fa-list-alt.fa-2x
     div.menu#messageStream
