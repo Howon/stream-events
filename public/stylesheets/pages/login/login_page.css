@@ -123,7 +123,7 @@ footer#aboutus{
 	font: 14px Helvetica;
 	clear: both;
     background: #94B4C4;
-    color: #EAF2F6;
+    color: #FCE38F;
     padding: 0;
     padding-top: 1%;
     text-align: center;
@@ -145,10 +145,10 @@ footer#aboutus #contributors{
 
 footer#aboutus #github-icon{
 	padding-top: 0.5%;
-	color: white;
+	color: #FCE38F;
 }
 
 footer#aboutus #github-icon:hover{
-	color: #AD93EA;
+	color: #94F3FC;
 }
 
