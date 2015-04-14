@@ -73,12 +73,9 @@ div#eventbar ul#eventStream li.event{
 	position: absolute;
 	background-color: transparent;
 	border: 0;	
-	color: white;
+	color: #FCE38F;
 }
 
-#post_event:hover{
-	color: #FFF6D9;;
-}
 /*-----------------------------------*/
 
 /*Event posting form*/
