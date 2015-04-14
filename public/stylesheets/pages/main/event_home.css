@@ -7,8 +7,14 @@
     background-color: #FFF4F7;
 }
 
+p{
+	display: table;
+	margin: auto;
+}
+
 div.eventHome{
     border : 1px #AFB6BF solid;
+    /*padding: 1%;*/
 	position: absolute;
 	width: 98%;
 	left:1%;
@@ -16,18 +22,29 @@ div.eventHome{
 
 div.eventHome#title{
 	top: 1%;
-	height: 7%;
+	height: 5%;
+	padding: 1%;
 	border-style: solid;
 }
 
 div.eventHome#picture{
-	top: 9%;
-	height: 30%;
+	top: 7%;
+	height: 32%;
+}
+
+div.eventHome#picture #image{
+	position: absolute;
+	padding: 0;
+	height: 100%;
+	left: 0;
+	right: 0;
+	margin: auto;
 }
 
 div.eventHome#time{
 	top: 40%;
 	left: 1%;
+	padding: 1%;
 	height: 8%;
 	width: 98%;
 }
@@ -57,8 +74,11 @@ div.eventHome#description{
 	height: 44%;
 }
 
-div.eventHome#location #map{
-	width: 100%;
-	height: 100%;
+div#body #map{
+	top: 10%;
+	left: 10%;
+	width: 80%;
+	height: 80%;
+	display: none;
 }
 

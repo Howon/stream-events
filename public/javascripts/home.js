@@ -84,10 +84,10 @@ var control_main_body_load = function(){
 				"color": "#000000"
 			});
 			$("#thread").css({
-				"z-index":"-5"
+				"z-index":"0"
 			});
 			$("#chatarea").css({
-				"z-index":"-10"
+				"z-index":"-1"
 			});
 			$("#thread").animate({
 				"margin-left": "40%",
@@ -119,10 +119,10 @@ var control_main_body_load = function(){
 				"color": "#000000"
 			});
 			$("#thread").css({
-				"z-index":"-10"
+				"z-index":"-1"
 			});
 			$("#chatarea").css({
-				"z-index":"-5"
+				"z-index":"0"
 			});
 			$("#bringMessages, #inputBar").delay(50).queue( 
 			  	function(next){ 

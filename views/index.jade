@@ -34,13 +34,15 @@ block body
      //- div#statusbar
      //-  ul#users   4 
      div#eventHome
-      div.eventHome#title
-      div.eventHome#picture
-      div.eventHome#time
+      div.eventHome#title 
+       p#content Danny's Birthday Party
+      div.eventHome#picture 
+       img#image(src='http://lsc.org/wp-content/uploads/2013/09/birthday-candles-460x300.png?bab04c')
+      div.eventHome#time 6pm April 13th 2015
       div.eventHome#location 
-       span#where New York City
+       span#where 
+        p New York City
        i.fa.fa-globe.fa-lg#mapButton
-       //- div#map
       div.eventHome#description
      div#thread
      div#chatarea
@@ -50,6 +52,7 @@ block body
       div#inputBar     
        //- textarea.messaging#name(placeholder='Type your name')
        textarea.messaging#text(placeholder='Type your message')
+     div#map
    div#menuSelector
     //- div.menu#eventInfo
     //-   i.fa.fa-tasks.fa-2x
