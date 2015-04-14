@@ -6,14 +6,16 @@ block head
  link(rel='stylesheet', href='stylesheets/pages/main/event_thread.css')
  link(rel='stylesheet', href='stylesheets/pages/main/event_chat.css')    
  link(rel='stylesheet', href='stylesheets/pages/main/main_body.css')        
+ link(rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css")
  script(src='//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js')
+ script(type='text/javascript', src='http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js')
 block header
-  span#bringEvents Events &nbsp
+  span#bringEvents Events &nbsp;
    i.fa.fa-chevron-right 
   div#userToggle
    a.btn.btn-primary#userName User
    a.btn.btn-primary.dropdown-toogle#userMenu(data-toggle='dropdown')
-      span.fa.fa-chevron-down   
+      span.fa.fa-caret-down.fa-lg   
       ul.dropdown-menu#list
         li
           a() Edit   
@@ -32,10 +34,13 @@ block body
      //- div#statusbar
      //-  ul#users   4 
      div#eventHome
+      div.eventHome#title
       div.eventHome#picture
-      div.eventHome#eventTitle
       div.eventHome#time
-      div.eventHome#location
+      div.eventHome#location 
+       span#where New York City
+       i.fa.fa-globe.fa-lg#mapButton
+       //- div#map
       div.eventHome#description
      div#thread
      div#chatarea
@@ -65,10 +70,11 @@ block body
    div#eventPostArea
     textarea.eventPost#Title(placeholder = 'Event Title')
     textarea.eventPost#Time(placeholder = 'Event Time')
-    textarea.eventPost#Location(placeholder = 'Event Location')
     textarea.eventPost#Description(placeholder = 'Event Description')
+    textarea.eventPost#Location(placeholder = 'Event Location')
     div.eventPost#Image
    script(src='/javascripts/home.js')
+   script(src='/javascripts/leaflet.js')
 
 
 

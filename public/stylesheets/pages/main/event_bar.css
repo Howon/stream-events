@@ -7,7 +7,7 @@ header#bar #bringEvents{
 	top: 35%;
 	height: 40%;
 	position: relative;
-	color: #FEFFFF;
+	color: #FCE38F;
     cursor: pointer;
 }
 /*-----------------------------------*/
@@ -21,7 +21,7 @@ header#bar #bringEvents{
 }
 /*-----------------------------------*/
 header#bar #bringEvents:hover{
-	color: #AD93EA;
+	color: #FFF6D9;
 }
 /*Bar itself*/
 /*-----------------------------------*/
@@ -77,7 +77,7 @@ div#eventbar ul#eventStream li.event{
 }
 
 #post_event:hover{
-	color: #AD93EA;
+	color: #FFF6D9;;
 }
 /*-----------------------------------*/
 
@@ -85,11 +85,11 @@ div#eventbar ul#eventStream li.event{
 /*-----------------------------------*/
 div#eventPostArea{
 	position: absolute;
-	top: 25%;
-	left: 35%;
-	width: 30%;
-	height: 40%;
-	opacity: 0.9;
+	top: 22%;
+	left: 30%;
+	width: 40%;
+	height: 50%;
+	opacity: 0.95;
 	background-color: #4B4B4B;
 	display: none;
 	border-radius: 5px;
@@ -98,6 +98,9 @@ div#eventPostArea{
 .eventPost{
     resize: none;
     background-color: #D1D1D1;
+    border: 0;
+    margin: 0;
+    padding: 0;
 }
 
 .eventPost#Image{

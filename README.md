@@ -30,3 +30,6 @@ Howon Byun <br>
 Ken Aizawa <br>
 Ben Low <br>
 Danny Benett
+
+© OpenStreetMap contributors
+
