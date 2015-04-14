@@ -32,12 +32,11 @@ header#bar #title{
 	right: 45%;
 	bottom: 0;
 	margin: auto;
-    color: #FEFFFF;
+    color: #FCE38F;
 	z-index: -500;
 }
 
 header#bar #title:hover{
-    color: #AD93EA;
     cursor: pointer;
 }
 /*-----------------------------------*/
@@ -64,11 +63,7 @@ header#bar #userToggle #userName{
 	padding-top: 2%;
 	padding-bottom: 2%;
 	background-color: transparent;
-	color: #FEFFFF;
-}
-
-header#bar #userToggle #userName:hover{
-	color: #AD93EA;
+	color: #FCE38F;
 }
 
 header#bar #userToggle #userMenu{
@@ -81,12 +76,9 @@ header#bar #userToggle #userMenu{
 	padding-bottom: 3%;
 	border: 0;
 	background-color: transparent;
-	color: #EAF2F6;
+	color: #FCE38F;
 }
 
-header#bar #userToggle #userMenu:hover{
-	color: #AD93EA;
-}
 
 header#bar #userToggle #list{
 	z-index: 10;

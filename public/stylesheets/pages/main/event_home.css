@@ -6,3 +6,59 @@
     height: 100%;
     background-color: #FFF4F7;
 }
+
+div.eventHome{
+    border : 1px #AFB6BF solid;
+	position: absolute;
+	width: 98%;
+	left:1%;
+}
+
+div.eventHome#title{
+	top: 1%;
+	height: 7%;
+	border-style: solid;
+}
+
+div.eventHome#picture{
+	top: 9%;
+	height: 30%;
+}
+
+div.eventHome#time{
+	top: 40%;
+	left: 1%;
+	height: 8%;
+	width: 98%;
+}
+
+div.eventHome#location{
+	top: 49%;
+	height: 5%;
+}
+div.eventHome#location #where{
+	float: left;
+	padding: 1%;
+}
+
+div.eventHome#location #mapButton{
+	float: right;
+	padding-top: 2%;
+	padding-right: 1%;
+}
+
+div.eventHome#location #mapButton:hover{
+	color: #93D167;
+	cursor: pointer;
+}
+
+div.eventHome#description{
+	top: 55%;
+	height: 44%;
+}
+
+div.eventHome#location #map{
+	width: 100%;
+	height: 100%;
+}
+
