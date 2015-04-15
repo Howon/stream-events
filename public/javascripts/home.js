@@ -23,7 +23,7 @@ var control_sidebar = function(){
 		    	"padding-bottom":"4%"
 		    })
 		    $("#bringEvents").stop(true, false).animate({
-		    	"padding-left":"4%"
+		    	"padding-left":"3%"
 		    },300);
 		    $("#bringEvents").html("<i class='fa fa-chevron-left'></i>&nbsp; Events ")
 		}
@@ -64,7 +64,11 @@ var control_event_posting = function(){
 		if (!container.is(e.target) && container.has(e.target).length === 0){ // ... nor a descendant of the container
         	container.fadeOut(300);
 	    }
-	});
+	}).keyup(function(e){
+		if(e.keyCode == 27){
+			$("#eventPostArea").fadeOut(300);
+		}
+	});;
 }
 
 var threadOn = true;
@@ -162,39 +166,40 @@ var socket_handling = function(){
 
 	person = ""
 
-	var textarea = document.querySelector("textarea#text")
+	var textarea = document.querySelector("input#text")
 
-	$('#bringMessages').off().click(function(){
-		console.log("pressed")	/* Act on the event */
-		socket.emit("bring previous messages");
+	// $('#bringMessages').off().click(function(){
+	// 	console.log("pressed")	/* Act on the event */
+	// 	socket.emit("bring previous messages");
 
-		socket.on("bring previous messages", function(data){
-		  if(data.length){
-			for(var i=0; i< data.length; i++){
-				var message = document.createElement('li');
-				message.setAttribute('class', 'chat-message');
-				message.textContent = data[i].name+ ": " + data[i].message;
-				// console.log(data[i].message)
-				var messages = document.querySelector("#messages");
-				messages.appendChild(message);
-				messages.insertBefore(message, messages.firstChild);
-			}
-		  }
-	  });
-	});
+	// 	socket.on("bring previous messages", function(data){
+	// 	  if(data.length){
+	// 		for(var i=0; i< data.length; i++){
+	// 			var message = document.createElement('li');
+	// 			message.setAttribute('class', 'chat-message');
+	// 			message.textContent = data[i].name+ ": " + data[i].message;
+	// 			// console.log(data[i].message)
+	// 			var messages = document.querySelector("#messages");
+	// 			messages.appendChild(message);
+	// 			messages.insertBefore(message, messages.firstChild);
+	// 		}
+	// 	  }
+	//   });
+	// });
 
 	textarea.addEventListener('keydown',function(event){
 		var self = this;
-		var	person = name.value
+		// var	person = name.value
 
 		if(event.which === 13 && event.shiftKey === false){
+			console.log(self.value);
 			socket.emit('send chat message',{
-				name : person,
+				// name : person,
 				time : time,
 				message: self.value
 			});
 			socket.emit('user joined',{
-				name : person,
+				// name : person,
 				time : time
 			})
 			event.preventDefault();
@@ -217,14 +222,13 @@ var socket_handling = function(){
 	
 	socket.on('send chat message', function(msg, usr){
 		if (person == usr){
-			$('#messages').append($('<li class="user"> ').text(" "+usr + ": " +msg));
+			$('#messages').append($('<li class="user"> ').text(msg));
 		}
 		else {
-			$('#messages').append($('<li class="other"> ').text(" "+usr + ": " +msg));
+			$('#messages').append($('<li class="other"> ').text(msg));
 		}
-		var myDiv = $("#messages");
-		myDiv.animate({ 
-			scrollTop: myDiv.prop("scrollHeight") + myDiv.height() 
+		$("#messages").animate({ 
+			scrollTop: $("#messages").prop("scrollHeight") + $("#messages").height() 
 		}, 10);
 		textarea.value = '';
 	});

@@ -108,7 +108,7 @@ div#eventPostArea{
 	width: 30%;
 }
 
-.eventPost#Title{
+.eventPost#Name{
 	position: absolute;	
 	float: right;
 	top: 6%;
