@@ -46,12 +46,11 @@ block body
       div.eventHome#description
      div#thread
      div#chatarea
-      button#bringMessages 
+      //- button#bringMessages 
        p Bring More Messages
       ul#messages
       div#inputBar     
-       //- textarea.messaging#name(placeholder='Type your name')
-       textarea.messaging#text(placeholder='Type your message')
+       input.messaging#text(type='text', name='chat message', placeholder='Type your message')
      div#map
    div#menuSelector
     //- div.menu#eventInfo
@@ -71,10 +70,10 @@ block body
      a.btn.btn-danger(id = "post_event") Post Event &nbsp 
       i.fa.fa-plus.fa-lg
    div#eventPostArea
-    textarea.eventPost#Title(placeholder = 'Event Title')
-    textarea.eventPost#Time(placeholder = 'Event Time')
-    textarea.eventPost#Description(placeholder = 'Event Description')
-    textarea.eventPost#Location(placeholder = 'Event Location')
+    input.eventPost#Name(type='text', name='event name', placeholder = 'Event Name')
+    input.eventPost#Time(type='text', name='event time', placeholder = 'Event Time')
+    input.eventPost#Description(type='text', name='event description', placeholder = 'Event Description')
+    input.eventPost#Location(type='text', name='event location', placeholder = 'Event Location')
     div.eventPost#Image
    script(src='/javascripts/home.js')
    script(src='/javascripts/leaflet.js')

@@ -1,39 +1,10 @@
-/*
-#statusbar{
-    float: left;
-    width: 8%;
-    height: 100%;
-}
-
-#statusbar #users{
-    height: 80%;
-    list-style-type: none;
-    overflow: auto; 
-}
-
-#statusbar #users li{
-    line-height: normal;
-    padding: 0;
-    height: 8%;
-    width: 100%;
-    text-align: center;
-}
-
-#statusbar #users li.user {
-    background: #ccc;
-}
-
-#statusbar #users li.other {
-    background: #eee;
-}*/
-
 #chatarea{
     position: absolute;
     float: left;
     margin-left: 100%;
     width: 0%;
     height: 100%;
-    background-color: #FFF6E4;
+    background-color: #FFFEF6;
     padding: 0;
     border-left: 1px #AFB6BF solid;
 }
@@ -62,16 +33,17 @@ button#bringMessages:hover{
 div#inputBar{
     height: 6%;
     position: relative; 
+    padding: 0;
     border-top: 1px #AFB6BF solid;
+    display: none;
 }
 
 input{
-    border:0;
     padding: 0;
     border-radius: 0;
 }
 
-textarea.messaging{
+input.messaging{
     float: left;
     height: 80%;
     border-radius: 0;
@@ -83,43 +55,34 @@ textarea.messaging{
     outline: none;
 }
 
-/*
-textarea#name{
-    left: 0.8%;
-    width: 15%;
-    border: 0px;
-}*/
-
-textarea#text{
+input#text{
     padding: 0.5%;
-    left: 5%;
-    width: 90%;
+    left: 2%;
+    width: 96%;
+    border : 1px #AFB6BF solid;
 }
 
 ul#messages{ 
     position: relative;
     list-style-type: none; 
     margin: 0;  
-    padding: 5px;
-    height: 89%;
+    padding: 0;
+    height: 94%;
     overflow: auto;
+    padding-top: 1%;
+    padding-left: 3%;
+    padding-right: 3%;
 }
 
 ul#messages li{ 
     padding: 0; 
-    height: 5%;
     width: 100%;
 }
 
 ul#messages li.user{
-    /*color: #ccc;*/
+    color: #ADD8E6;
 }
 
 ul#messages li.other{
-    color: #eee;
+    color: #EA7A61;
 }
-
-ul#messages li:nth-last-child(1) {
-   color: #ADD8E6;
-}
-
