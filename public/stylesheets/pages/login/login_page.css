@@ -3,11 +3,12 @@ body{
 }
 
 #loginform{
+    background-color: #FFFFFA;
     margin-left: auto;
     margin-right: auto;
     margin-bottom: auto;
     position: absolute;
-    top: 16.5%; 
+    top: 17%; 
     left: 0; 
     bottom: 0; 
     right: 0;
@@ -128,7 +129,7 @@ footer#aboutus{
     padding-top: 1%;
     text-align: center;
     position: fixed;
-    height: 12.5%;
+    height: 11.5%;
     bottom: 0%;
     width: 100%;
     z-index: 5;
@@ -140,11 +141,11 @@ footer#aboutus #footer-info{
 }
 
 footer#aboutus #contributors{
-	padding-top: 0.5%;
+	padding-top: 0.3%;
 }
 
 footer#aboutus #github-icon{
-	padding-top: 0.5%;
+	padding-top: 0.3%;
 	color: #FCE38F;
 }
 
@@ -152,3 +153,7 @@ footer#aboutus #github-icon:hover{
 	color: #94F3FC;
 }
 
+#particles{
+  height:100%;
+  background: #FFFFFA;
+}
