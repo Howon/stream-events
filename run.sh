@@ -1,4 +1,3 @@
-git pull upstream master
 rm -rf node_modules
 npm cache clean
 
