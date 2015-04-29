@@ -2,23 +2,25 @@ doctype html
 extends layout
 block head
   //- script(src='https://apis.google.com/js/client:platform.js')
-  script(src='https://apis.google.com/js/client:platform.js', async, defer)
-  script(src='http://static.ak.fbcdn.net/connect/en_US/core.js')
-  link(rel='stylesheet', href='stylesheets/pages/login/login_page.css')  
+  script(type = 'text/javascript', src = 'https://apis.google.com/js/client:platform.js', async, defer)
+  script(type = 'text/javascript', src = 'http://static.ak.fbcdn.net/connect/en_US/core.js')
+  script(type = 'text/javascript', src = '/javascripts/sources/particles.min.js')
+  link(rel ='stylesheet', href = 'stylesheets/pages/login/login_page.css')  
 block body
+   div#particles
    div#loginform 
     div#inputArea
      div#login-information  
       .input-group
        div.input-group-addon#1
          i.fa.fa-envelope-o
-       input.form-control(id='email', placeholder=' Email address')
+       input.form-control(id ='email', placeholder = ' Email address')
       .input-group
        div.input-group-addon#2
          i.fa.fa-key.fa-fw
-       input.form-control(id='password', placeholder=' Password') 
+       input.form-control(id ='password', placeholder = ' Password') 
      div#log-in 
-      a.btn.btn-danger(id = "log-in-button",href='/home')
+      a.btn.btn-danger(id = "log-in-button", href = '/home')
        div Log In 
        i.fa.fa-sign-in.fa-lg  
      //- div#-login
@@ -32,6 +34,7 @@ block body
        span Ken Aizawa &nbsp; 
        span Ben Low &nbsp;
        span Danny Benett &nbsp; &nbsp;
-     a(id = "github-link", href='https://github.com/Howon/stream-events')  
+     a(id = "github-link", href = 'https://github.com/Howon/stream-events')  
       i#github-icon.fa.fa-github.fa-2x 
-   script(src='/javascripts/auth.js')
+   script(type = 'text/javascript', src = '/javascripts/pages/login/auth.js')
+   script(type = 'text/javascript', src = '/javascripts/pages/login/particles_login.js')

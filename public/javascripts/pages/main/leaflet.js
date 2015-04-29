@@ -9,8 +9,6 @@ $(window).load(function() {
 	});
 });
 
-
-
 var defineMap = function(lat, lon, initiated){
 	// create a map in the "map" div, set the view to a given place and zoom
 	if(initiated){
@@ -30,6 +28,8 @@ var defineMap = function(lat, lon, initiated){
 
 var control_map = function(){
 	$("#map").fadeIn(300);
+	// var lat = $("#");
+	// var lon = $("#")
 	defineMap(40.807536, -73.962573, initiated);
 	
 	$(document).mouseup(function (e){
