@@ -69,6 +69,9 @@ var control_event_posting = function(){
 			$("#eventPostArea").fadeOut(300);
 		}
 	});;
+	$("#cancel").click(function(){
+		$("#eventPostArea").fadeOut(300);
+	});
 }
 
 var threadOn = true;
@@ -206,6 +209,32 @@ var socket_handling = function(){
 		}
 	});
 	
+	$("#submit").click(function(){
+		var event_name = $(".eventPost#Name").val(),
+			event_time = $(".eventPost#Time").val(),
+			event_location = $(".eventPost#Location").val(),
+			event_description = $(".eventPost#Description").val(),
+		 	valid = true;
+
+		if(event_name === null || event_name === ""){
+			$("#alert").html("Please type event name");
+			$("#alert").css({
+				"display": "block"
+			});
+			valid = false
+		}
+
+		if(valid){
+			socket.emit("post event", {
+				event : event_name,
+				time : event_time,
+				location: event_location,
+				description: event_description
+			});
+			$("#eventPostArea").fadeOut(300);
+		}
+	});
+
 	socket.on("user disconnected", function(name){
 		$('#users> li:contains("' +name.value+ '" )').remove();
 	})

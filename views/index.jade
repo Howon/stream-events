@@ -1,20 +1,20 @@
 doctype html
 extends layout
 block head
- link(rel='stylesheet', href='stylesheets/pages/main/event_bar.css') 
- link(rel='stylesheet', href='stylesheets/pages/main/event_home.css') 
- link(rel='stylesheet', href='stylesheets/pages/main/event_thread.css')
- link(rel='stylesheet', href='stylesheets/pages/main/event_chat.css')    
- link(rel='stylesheet', href='stylesheets/pages/main/main_body.css')        
- link(rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css")
- script(src='//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js')
- script(type='text/javascript', src='http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js')
+ link(rel = 'stylesheet', href = 'stylesheets/pages/main/event_bar.css') 
+ link(rel = 'stylesheet', href = 'stylesheets/pages/main/event_home.css') 
+ link(rel = 'stylesheet', href = 'stylesheets/pages/main/event_thread.css')
+ link(rel = 'stylesheet', href = 'stylesheets/pages/main/event_chat.css')    
+ link(rel = 'stylesheet', href = 'stylesheets/pages/main/main_body.css')        
+ link(rel = 'stylesheet', href = 'http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css')
+ script(type = 'text/javascript', src = '//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js')
+ script(type = 'text/javascript', src = 'http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js')
 block header
   span#bringEvents Events &nbsp;
    i.fa.fa-chevron-right 
   div#userToggle
    a.btn.btn-primary#userName User
-   a.btn.btn-primary.dropdown-toogle#userMenu(data-toggle='dropdown')
+   a.btn.btn-primary.dropdown-toogle#userMenu(data-toggle = 'dropdown')
       span.fa.fa-caret-down.fa-lg   
       ul.dropdown-menu#list
         li
@@ -31,13 +31,11 @@ block header
 block body
   div#panel
    div#body 
-     //- div#statusbar
-     //-  ul#users   4 
      div#eventHome
       div.eventHome#title 
        p#content Danny's Birthday Party
       div.eventHome#picture 
-       img#image(src='http://lsc.org/wp-content/uploads/2013/09/birthday-candles-460x300.png?bab04c')
+       img#image(src = 'http://lsc.org/wp-content/uploads/2013/09/birthday-candles-460x300.png?bab04c')
       div.eventHome#time 6pm April 13th 2015
       div.eventHome#location 
        span#where 
@@ -48,11 +46,9 @@ block body
      div#chatarea
       ul#messages
       div#inputBar     
-       input.messaging#text(type='text', name='chat message', placeholder='Type your message')
+       input.messaging#text(type = 'text', name = 'chat message', placeholder = 'Type your message')
      div#map
    div#menuSelector
-    //- div.menu#eventInfo
-    //-   i.fa.fa-tasks.fa-2x
     div.menu#eventThread
       i.fa.fa-list-alt.fa-2x
     div.menu#messageStream
@@ -68,13 +64,17 @@ block body
      a.btn.btn-danger(id = "post_event") Post Event &nbsp 
       i.fa.fa-plus.fa-lg
    div#eventPostArea
-    input.eventPost#Name(type='text', name='event name', placeholder = 'Event Name')
-    input.eventPost#Time(type='text', name='event time', placeholder = 'Event Time')
-    input.eventPost#Description(type='text', name='event description', placeholder = 'Event Description')
-    input.eventPost#Location(type='text', name='event location', placeholder = 'Event Location')
+    div#cancel.glyphicon.glyphicon-remove
+    input.eventPost#Name(type = 'text', name = 'event name', placeholder = 'Event Name')
+    input.eventPost#Time(type = 'text', name = 'event time', placeholder = 'Event Time')
+    input.eventPost#Location(type = 'text', name = 'event location', placeholder = 'Event Location')
+    input.eventPost#Description(type = 'text', name = 'event description', placeholder = 'Event Description')
     div.eventPost#Image
-   script(src='/javascripts/home.js')
-   script(src='/javascripts/leaflet.js')
+    div.eventPost#menu
+     span#alert.alert.alert-danger
+     span#submit submit
+   script(type = 'text/javascript', src = '/javascripts/pages/main/home.js')
+   script(type = 'text/javascript', src = '/javascripts/pages/main/leaflet.js')
 
 
 
