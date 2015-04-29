@@ -62,15 +62,17 @@ div#eventbar ul#eventStream li.event{
 
 /*"Post event" button*/
 /*-----------------------------------*/
-#post_event{
+#post_event{		
+	position: absolute;
 	float: bottom;
 	top: 94.5%;
-	left: 33%;
-    margin: 0;
+	left: 0;
+	right: 0;
+    margin-left: 0;
+    margin-right: 0;
     padding: 0;
 	border: 0;
-	font: 15px Helvetica;		
-	position: absolute;
+	font: 15px Helvetica;
 	background-color: transparent;
 	border: 0;	
 	color: #FCE38F;
@@ -82,14 +84,28 @@ div#eventbar ul#eventStream li.event{
 /*-----------------------------------*/
 div#eventPostArea{
 	position: absolute;
-	top: 22%;
-	left: 30%;
-	width: 40%;
-	height: 50%;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	margin: auto;
+	width: 500px;
+	height: 380px;
 	opacity: 0.95;
 	background-color: #4B4B4B;
 	display: none;
 	border-radius: 5px;
+}
+
+div#eventPostArea #cancel{
+	position: absolute;
+	left:96%;
+	top: 1%;
+}
+
+div#eventPostArea #cancel:hover{
+	color: red;
+	cursor: pointer;
 }
 
 .eventPost{
@@ -139,9 +155,43 @@ div#eventPostArea{
 	position: absolute;
 	float: right;
 	top: 52%;
-	height: 40%;
+	height: 38%;
 	left: 5%;
 	width: 90%;
+}
+
+.eventPost#menu{
+	position: absolute;
+	background-color: transparent;
+	color: white;
+	top: 92%;
+	left: 5%;
+	width: 90%;
+}
+
+.eventPost#menu span:hover{
+	cursor: pointer;
+}
+
+
+.eventPost#menu #submit{
+	position: fixed;
+	z-index: 1;
+	left: 70%;
+}
+
+.eventpost#menu #submit:hover{
+	color: green;
+}
+
+.eventpost#menu span#alert{
+	padding: 0;
+	padding-left: 5px;
+	padding-right: 5px;
+	display: none;
+	width: 30%;
+	margin: 0;
+	margin-right: 0;
 }
 
 ::-webkit-input-placeholder {

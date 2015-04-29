@@ -46,7 +46,7 @@ particlesJS('particles', {
       onclick: {
         enable: true,
         mode: 'push', // "push" or "remove"
-        nb: 5
+        nb: 2
       },
       onresize: {
         enable: true,
