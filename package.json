@@ -6,12 +6,13 @@
     "start": "node ./bin/www"
   },
   "dependencies": {
+    "everyauth": "^0.4.9",
     "express": "^4.12.3",
+    "express-session": "^1.11.1",
     "jade": "^1.9.2",
-    "morgan": "*",
-    "socket.io": "*",
     "mongodb": "~2.0",
-    "everyauth": "^0.4.9"
+    "morgan": "*",
+    "socket.io": "*"
   },
   "subdomain": "stream-events",
   "engines": {
