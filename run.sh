@@ -1,5 +1,4 @@
-rm -rf node_modules
-npm cache clean
+npm install 
+echo "installed node modules"
 
-sudo npm install 
 node app.js
