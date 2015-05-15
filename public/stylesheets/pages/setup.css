@@ -12,7 +12,7 @@ body {
 /*-----------------------------------*/
 header#bar{
 	width: 100%;
-	height: 6.5%;
+	height: 55px;
 	background-color: #94B4C4;
 	text-align: center;
 	position: fixed;
@@ -26,7 +26,7 @@ header#bar #title{
 	font: 24px Helvetica;
 	position: absolute;
 	padding: 0;
-	top: 28%;
+	top: 15px;
 	width: 10%;
 	left: 45%;
 	right: 45%;
@@ -48,7 +48,7 @@ header#bar #userToggle{
 	position: absolute;
 	border-radius: 0;
 	margin: 0;
-	top: 30%;
+	top: 20px;
 	width: 12%;
 	float: right;
 	right: 5.5%;

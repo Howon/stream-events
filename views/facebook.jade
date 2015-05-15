@@ -1,7 +1,7 @@
 extends layout
 block head
  link(rel='stylesheet', href='stylesheets/test.css') 
- script(src='http://static.ak.fbcdn.net/connect/en_US/core.js')
+ //- script(src='http://static.ak.fbcdn.net/connect/en_US/core.js')
 block body
   - if (!everyauth.loggedIn)
     h2 Not Authenticated
@@ -14,9 +14,9 @@ block body
        img(style='border: 0px', src='https://www.google.com/favicon.ico')
   - else
     h2 Authenticated
-    - if (everyauth.facebook)
-      h3 Facebook User Data
-      p= JSON.stringify(everyauth.facebook.user)
+    //- - if (everyauth.facebook)
+    //-   h3 Facebook User Data
+    //-   p= JSON.stringify(everyauth.facebook.user)
     - if (everyauth.google)
       h3 Google User Data
       p= JSON.stringify(everyauth.google.user)

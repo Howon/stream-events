@@ -2,7 +2,7 @@ particlesJS('particles', {
   particles: {
     color: '#993333',
     color_random: false,
-    shape: 'circle', // "circle", "edge" or "triangle"
+    shape: 'circle', 
     opacity: {
       opacity: 1,
       anim: {
@@ -12,7 +12,7 @@ particlesJS('particles', {
         sync: false
       }
     },
-    size: 2.3,
+    size: 1,
     size_random: true,
     nb: 150,
     line_linked: {

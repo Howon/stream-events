@@ -1,31 +1,23 @@
 doctype html
 extends layout
 block head
-  //- script(src='https://apis.google.com/js/client:platform.js')
   script(type = 'text/javascript', src = 'https://apis.google.com/js/client:platform.js', async, defer)
   script(type = 'text/javascript', src = 'http://static.ak.fbcdn.net/connect/en_US/core.js')
   script(type = 'text/javascript', src = '/javascripts/sources/particles.min.js')
   link(rel ='stylesheet', href = 'stylesheets/pages/login/login_page.css')  
 block body
    div#particles
-   div#loginform 
-    div#inputArea
-     div#login-information  
-      .input-group
-       div.input-group-addon#1
-         i.fa.fa-envelope-o
-       input.form-control(id ='email', placeholder = ' Email address')
-      .input-group
-       div.input-group-addon#2
-         i.fa.fa-key.fa-fw
-       input.form-control(id ='password', placeholder = ' Password') 
-     div#log-in 
-      a.btn.btn-danger(id = "log-in-button", href = '/home')
-       div Log In 
-       i.fa.fa-sign-in.fa-lg  
-     //- div#-login
-    //- a(href='/auth/google', style='border: 0px')
-    //-   img(style='border: 0px', src='https://www.google.com/favicon.ico')
+   div#main_area
+    div#login
+      span Sign in with
+      span#google_login.login_buttons
+        a(href='/auth/google')
+          | Google &nbsp;
+          i.fa.fa-google-plus
+      span#facebook_login.login_buttons
+        a(href='/auth/facebook')
+          | Facebook &nbsp;
+          i.fa.fa-facebook-official
    footer#aboutus 
     div#footer-info 
      div#made-by Made By
