@@ -3,6 +3,7 @@ var socket = io();
 $(window).load(function() {
 	manipulate_elements();
 	socket_handling();
+	getLocation();
 });
 
 var manipulate_elements = function(){
@@ -82,10 +83,6 @@ var control_event_posting = function(){
 	});
 }
 
-var threadOn = true;
-var chatOn = false;
-var infoOn = true;
-
 var control_main_body_load = function(){
     $("#eventThread").click(
 		function(){
@@ -93,9 +90,6 @@ var control_main_body_load = function(){
 				"color": "#5ED3D2"
 			});
 			$("#messageStream").css({
-				"color": "#000000"
-			});
-			$("#eventInfo").css({
 				"color": "#000000"
 			});
 			$("#thread").css({
@@ -125,12 +119,9 @@ var control_main_body_load = function(){
     $("#messageStream").click(
 		function(){
 			$("#messageStream").css({
-				"color": "#F5B07F"
+				"color": "#E0C2D7"
 			});
 			$("#eventThread").css({
-				"color": "#000000"
-			});
-			$("#eventInfo").css({
 				"color": "#000000"
 			});
 			$("#thread").css({
@@ -275,3 +266,32 @@ var socket_handling = function(){
 	})
 }
 
+
+function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+    }
+}
+
+function showPosition(position) {
+    var lat = position.coords.latitude;
+    var lon = position.coords.longitude;
+    console.log(lat + " " + lon);   
+}
+
+function showError(error) {
+    switch(error.code) {
+        case error.PERMISSION_DENIED:
+            console.log("User denied the request for Geolocation.")
+            break;
+        case error.POSITION_UNAVAILABLE:
+            console.log("Location information is unavailable.")
+            break;
+        case error.TIMEOUT:
+            console.log("The request to get user location timed out.")
+            break;
+        case error.UNKNOWN_ERROR:
+            console.log("An unknown error occurred.")
+            break;
+    }
+}
