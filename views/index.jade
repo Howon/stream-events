@@ -7,13 +7,18 @@ block head
  link(rel = 'stylesheet', href = 'stylesheets/pages/main/event_chat.css')    
  link(rel = 'stylesheet', href = 'stylesheets/pages/main/main_body.css')        
  link(rel = 'stylesheet', href = 'http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css')
+ script(src='http://static.ak.fbcdn.net/connect/en_US/core.js')
  script(type = 'text/javascript', src = '//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js')
  script(type = 'text/javascript', src = 'http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js')
 block header
-  span#bringEvents Events &nbsp;
-   i.fa.fa-chevron-right 
+  div#bringEvents
+    span#bringButton Events &nbsp;
+     i.fa.fa-chevron-right 
+    span#calendarView 
+     i.fa.fa-calendar.fa-lg3
   div#userToggle
-   a.btn.btn-primary#userName User
+   a.btn.btn-primary#userName
+    p= everyauth.google.user.name
    a.btn.btn-primary.dropdown-toogle#userMenu(data-toggle = 'dropdown')
       span.fa.fa-caret-down.fa-lg   
       ul.dropdown-menu#list

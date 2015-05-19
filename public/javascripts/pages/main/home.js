@@ -18,14 +18,15 @@ var control_sidebar = function(){
 		    $("#eventBar").stop(true, false).animate({
 		    	"left":"0"
 		    },300);
-		    $("#bringEvents").css({
-		    	"padding-right":"7%",
-		    	"padding-bottom":"4%"
+		    $("#bringButton").css({
+		    	"padding-right":"80px",
+		    	"padding-bottom":"35px"
 		    })
-		    $("#bringEvents").stop(true, false).animate({
+		    $("#bringButton").stop(true, false).animate({
 		    	"padding-left":"3%"
 		    },300);
-		    $("#bringEvents").html("<i class='fa fa-chevron-left'></i>&nbsp; Events ")
+		    $("#calendarView").stop(true, false).fadeIn(300);
+		    $("#bringButton").html("<i class='fa fa-chevron-left'></i>&nbsp; Events ")
 		}
 
 	var eventbar_out = function(){
@@ -38,17 +39,18 @@ var control_sidebar = function(){
 	    $("#eventBar").css({
 	    	"z-index":"0"
 	    });
-	    $("#bringEvents").css({
+	    $("#bringButton").css({
 	    	"padding-right":"0",
 	    	"padding-bottom":"0"
 	    })
-	    $("#bringEvents").stop(true, false).animate({
+	    $("#bringButton").stop(true, false).animate({
 	    	"padding-left":"0"
 	    },300);
-	    $("#bringEvents").html("Events &nbsp;<i class='fa fa-chevron-right'></i>")
+		$("#calendarView").stop(true, false).fadeOut(300);
+	    $("#bringButton").html("Events &nbsp;<i class='fa fa-chevron-right'></i>")
 	}
 
-	$("#bringEvents, #eventBar").hover(eventbar_on, eventbar_out);
+	$("#bringButton, #eventBar, #calendarView").hover(eventbar_on, eventbar_out);
 
 	$("#post_event").click(function(){
 		$("#eventPostArea").fadeIn(300);

@@ -22,13 +22,13 @@ app.set('view engine', 'jade');
 authentication.verify_user(everyauth, auth_config);
 everyauth.debug = true;
 
-
 app.use(session({secret: "123456",
 			     name: "test",
 			     proxy: true,
 			     resave: true,
 			     saveUninitialized: true
 				}));
+
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(everyauth.middleware());
 

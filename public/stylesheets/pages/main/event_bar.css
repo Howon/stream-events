@@ -1,6 +1,16 @@
 /*Header bring event button*/
 /*-----------------------------------*/
 header#bar #bringEvents{
+	position: absolute;
+	left: 5%;
+	height: 100%;
+	width: 200px;
+	margin: 0;
+	border: 0;
+	z-index: -10;
+}
+
+header#bar #bringButton{
 	float: left;
     left: 5%;
 	font: 15px Helvetica;
@@ -9,6 +19,14 @@ header#bar #bringEvents{
 	position: relative;
 	color: #FCE38F;
     cursor: pointer;
+}
+
+header#bar #calendarView{
+	right: 40px;
+	top: 23px;
+	height: 40%;
+	position: absolute;
+	display: none;
 }
 /*-----------------------------------*/
 
@@ -20,27 +38,25 @@ header#bar #bringEvents{
 	}
 }
 /*-----------------------------------*/
-header#bar #bringEvents:hover{
+header#bar #bringButton:hover{
 	color: #FFF6D9;
 }
 /*Bar itself*/
 /*-----------------------------------*/
 div#eventbar{
-	z-index: 10;
 	position: absolute;
 	height: 100%;
 	background-color: #888888;
 	opacity: 0.8;
 	left: -23%;
 	width: 23%;
-	border:0;
 	margin: 0;
 	padding: 0;
 }
 /*Each event element*/
 /*-----------------------------------*/
 div#eventbar ul#eventStream{
-	top: 0.8%;
+	top: 1%;
 	left: 1.5%;
 	border: 0;
 	position: absolute;	

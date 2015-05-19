@@ -10,7 +10,7 @@ module.exports = {
         user = sourceUser = source;
         user.id = ++nextUserId;
         return usersById[nextUserId] = user;
-      } else { // non-password-based
+      } else {
         user = usersById[++nextUserId] = {id: nextUserId};
         user[source] = sourceUser;
       }
@@ -24,17 +24,37 @@ module.exports = {
         callback(null, usersById[id]);
       });
 
+    everyauth.facebook
+      .appId(config.fb.appId)
+      .appSecret(config.fb.appSecret)
+      .findOrCreateUser( function (session, accessToken, accessTokenExtra, fbUserMetadata) {
+        console.log(fbUserMetadata);
+        return usersByFbId[fbUserMetadata.id] || (usersByFbId[fbUserMetadata.id] = addUser('facebook', fbUserMetadata));
+      })
+      .redirectPath('/home');
+
     everyauth.google
       .appId(config.google.clientId)
       .appSecret(config.google.clientSecret)
-      .scope('https://www.googleapis.com/auth/userinfo.profile https://www.google.com/m8/feeds/')
+      .scope('https://www.googleapis.com/auth/userinfo.email')
       .findOrCreateUser( function (sess, accessToken, extra, googleUser) {
         googleUser.refreshToken = extra.refresh_token;
         googleUser.expiresIn = extra.expires_in;
+        // validateEmail(googleUser.email)
         console.log(googleUser)
+        function validateEmail(email) {
+            var re = /^\s*[\w\-\+_]+(\.[\w\-\+_]+)*\@[\w\-\+_]+\.[\w\-\+_]+(\.[\w\-\+_]+)*\s*$/;
+
+            if (re.test(email)) {
+                if ((email.indexOf('@columbia.edu', email.length -'@columbia.edu'.length) !== -1) 
+                  || (email.indexOf('@barnard.edu', email.length -'@barnard.edu'.length) !== -1)) {
+                    return true;
+                }
+            return false;
+            }
+        }
         return usersByGoogleId[googleUser.id] || (usersByGoogleId[googleUser.id] = addUser('google', googleUser));
       })
       .redirectPath('/home');
     }
 }
-

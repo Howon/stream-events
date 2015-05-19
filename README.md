@@ -6,6 +6,9 @@ password: streamevents <br>
 Mongolab user name : stream-events <br>
 password: streamevents1 <br>
 
+gmail email: streameventapp@gmail.com
+password: streamevents1
+
 current database user: master <br>
 password: master <br>
 
