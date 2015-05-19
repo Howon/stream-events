@@ -4,11 +4,11 @@ body{
 
 #main_area{
     position: absolute;
-    top: 0;
-    bottom: 0; 
+    top: 19%;
     left: 0; 
     right: 0;
-    margin: auto;
+    margin-left: auto;
+    margin-right: auto;
 	padding: 1%;
     background-color: #FFFFFA;
     width: 380px;
@@ -44,20 +44,20 @@ body{
 }
 
 #main_area #login span:first-child{
-	left: 6%;
+	left: 5%;
+	margin-top: 1px;
+	font: 16px Helvetica;
 }
 
 #main_area #login span#google_login{
 	font: 20px Helvetica;
-	margin-left: 10%;
-	margin-right: 6%;
+	margin-left: 8%;
+	margin-right: 4%;
 	width: 28%;
 }
 
 #main_area #login span#facebook_login{
 	font: 20px Helvetica;
-	/*width: 35%;*/
-	/*margin-right: 5%;*/
 }
 
 /*FOOTER*/
@@ -98,4 +98,5 @@ footer#aboutus #github-icon:hover{
 /*PARTICLES EFFECT*/
 #particles{
 	height:100%;
+	width: 100%;
 }

@@ -18,9 +18,8 @@ var control_sidebar = function(){
 		    },300);
 		    $("#eventBar").stop(true, false).animate({
 		    	"left":"0"
-		    },300);
+		    },300, "swing");
 		    $("#bringButton").css({
-		    	// "padding-right":"80px",
 		    	"padding-bottom":"35px"
 		    })
 		    $("#bringButton").stop(true, false).animate({
@@ -39,12 +38,11 @@ var control_sidebar = function(){
 	    },350);
 	    $("#eventBar").stop(true, false).animate({
 	    	"left":"-23%"
-	    },350);
+	    },350, "swing");
 	    $("#eventBar").css({
 	    	"z-index":"0"
 	    });
 	    $("#bringButton").css({
-	    	"padding-right":"0",
 	    	"padding-bottom":"0"
 	    })
 	    $("#bringButton").stop(true, false).animate({
@@ -93,10 +91,10 @@ var control_main_body_load = function(){
 				"color": "#000000"
 			});
 			$("#thread").css({
-				"z-index":"0"
+				"z-index":"-2"
 			});
 			$("#chatarea").css({
-				"z-index":"-1"
+				"z-index":"-5"
 			});
 			$("#thread").animate({
 				"margin-left": "40%",
@@ -125,10 +123,10 @@ var control_main_body_load = function(){
 				"color": "#000000"
 			});
 			$("#thread").css({
-				"z-index":"-1"
+				"z-index":"-5"
 			});
 			$("#chatarea").css({
-				"z-index":"0"
+				"z-index":"-2"
 			});
 			$("#bringMessages, #inputBar").delay(50).queue( 
 			  	function(next){ 
@@ -155,13 +153,13 @@ var socket_handling = function(){
 		window.location = '/home'
 	});
 	
-	socket.emit('get online users');
+	// socket.emit('get online users');
 
-	socket.on('get online users', function(data){
-		for(var i = 0; i < data.length; i++){
-			$('#users').append($('<li class="user">').text(" "+data[i].name));
-		}
-	});
+	// socket.on('get online users', function(data){
+	// 	for(var i = 0; i < data.length; i++){
+	// 		$('#users').append($('<li class="user">').text(" "+data[i].name));
+	// 	}
+	// });
 
 	var time = new Date();
 	var name = document.querySelector("textarea#name")
@@ -216,7 +214,25 @@ var socket_handling = function(){
 		 	valid = true;
 
 		if(event_name === null || event_name === ""){
-			$("#alert").html("Please type event name");
+			$("#alert").html("Please enter event name");
+			$("#alert").css({
+				"display": "block"
+			});
+			valid = false
+		}else if(event_time === null || event_time === ""){
+			$("#alert").html("Please enter time of your event");
+			$("#alert").css({
+				"display": "block"
+			});
+			valid = false
+		}else if(event_location === null || event_location === ""){
+			$("#alert").html("Please enter location of your event");
+			$("#alert").css({
+				"display": "block"
+			});
+			valid = false
+		}else if(event_description === null || event_description === ""){
+			$("#alert").html("Please describe your event");
 			$("#alert").css({
 				"display": "block"
 			});
@@ -233,6 +249,10 @@ var socket_handling = function(){
 			$("#eventPostArea").fadeOut(300);
 		}
 	});
+
+    $("#closePosting").click(function(){
+    	$("#eventPostArea").fadeOut(300);
+    })
 
 	socket.on("user disconnected", function(name){
 		$('#users> li:contains("' +name.value+ '" )').remove();

@@ -13,7 +13,7 @@ body {
 header#bar{
 	width: 100%;
 	height: 55px;
-	background-color: #5CADDB;
+	background-color: #5CADDB; /* from #4B8CB1 */
 	text-align: center;
 	position: fixed;
 	z-index: 1;
@@ -34,11 +34,9 @@ header#bar #title{
 	margin: auto;
     color: #FCE38F;
 	z-index: -500;
-}
-
-header#bar #title:hover{
     cursor: pointer;
 }
+
 /*-----------------------------------*/
 
 /*User*/
@@ -79,13 +77,13 @@ header#bar #userToggle #userMenu{
 
 header#bar #userToggle #list{
 	z-index: 10;
-	margin-top: 8px;
+	margin-top: 10px;
 	border-radius: 0;
 	padding: 0;
 	padding-bottom: 5%;
-	border: 0;
 	left: 5%;
 	position: absolute;
+	border: 1px solid #4B8CB1;
 }
 
 header#bar #userToggle .dropdown-men li{

@@ -13,7 +13,7 @@
 }
 
 div.eventHome{
-    border : 1px #AFB6BF solid;
+    border : 1px solid #4B8CB1;
 	position: absolute;
 	width: 98%;
 	left:1%;
@@ -61,11 +61,11 @@ div.eventHome#location #mapButton{
 	float: right;
 	padding-top: 2%;
 	padding-right: 1%;
+	cursor: pointer;
 }
 
 div.eventHome#location #mapButton:hover{
 	color: #93D167;
-	cursor: pointer;
 }
 
 div.eventHome#description{
@@ -80,5 +80,7 @@ div#body #map{
 	width: 80%;
 	height: 80%;
 	display: none;
+	border: 2px solid #4B8CB1;
+	border-radius: 3px;
 }
 

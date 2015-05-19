@@ -12,13 +12,13 @@ particlesJS('particles', {
         sync: false
       }
     },
-    size: 1,
+    size: 1.5,
     size_random: true,
     nb: 150,
     line_linked: {
       enable_auto: true,
       distance: 140,
-      color: '#AEBFE0',
+      color: '#56A2CC',
       opacity: 1,
       width: 1,
       condensed_mode: {
@@ -29,7 +29,7 @@ particlesJS('particles', {
     },
     anim: {
       enable: true,
-      speed: 1
+      speed: 1.2
     }
   },
   interactivity: {

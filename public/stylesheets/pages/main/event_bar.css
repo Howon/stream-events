@@ -64,7 +64,7 @@ header#bar #calendarView:hover{
 div#eventbar{
 	position: absolute;
 	height: 100%;
-	background-color: #FF9888;
+	background-color: #427C9D;
 	opacity: 0.8;
 	left: -23%;
 	width: 23%;
@@ -90,7 +90,7 @@ div#eventbar ul#eventStream li.event{
 	min-height: 90px;
 	margin-bottom: 3px;
 	background-color: white;
-	border-radius: 5px;
+	border-radius: 4px;
 	overflow: auto;
 }
 /*-----------------------------------*/
@@ -127,26 +127,15 @@ div#eventPostArea{
 	width: 500px;
 	height: 380px;
 	opacity: 0.95;
-	background-color: #4B4B4B;
+	background-color: #C5D9FF;
 	display: none;
 	border-radius: 5px;
-}
-
-div#eventPostArea #cancel{
-	position: absolute;
-	left:96%;
-	top: 1%;
-}
-
-div#eventPostArea #cancel:hover{
-	color: red;
-	cursor: pointer;
+	border: 1px solid #4B8CB1;
 }
 
 .eventPost{
     resize: none;
-    background-color: #D1D1D1;
-    border: 0;
+    background-color: #FFFFFF;
     margin: 0;
     padding: 0;
 }
@@ -157,6 +146,11 @@ div#eventPostArea #cancel:hover{
 	left: 5%;
 	height: 40%;
 	width: 30%;
+	border: 1px solid #4B8CB1;
+}
+
+#eventPostArea input{
+	border: 1px solid #4B8CB1;
 }
 
 .eventPost#Name{
@@ -204,29 +198,37 @@ div#eventPostArea #cancel:hover{
 	width: 90%;
 }
 
-.eventPost#menu span:hover{
+.eventPost#menu span{
 	cursor: pointer;
 }
 
+div#eventPostArea #closePosting{
+	position: absolute;
+	left: 95.5%;
+	top: 1%;
+}
+
+div#eventPostArea #closePosting:hover{
+	color: #FF4241;
+	cursor: pointer;
+}
 
 .eventPost#menu #submit{
-	position: fixed;
-	z-index: 1;
-	left: 70%;
+	float: right;
+	color: black;
 }
 
 .eventpost#menu #submit:hover{
-	color: green;
+	color: #5ECC61;
 }
 
 .eventpost#menu span#alert{
+	position: absolute;
 	padding: 0;
 	padding-left: 5px;
-	padding-right: 5px;
 	display: none;
-	width: 30%;
+	width: 60%;
 	margin: 0;
-	margin-right: 0;
 }
 
 ::-webkit-input-placeholder {

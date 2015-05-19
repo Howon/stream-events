@@ -16,7 +16,19 @@ module.exports = {
       }
       return user;
     }
+    
+    function validateEmail(email) {
+        var re = /^\s*[\w\-\+_]+(\.[\w\-\+_]+)*\@[\w\-\+_]+\.[\w\-\+_]+(\.[\w\-\+_]+)*\s*$/;
 
+        if (re.test(email)) {
+            if ((email.indexOf('@columbia.edu', email.length -'@columbia.edu'.length) !== -1) 
+              || (email.indexOf('@barnard.edu', email.length -'@barnard.edu'.length) !== -1)) {
+                return true;
+            }
+        return false;
+        }
+    }
+    
     var usersByGoogleId = {};
 
     everyauth.everymodule
@@ -40,20 +52,6 @@ module.exports = {
       .findOrCreateUser( function (sess, accessToken, extra, googleUser) {
         googleUser.refreshToken = extra.refresh_token;
         googleUser.expiresIn = extra.expires_in;
-        // validateEmail(googleUser.email)
-        console.log(googleUser)
-        // function validateEmail(email) {
-        //     var re = /^\s*[\w\-\+_]+(\.[\w\-\+_]+)*\@[\w\-\+_]+\.[\w\-\+_]+(\.[\w\-\+_]+)*\s*$/;
-
-        //     if (re.test(email)) {
-        //         if ((email.indexOf('@columbia.edu', email.length -'@columbia.edu'.length) !== -1) 
-        //           || (email.indexOf('@barnard.edu', email.length -'@barnard.edu'.length) !== -1)) {
-        //             return true;
-        //         }
-        //     return false;
-        //     }
-        // }
-        
         return usersByGoogleId[googleUser.id] || (usersByGoogleId[googleUser.id] = addUser('google', googleUser));
       })
       .redirectPath('/home');

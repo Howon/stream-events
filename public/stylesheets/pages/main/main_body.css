@@ -17,7 +17,7 @@ div#body{
     left: 10%;
     height: 85%;
     padding: 0;
-    border : 1px #AFB6BF solid;
+    border: 1px solid #4B8CB1;
 }
 
 div#menuSelector{
@@ -50,4 +50,3 @@ div.menu{
 #messageStream{
     top: 33%;
 }
-

@@ -11,16 +11,17 @@ block head
  script(type = 'text/javascript', src = '//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js')
  script(type = 'text/javascript', src = 'http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js')
 block header
-  div#bringEvents
+  - if(everyauth.loggedIn)
+   div#bringEvents
     span#bringButton Events &nbsp;
      i.fa.fa-chevron-right 
     span#blank
     span#calendarView 
      i.fa.fa-calendar.fa-lg
-  div#userToggle
-   a.btn.btn-primary#userName
-    p= everyauth.google.user.name
-   a.btn.btn-primary.dropdown-toogle#userMenu(data-toggle = 'dropdown')
+   div#userToggle
+    a.btn.btn-primary#userName
+     p= everyauth.google.user.name
+    a.btn.btn-primary.dropdown-toogle#userMenu(data-toggle = 'dropdown')
       span.fa.fa-caret-down.fa-lg   
       ul.dropdown-menu#list
         li
@@ -34,6 +35,9 @@ block header
         li
           a(href='/') Log Out &nbsp;
            i.fa.fa-sign-out
+  - else //- automatically redirects to homepage if not logged in
+    script(type='text/javascript'). 
+      window.location = "/"
 block body
   div#panel
    div#body 
@@ -70,7 +74,7 @@ block body
      a.btn.btn-danger(id = "post_event") Post Event &nbsp 
       i.fa.fa-plus.fa-lg
    div#eventPostArea
-    div#cancel.glyphicon.glyphicon-remove
+    div#closePosting.glyphicon.glyphicon-remove.fa-lg
     input.eventPost#Name(type = 'text', name = 'event name', placeholder = 'Event Name')
     input.eventPost#Time(type = 'text', name = 'event time', placeholder = 'Event Time')
     input.eventPost#Location(type = 'text', name = 'event location', placeholder = 'Event Location')
@@ -78,7 +82,8 @@ block body
     div.eventPost#Image
     div.eventPost#menu
      span#alert.alert.alert-danger
-     span#submit submit
+     span#submit submit &nbsp;
+      i.fa.fa-check-square-o
    script(type = 'text/javascript', src = '/javascripts/pages/main/home.js')
    script(type = 'text/javascript', src = '/javascripts/pages/main/leaflet.js')
 
