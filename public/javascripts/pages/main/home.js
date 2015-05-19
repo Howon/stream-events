@@ -19,12 +19,15 @@ var control_sidebar = function(){
 		    	"left":"0"
 		    },300);
 		    $("#bringButton").css({
-		    	"padding-right":"80px",
+		    	// "padding-right":"80px",
 		    	"padding-bottom":"35px"
 		    })
 		    $("#bringButton").stop(true, false).animate({
 		    	"padding-left":"3%"
 		    },300);
+		    $("#blank").css({
+		    	"display": 'block'
+		    });
 		    $("#calendarView").stop(true, false).fadeIn(300);
 		    $("#bringButton").html("<i class='fa fa-chevron-left'></i>&nbsp; Events ")
 		}
@@ -46,11 +49,14 @@ var control_sidebar = function(){
 	    $("#bringButton").stop(true, false).animate({
 	    	"padding-left":"0"
 	    },300);
+	    $("#blank").css({
+	    	"display": 'none'
+	    });
 		$("#calendarView").stop(true, false).fadeOut(300);
 	    $("#bringButton").html("Events &nbsp;<i class='fa fa-chevron-right'></i>")
 	}
 
-	$("#bringButton, #eventBar, #calendarView").hover(eventbar_on, eventbar_out);
+	$("#bringButton, #eventBar, #calendarView, #blank").hover(eventbar_on, eventbar_out);
 
 	$("#post_event").click(function(){
 		$("#eventPostArea").fadeIn(300);
