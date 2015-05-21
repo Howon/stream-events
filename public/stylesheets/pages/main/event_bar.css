@@ -119,11 +119,11 @@ div#eventbar ul#eventStream li.event{
 /*-----------------------------------*/
 div#eventPostArea{
 	position: absolute;
-	top: 0;
+	top: 20%;
 	left: 0;
 	right: 0;
-	bottom: 0;
-	margin: auto;
+	margin-left: auto;
+	margin-right: auto;
 	width: 500px;
 	height: 380px;
 	opacity: 0.95;
@@ -143,7 +143,7 @@ div#eventPostArea{
 .eventPost#Image{
 	position: relative;
 	top: 6%;
-	left: 5%;
+	left: 4%;
 	height: 40%;
 	width: 30%;
 	border: 1px solid #4B8CB1;
@@ -157,27 +157,40 @@ div#eventPostArea{
 	position: absolute;	
 	float: right;
 	top: 6%;
-	right: 5%;
+	right: 4%;
 	height: 8%;
-	width: 58%;
+	width: 59%;
 }
 
 .eventPost#Time{
 	position: relative;
 	float: right;
 	top: 22%;
-	right: 5%;
+	right: 4%;
 	height: 8%;
-	width: 58%;
+	width: 59%;
 }
 
 .eventPost#Location{
 	position: relative;
 	float: right;
 	top: 30%;
-	right: 5%;
+	right: 4%;
 	height: 8%;
-	width: 58%;
+	width: 59%;
+	background: transparent;
+	padding: 0;
+}
+
+.eventPost#Location input{
+	width: 92%;
+	margin-right: 2%;
+	height: 100%;
+}
+
+.eventPost#Location #mapPostButton:hover{
+	cursor: pointer;
+	color: #71D04C;
 }
 
 .eventPost#Description{
@@ -185,8 +198,8 @@ div#eventPostArea{
 	float: right;
 	top: 52%;
 	height: 38%;
-	left: 5%;
-	width: 90%;
+	left: 4%;
+	width: 92%;
 }
 
 .eventPost#menu{
@@ -204,7 +217,7 @@ div#eventPostArea{
 
 div#eventPostArea #closePosting{
 	position: absolute;
-	left: 95.5%;
+	left: 96.5%;
 	top: 1%;
 }
 

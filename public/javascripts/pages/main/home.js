@@ -3,7 +3,6 @@ var socket = io();
 $(window).load(function() {
 	manipulate_elements();
 	socket_handling();
-	getLocation();
 });
 
 var manipulate_elements = function(){
@@ -68,14 +67,15 @@ var control_sidebar = function(){
 var control_event_posting = function(){
 	$(document).mouseup(function (e){
 		var container = $("#eventPostArea");
-		if (!container.is(e.target) && container.has(e.target).length === 0){ // ... nor a descendant of the container
+		if (!$('#mapPost').is(":visible") && !container.is(e.target) && container.has(e.target).length === 0){ // ... nor a descendant of the container
         	container.fadeOut(300);
 	    }
 	}).keyup(function(e){
-		if(e.keyCode == 27){
+		if(!$('#mapPost').is(":visible") && e.keyCode == 27){
 			$("#eventPostArea").fadeOut(300);
 		}
-	});;
+	});
+	
 	$("#cancel").click(function(){
 		$("#eventPostArea").fadeOut(300);
 	});
@@ -152,14 +152,6 @@ var socket_handling = function(){
 	$("#title").click(function(){
 		window.location = '/home'
 	});
-	
-	// socket.emit('get online users');
-
-	// socket.on('get online users', function(data){
-	// 	for(var i = 0; i < data.length; i++){
-	// 		$('#users').append($('<li class="user">').text(" "+data[i].name));
-	// 	}
-	// });
 
 	var time = new Date();
 	var name = document.querySelector("textarea#name")
@@ -284,34 +276,4 @@ var socket_handling = function(){
 	socket.on('disconnect',function(){
 		console.log("User disconnected")
 	})
-}
-
-
-function getLocation() {
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(showPosition);
-    }
-}
-
-function showPosition(position) {
-    var lat = position.coords.latitude;
-    var lon = position.coords.longitude;
-    console.log(lat + " " + lon);   
-}
-
-function showError(error) {
-    switch(error.code) {
-        case error.PERMISSION_DENIED:
-            console.log("User denied the request for Geolocation.")
-            break;
-        case error.POSITION_UNAVAILABLE:
-            console.log("Location information is unavailable.")
-            break;
-        case error.TIMEOUT:
-            console.log("The request to get user location timed out.")
-            break;
-        case error.UNKNOWN_ERROR:
-            console.log("An unknown error occurred.")
-            break;
-    }
 }

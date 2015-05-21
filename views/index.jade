@@ -6,6 +6,7 @@ block head
  link(rel = 'stylesheet', href = 'stylesheets/pages/main/event_thread.css')
  link(rel = 'stylesheet', href = 'stylesheets/pages/main/event_chat.css')    
  link(rel = 'stylesheet', href = 'stylesheets/pages/main/main_body.css')        
+ link(rel = 'stylesheet', href = 'stylesheets/pages/main/map_control.css')        
  link(rel = 'stylesheet', href = 'http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css')
  script(src='http://static.ak.fbcdn.net/connect/en_US/core.js')
  script(type = 'text/javascript', src = '//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js')
@@ -58,6 +59,7 @@ block body
       div#inputBar     
        input.messaging#text(type = 'text', name = 'chat message', placeholder = 'Type your message')
      div#map
+     div#mapPost
    div#menuSelector
     div.menu#eventThread
       i.fa.fa-list-alt.fa-2x
@@ -74,10 +76,12 @@ block body
      a.btn.btn-danger(id = "post_event") Post Event &nbsp 
       i.fa.fa-plus.fa-lg
    div#eventPostArea
-    div#closePosting.glyphicon.glyphicon-remove.fa-lg
+    div#closePosting.glyphicon.glyphicon-remove
     input.eventPost#Name(type = 'text', name = 'event name', placeholder = 'Event Name')
     input.eventPost#Time(type = 'text', name = 'event time', placeholder = 'Event Time')
-    input.eventPost#Location(type = 'text', name = 'event location', placeholder = 'Event Location')
+    div.eventPost#Location
+      input(type = 'text', name = 'event location', placeholder = 'Event Location')
+      i.fa.fa-globe.fa-lg#mapPostButton
     input.eventPost#Description(type = 'text', name = 'event description', placeholder = 'Event Description')
     div.eventPost#Image
     div.eventPost#menu
@@ -85,6 +89,8 @@ block body
      span#submit submit &nbsp;
       i.fa.fa-check-square-o
    script(type = 'text/javascript', src = '/javascripts/pages/main/home.js')
+   script(type = 'text/javascript', src = '/javascripts/sources/Control.Geocoder.js')
+   //- credit to https://github.com/perliedman/leaflet-control-geocoder
    script(type = 'text/javascript', src = '/javascripts/pages/main/leaflet.js')
 
 

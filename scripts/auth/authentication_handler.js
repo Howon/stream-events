@@ -28,7 +28,7 @@ module.exports = {
         return false;
         }
     }
-    
+
     var usersByGoogleId = {};
 
     everyauth.everymodule
@@ -52,7 +52,8 @@ module.exports = {
       .findOrCreateUser( function (sess, accessToken, extra, googleUser) {
         googleUser.refreshToken = extra.refresh_token;
         googleUser.expiresIn = extra.expires_in;
-        return usersByGoogleId[googleUser.id] || (usersByGoogleId[googleUser.id] = addUser('google', googleUser));
+        return usersByGoogleId[googleUser.id] 
+          || (usersByGoogleId[googleUser.id] = addUser('google', googleUser));
       })
       .redirectPath('/home');
     }

@@ -72,15 +72,3 @@ div.eventHome#description{
 	top: 55%;
 	height: 44%;
 }
-
-div#body #map{
-	position: absolute;
-	top: 10%;
-	left: 10%;
-	width: 80%;
-	height: 80%;
-	display: none;
-	border: 2px solid #4B8CB1;
-	border-radius: 3px;
-}
-
