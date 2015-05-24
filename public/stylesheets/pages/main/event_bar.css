@@ -14,10 +14,10 @@ header#bar #bringButton{
 	float: left;
     left: 7%;
 	font: 15px Helvetica;
-	top: 20px;
+	top: 15px;
 	height: 20px;
 	position: relative;
-	color: #FCE38F;
+	color: #FFEF91;
     cursor: pointer;
 }
 
@@ -37,11 +37,11 @@ header#bar #bringButton:hover{
 
 header#bar #calendarView{
 	right: 20%;
-	top: 23px;
+	top: 18px;
 	height: 40%;
 	position: absolute;
 	display: none;
-	color: #FCE38F;
+	color: #FFEF91;
 	cursor: pointer;
 }
 
@@ -74,13 +74,13 @@ div#eventbar{
 /*Each event element*/
 /*-----------------------------------*/
 div#eventbar ul#eventStream{
-	top: 5px;
+	top: 4%;
 	left: 1.5%;
 	border: 0;
 	position: absolute;	
 	overflow: auto;
 	width: 97%;
-	height: 92%;
+	height: 93%;
 }
 
 div#eventbar ul#eventStream li.event{
@@ -97,40 +97,45 @@ div#eventbar ul#eventStream li.event{
 
 /*"Post event" button*/
 /*-----------------------------------*/
-#post_event{		
+div#eventBarMenu{		
+	font: 15px Helvetica;
 	position: absolute;
-	float: bottom;
-	top: 95%;
+	top: 1%;
 	left: 0;
 	right: 0;
     margin-left: 0;
     margin-right: 0;
     padding: 0;
 	border: 0;
-	font: 15px Helvetica;
 	background-color: transparent;
 	border: 0;	
+	display: none;
 	color: #FFEC6A;
 }
 
+div#eventBarMenu .fa.fa-plus.fa-lg{
+	position: absolute;
+	float: right;
+	right: 10%;
+}
 /*-----------------------------------*/
 
 /*Event posting form*/
 /*-----------------------------------*/
 div#eventPostArea{
 	position: absolute;
-	top: 20%;
+	top: 25%;
 	left: 0;
 	right: 0;
 	margin-left: auto;
 	margin-right: auto;
-	width: 500px;
-	height: 380px;
-	opacity: 0.95;
-	background-color: #C5D9FF;
-	display: none;
+	width: 340px;
+	height: 300px;
+	background-color: #FDFDFD;
+	/*display: none;*/
 	border-radius: 5px;
-	border: 1px solid #4B8CB1;
+	border: 2px solid #4B8CB1;
+	font: 13px Helvetica;
 }
 
 .eventPost{
@@ -141,12 +146,18 @@ div#eventPostArea{
 }
 
 .eventPost#Image{
-	position: relative;
-	top: 6%;
-	left: 4%;
-	height: 40%;
-	width: 30%;
-	border: 1px solid #4B8CB1;
+	position: absolute;
+	float: left;
+	top: 23px;
+	left: 5%;
+	width: 0;
+	height: 0;
+	color: black;
+	cursor: pointer;
+}
+
+.eventPost#Image:hover{
+	color: #DC4062;
 }
 
 #eventPostArea input{
@@ -155,58 +166,94 @@ div#eventPostArea{
 
 .eventPost#Name{
 	position: absolute;	
-	float: right;
-	top: 6%;
-	right: 4%;
-	height: 8%;
-	width: 59%;
-}
-
-.eventPost#Time{
-	position: relative;
-	float: right;
-	top: 22%;
-	right: 4%;
-	height: 8%;
-	width: 59%;
+	float: left;
+	top: 22px;
+	left: 15%;
+	height: 30px;
+	width: 80%;
 }
 
 .eventPost#Location{
 	position: relative;
-	float: right;
-	top: 30%;
-	right: 4%;
-	height: 8%;
-	width: 59%;
+	float: left;
+	top: 66px;
+	left: 5%;
+	height: 60px;
+	width: 90%;
 	background: transparent;
 	padding: 0;
 }
 
 .eventPost#Location input{
-	width: 92%;
+	position: relative;
+	left: 11.3%;
+	width: 88.7%;
 	margin-right: 2%;
-	height: 100%;
+	margin-bottom: 2%;
+	height: 49%;
 }
 
-.eventPost#Location #mapPostButton:hover{
+.eventPost#Location p#coordinates{
+	display: none;
+}
+
+.eventPost#Location p#display_name{
+	width: 93%;
+	height: 49%;
+	overflow: auto;
+	border: 1px solid #4B8CB1;
+	padding-top: 5px;
+	vertical-align: middle;
+	background-color: white;
+	display:none;
+}
+
+.eventPost#Time{
+	position: relative;
+	float: left;
+	top: 50px;
+	left: 15%;
+	height: 30px;
+	width: 80%;
+}
+
+#timeSelector{
+	position: absolute;
+	float: left;
+	left: 5%;
+	top: 110px;
 	cursor: pointer;
-	color: #71D04C;
+}
+
+#timeSelector:hover{
+	color: #6B9CFD;
+}
+
+#locationSelectorButton{
+	float: right;
+	position: absolute;
+}
+
+.eventPost#Location #locationSelectorButton:hover{
+	cursor: pointer;
+	color: #67C761;
 }
 
 .eventPost#Description{
 	position: absolute;
-	float: right;
-	top: 52%;
-	height: 38%;
-	left: 4%;
-	width: 92%;
+	float: left;
+	top: 156px;
+	height: 100px;
+	left: 5%;
+	width: 90%;
 }
 
 .eventPost#menu{
+	font: 15px Helvetica;
 	position: absolute;
 	background-color: transparent;
 	color: white;
-	top: 92%;
+	top: 266px;
 	left: 5%;
 	width: 90%;
 }
@@ -217,8 +264,8 @@ div#eventPostArea{
 
 div#eventPostArea #closePosting{
 	position: absolute;
-	left: 96.5%;
-	top: 1%;
+	left: 95%;
+	top: 1.2%;
 }
 
 div#eventPostArea #closePosting:hover{
@@ -240,7 +287,7 @@ div#eventPostArea #closePosting:hover{
 	padding: 0;
 	padding-left: 5px;
 	display: none;
-	width: 60%;
+	width: 75%;
 	margin: 0;
 }
 

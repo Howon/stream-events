@@ -24,7 +24,7 @@ var control_sidebar = function(){
 		    $("#bringButton").stop(true, false).animate({
 		    	"padding-left":"3%"
 		    },300);
-		    $("#blank").css({
+		    $("#blank, #eventBarMenu").css({
 		    	"display": 'block'
 		    });
 		    $("#calendarView").stop(true, false).fadeIn(300);
@@ -47,7 +47,7 @@ var control_sidebar = function(){
 	    $("#bringButton").stop(true, false).animate({
 	    	"padding-left":"0"
 	    },300);
-	    $("#blank").css({
+	    $("#blank, #eventBarMenu").css({
 	    	"display": 'none'
 	    });
 		$("#calendarView").stop(true, false).fadeOut(300);
@@ -67,11 +67,11 @@ var control_sidebar = function(){
 var control_event_posting = function(){
 	$(document).mouseup(function (e){
 		var container = $("#eventPostArea");
-		if (!$('#mapPost').is(":visible") && !container.is(e.target) && container.has(e.target).length === 0){ // ... nor a descendant of the container
+		if (!$('#map').is(":visible") && !container.is(e.target) && container.has(e.target).length === 0){ // ... nor a descendant of the container
         	container.fadeOut(300);
 	    }
 	}).keyup(function(e){
-		if(!$('#mapPost').is(":visible") && e.keyCode == 27){
+		if(!$('#map').is(":visible") && e.keyCode == 27){
 			$("#eventPostArea").fadeOut(300);
 		}
 	});

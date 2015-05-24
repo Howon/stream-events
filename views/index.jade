@@ -8,7 +8,6 @@ block head
  link(rel = 'stylesheet', href = 'stylesheets/pages/main/main_body.css')        
  link(rel = 'stylesheet', href = 'stylesheets/pages/main/map_control.css')        
  link(rel = 'stylesheet', href = 'http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css')
- script(src='http://static.ak.fbcdn.net/connect/en_US/core.js')
  script(type = 'text/javascript', src = '//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js')
  script(type = 'text/javascript', src = 'http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js')
 block header
@@ -58,14 +57,17 @@ block body
       ul#messages
       div#inputBar     
        input.messaging#text(type = 'text', name = 'chat message', placeholder = 'Type your message')
-     div#map
      div#mapPost
+      div#mapMenu
+      div#map
    div#menuSelector
     div.menu#eventThread
       i.fa.fa-list-alt.fa-2x
     div.menu#messageStream
       i.fa.fa-comments-o.fa-2x
    div#eventBar
+     div#eventBarMenu
+      i.fa.fa-plus.fa-lg
      ul#eventStream
       li.event 1  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis adipisci a earum voluptatem ipsum, non, laboriosam laudantium est ea, corporis ut explicabo doloribus dolor optio placeat, aliquam officiis assumenda obcaecati.
       li.event 2  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo ab placeat veniam ratione hic atque impedit facilis, possimus, tenetur praesentium earum doloremque deleniti illum totam optio deserunt dolorem aperiam repellat.
@@ -73,25 +75,29 @@ block body
       li.event 4  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi reiciendis ducimus at ipsam, possimus accusantium ratione aliquam laboriosam perspiciatis esse nam minus quasi, dicta recusandae atque mollitia? Aperiam, corporis, possimus.
       li.event 5  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt quas iure veniam consequuntur nulla, aspernatur temporibus, numquam quis ex, recusandae dolorum aut laborum in ipsam velit fuga voluptatum iste. Quidem.
       li.event 6  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos aut, ipsam modi excepturi possimus odio, enim iste incidunt aperiam voluptate ex, beatae blanditiis id consectetur voluptatibus libero. Atque, architecto, dolorum?
-     a.btn.btn-danger(id = "post_event") Post Event &nbsp 
-      i.fa.fa-plus.fa-lg
-   div#eventPostArea
-    div#closePosting.glyphicon.glyphicon-remove
-    input.eventPost#Name(type = 'text', name = 'event name', placeholder = 'Event Name')
-    input.eventPost#Time(type = 'text', name = 'event time', placeholder = 'Event Time')
-    div.eventPost#Location
-      input(type = 'text', name = 'event location', placeholder = 'Event Location')
-      i.fa.fa-globe.fa-lg#mapPostButton
-    input.eventPost#Description(type = 'text', name = 'event description', placeholder = 'Event Description')
-    div.eventPost#Image
-    div.eventPost#menu
-     span#alert.alert.alert-danger
-     span#submit submit &nbsp;
-      i.fa.fa-check-square-o
-   script(type = 'text/javascript', src = '/javascripts/pages/main/home.js')
-   script(type = 'text/javascript', src = '/javascripts/sources/Control.Geocoder.js')
-   //- credit to https://github.com/perliedman/leaflet-control-geocoder
-   script(type = 'text/javascript', src = '/javascripts/pages/main/leaflet.js')
+     //- a.btn.btn-danger(id = "post_event") Post Event &nbsp 
+     //-  i.fa.fa-plus.fa-lg
+  div#eventPostArea
+   div#closePosting.glyphicon.glyphicon-remove
+   input.eventPost#Name(type = 'text', name = 'event name', placeholder = 'Event Name')
+   div.eventPost#Location
+     i.fa.fa-globe.fa-2x#locationSelectorButton
+     input#locDescript(type = 'text', name = 'event location', placeholder = 'Event Location')
+     p#display_name
+     p#coordinates
+   i.fa.fa-calendar-o.fa-2x#timeSelector
+   input.eventPost#Time(type = 'text', name = 'event time', placeholder = 'Event Time')
+   input.eventPost#Description(type = 'text', name = 'event description', placeholder = 'Event Description')
+   div.eventPost#Image
+     i.fa.fa-file-image-o.fa-2x
+   div.eventPost#menu
+    span#alert.alert.alert-danger
+    span#submit submit &nbsp;
+     i.fa.fa-check-square-o
+  script(type = 'text/javascript', src = '/javascripts/pages/main/home.js')
+  script(type = 'text/javascript', src = '/javascripts/sources/Control.Geocoder.js')
+  //- credit to https://github.com/perliedman/leaflet-control-geocoder
+  script(type = 'text/javascript', src = '/javascripts/pages/main/leaflet.js')
 
 
 
