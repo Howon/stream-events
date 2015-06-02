@@ -1,4 +1,4 @@
-#chatarea{
+#chatArea{
     position: absolute;
     float: left;
     margin-left: 100%;
@@ -17,28 +17,17 @@ div#inputBar{
     display: none;
 }
 
-input{
-    padding: 0;
-    border-radius: 0;
-}
-
-input.messaging{
-    float: left;
-    height: 80%;
-    border-radius: 0;
-    padding: 3px;
-    top: 10%;
-    border:0px;
-    position: relative;
-    resize: none;
-    outline: none;
-}
-
-input#text{
-    padding: 0.5%;
+textarea#messageInput{
+    position: absolute;
+    padding-top: 0.5%;
     left: 2%;
     width: 96%;
+    height: 80%;
+    top: 15%;
     border : 1px solid #4B8CB1;
+    resize: none;
+    /*line-height: 0;*/
+    outline: none;
 }
 
 ul#messages{ 
@@ -51,8 +40,8 @@ ul#messages{
     padding-top: 1%;
     padding-left: 3%;
     padding-right: 3%;
+    z-index: 5;
 }
-
 
 ul#messages li{ 
     padding: 0; 

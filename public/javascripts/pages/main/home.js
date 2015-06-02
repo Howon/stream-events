@@ -1,4 +1,5 @@
-var socket = io();
+var socket = io(),
+	userID;
 
 $(window).load(function() {
 	manipulate_elements();
@@ -11,155 +12,152 @@ var manipulate_elements = function(){
 }
 
 var control_sidebar = function(){
+	var eventBar = document.getElementById('eventBar'),
+		bringButton = document.getElementById('bringButton');
+
 	var eventbar_on = function(){
-		    $("#body, #menuSelector").stop(true, false).animate({
+		    $("#body, #menuSelector").velocity('stop').velocity({
 		    	"opacity":"0.4"
-		    },300);
-		    $("#eventBar").stop(true, false).animate({
-		    	"left":"0"
-		    },300, "swing");
-		    $("#bringButton").css({
-		    	"padding-bottom":"35px"
-		    })
-		    $("#bringButton").stop(true, false).animate({
+		    },{duration: 400});
+
+		    $('#eventBar').velocity('stop').velocity({
+		    	translateX: "307px"
+		    },{duration: 400});
+
+		    bringButton.style.paddingBottom = '30px';
+
+		    $("#bringButton").velocity('stop').velocity({
 		    	"padding-left":"3%"
-		    },300);
-		    $("#blank, #eventBarMenu").css({
+		    }, {duration: 400});
+
+		    $("#blank, #eventBarMenu, #calendarView").css({
 		    	"display": 'block'
 		    });
-		    $("#calendarView").stop(true, false).fadeIn(300);
-		    $("#bringButton").html("<i class='fa fa-chevron-left'></i>&nbsp; Events ")
-		}
+
+		    bringButton.innerHTML = "<i class='fa fa-chevron-left'></i>&nbsp; Events ";
+	}
 
 	var eventbar_out = function(){
-	    $("#body, #menuSelector").stop(true, false).animate({
-	    	"opacity":"1"
-	    },350);
-	    $("#eventBar").stop(true, false).animate({
-	    	"left":"-23%"
-	    },350, "swing");
-	    $("#eventBar").css({
-	    	"z-index":"0"
-	    });
-	    $("#bringButton").css({
-	    	"padding-bottom":"0"
-	    })
-	    $("#bringButton").stop(true, false).animate({
-	    	"padding-left":"0"
-	    },300);
-	    $("#blank, #eventBarMenu").css({
-	    	"display": 'none'
-	    });
-		$("#calendarView").stop(true, false).fadeOut(300);
-	    $("#bringButton").html("Events &nbsp;<i class='fa fa-chevron-right'></i>")
+		    $("#body, #menuSelector").velocity('stop').velocity({
+		    	opacity:1
+		    }, {duration: 450});
+
+		    $('#eventBar').velocity('stop').velocity({
+		    	translateX: "0"
+		    }, {duration: 450});
+
+		    bringButton.style.paddingBottom = '0'
+
+		    $("#bringButton").velocity('stop').velocity({
+		    	"padding-left":"0"
+		    },{duration: 400});
+
+		    $("#blank, #eventBarMenu, #calendarView").css({
+		    	"display": 'none'
+		    });
+
+		    bringButton.innerHTML = "Events &nbsp;<i class='fa fa-chevron-right'></i>";
 	}
 
 	$("#bringButton, #eventBar, #calendarView, #blank").hover(eventbar_on, eventbar_out);
 
-	$("#post_event").click(function(){
-		$("#eventPostArea").fadeIn(300);
+	var control_post_Area = function(){
+		$("#eventPostArea").velocity({ opacity: 1 }, { display: "block" }, {duration: 200});
 		eventbar_out();
-		control_event_posting();
-	});
+		close_event_posting();
+	};
 
+	document.getElementById('post_event').onclick = control_post_Area;
 }
 
-var control_event_posting = function(){
-	$(document).mouseup(function (e){
-		var container = $("#eventPostArea");
-		if (!$('#map').is(":visible") && !container.is(e.target) && container.has(e.target).length === 0){ // ... nor a descendant of the container
-        	container.fadeOut(300);
-	    }
-	}).keyup(function(e){
-		if(!$('#map').is(":visible") && e.keyCode == 27){
-			$("#eventPostArea").fadeOut(300);
+var close_event_posting = function(){
+	var container = $('#eventPostArea');
+
+	window.onkeyup = function(e){
+		if(!$("#map").is(':visible') && e.keyCode == 27){
+			container.velocity({ opacity: 0 }, { display: "none" }, {duration: 200});
 		}
-	});
+	};
 	
-	$("#cancel").click(function(){
-		$("#eventPostArea").fadeOut(300);
-	});
+	document.getElementById("closePosting").onclick = function(){
+		container.velocity({ opacity: 0 }, { display: "none" }, {duration: 200});
+	};
 }
 
 var control_main_body_load = function(){
-    $("#eventThread").click(
-		function(){
-			$("#eventThread").css({
-				"color": "#5ED3D2"
-			});
-			$("#messageStream").css({
-				"color": "#000000"
-			});
-			$("#thread").css({
-				"z-index":"-2"
-			});
-			$("#chatarea").css({
-				"z-index":"-5"
-			});
-			$("#thread").animate({
+	var bringThread = document.getElementById('bringThread'),
+	    bringChat = document.getElementById('bringChat'),
+		threadArea = document.getElementById('threadArea'),
+		chatArea = document.getElementById('chatArea');
+
+	var removeChat = function(){	
+					$("#bringMessages, #inputBar").css('display','none');   
+					chatArea.style.zIndex = "-1";
+					threadArea.style.zIndex = "0";
+	};
+
+	var removeThread = function(){	
+					chatArea.style.zIndex = "0";
+					threadArea.style.zIndex = "-1";
+	};
+
+    bringThread.onclick = function(){
+			bringChat.style.color = "#000000";
+			chatArea.style.zIndex = "-2";
+
+			bringThread.style.color = "#00BCD4";
+			threadArea.style.zIndex = "-1";
+
+			$("#threadArea").velocity({
 				"margin-left": "40%",
 				"width": "60%"
-			},200);
-			$("#chatarea").delay(200).animate({
+			}, {duration: 300});
+
+			$("#chatArea").velocity({
 				"margin-left": "100%",
 				"width" : "0"
-			},1);
-			$("#bringMessages, #inputBar").delay(200).queue( 
-			  	function(next){ 
-				    $(this).css('display','none'); 
-				    next(); 
-			});
-			threadOn = true;
-			chaton = false;
-		}
-	);
+			},{duration: 1, delay: 300});
+			setTimeout(removeChat, 300);
+	};
 
-    $("#messageStream").click(
-		function(){
-			$("#messageStream").css({
-				"color": "#E0C2D7"
-			});
-			$("#eventThread").css({
-				"color": "#000000"
-			});
-			$("#thread").css({
-				"z-index":"-5"
-			});
-			$("#chatarea").css({
-				"z-index":"-2"
-			});
+    bringChat.onclick = function(){
+			chatArea.style.zIndex = "-1";
+			bringChat.style.color = "#E91E63";
+
+			threadArea.style.zIndex = "-2";
+			bringThread.style.color = "#000000";
+
 			$("#bringMessages, #inputBar").delay(50).queue( 
 			  	function(next){ 
 				    $(this).css('display','block'); 
 				    next(); 
 			});
-			$("#chatarea").animate({
+
+			$("#chatArea").velocity({
 				"margin-left": "40%",
 				"width": "60%"
-			},200);
-			$("#thread").delay(200).animate({
+			}, {duration: 300});
+
+			$("#threadArea").velocity({
 				"margin-left": "100%",
 				"width" : "0"
-			}, 1);
-			threadOn = false;
-			chatOn = true;
-			infoOn = false;
-		}
-	);
-}
+			}, {duration: 1, delay: 300});
+
+			setTimeout(removeThread, 300);
+			
+	};
+};
 
 var socket_handling = function(){
-	$("#title").click(function(){
+	var redirect_home = function(){
 		window.location = '/home'
-	});
+	};
 
-	var time = new Date();
-	var name = document.querySelector("textarea#name")
+	document.getElementById('title').onclick = redirect_home;
 
-	person = ""
-
-	var textarea = document.querySelector("input#text")
-
+	var textarea = document.getElementById("messageInput");
+	var person = document.getElementById('userName').innerHTML;
+	
 	// $('#bringMessages').off().click(function(){
 	// 	console.log("pressed")	/* Act on the event */
 	// 	socket.emit("bring previous messages");
@@ -178,102 +176,145 @@ var socket_handling = function(){
 	// 	  }
 	//   });
 	// });
-
-	textarea.addEventListener('keydown',function(event){
+	var send_message = function(event){
 		var self = this;
-		// var	person = name.value
 
 		if(event.which === 13 && event.shiftKey === false){
-			console.log(self.value);
 			socket.emit('send chat message',{
-				// name : person,
-				time : time,
+				name : person,
 				message: self.value
 			});
-			socket.emit('user joined',{
-				// name : person,
-				time : time
-			})
+			
 			event.preventDefault();
 		}
-	});
-	
-	$("#submit").click(function(){
-		var event_name = $(".eventPost#Name").val(),
-			event_time = $(".eventPost#Time").val(),
-			event_location = $(".eventPost#Location").val(),
-			event_description = $(".eventPost#Description").val(),
+	}
+
+	textarea.addEventListener('keydown', send_message);
+
+	var post_submit_handler = function(){
+		var event_name = document.getElementById("Name").value,
+			event_time = document.getElementById("Time").value,
+			event_location = document.getElementById("locDescript").value,
+			event_description = document.getElementById("Description").value,
 		 	valid = true;
 
+		var alert = document.getElementById('alert');
+
 		if(event_name === null || event_name === ""){
-			$("#alert").html("Please enter event name");
-			$("#alert").css({
-				"display": "block"
-			});
-			valid = false
-		}else if(event_time === null || event_time === ""){
-			$("#alert").html("Please enter time of your event");
-			$("#alert").css({
-				"display": "block"
-			});
+			alert.innerHTML = "Please enter event name";
+			alert.style.display = 'block'
 			valid = false
 		}else if(event_location === null || event_location === ""){
-			$("#alert").html("Please enter location of your event");
-			$("#alert").css({
-				"display": "block"
-			});
+			alert.innerHTML = "Please enter location of your event";
+			alert.style.display = 'block'
+			valid = false
+		}else if(event_time === null || event_time === ""){
+			alert.innerHTML = "Please enter time of your event";
+			alert.style.display = 'block'
 			valid = false
 		}else if(event_description === null || event_description === ""){
-			$("#alert").html("Please describe your event");
-			$("#alert").css({
-				"display": "block"
-			});
+			alert.innerHTML = "Please describe your event";
+			alert.style.display = 'block'
 			valid = false
 		}
 
 		if(valid){
 			socket.emit("post event", {
-				event : event_name,
-				time : event_time,
+				title : event_name,
 				location: event_location,
+				time : event_time,
 				description: event_description
 			});
-			$("#eventPostArea").fadeOut(300);
+			$("#eventPostArea").velocity({ opacity: 0 }, { display: "none" }, {duration: 300});
 		}
-	});
 
-    $("#closePosting").click(function(){
-    	$("#eventPostArea").fadeOut(300);
-    })
+		document.getElementById("Name").value = '';
+		document.getElementById("Time").value = '';
+		document.getElementById("locDescript").value = '';
+		document.getElementById("Description").value = '';
 
-	socket.on("user disconnected", function(name){
-		$('#users> li:contains("' +name.value+ '" )').remove();
-	})
+		event_name = null;
+		event_time = null;
+		event_location = null;
+		event_description = null;
+		alert = null;
+	};
 
-	socket.on('status', function(data){
-		if(data.status === 'need username'){
-			alert("Input a valid username")
-		}
-	});
-	
-	socket.on('user joined', function(usr, status){
-		$('#users').append($('<li class="user">').text(" "+usr));
-	});
-	
-	socket.on('send chat message', function(msg, usr){
-		if (person == usr){
-			$('#messages').append($('<li class="user"> ').text(msg));
+	document.getElementById("submit").onclick = post_submit_handler;
+
+    var close_post_area = function(){
+    	$("#eventPostArea").velocity({ opacity: 0 }, { display: "none" }, {duration: 300});
+    };
+
+    document.getElementById("closePosting").onclick = close_post_area;
+
+    var receive_chat_message = function(msg, user){
+		var messages = document.getElementById('messages');
+
+	    var message = document.createElement('li');
+	    message.innerHTML = msg;
+
+	    if (person == user){
+		    message.className = 'user';
 		}
 		else {
-			$('#messages').append($('<li class="other"> ').text(msg));
+		    message.className = 'other';
 		}
-		$("#messages").animate({ 
+
+		messages.appendChild(message);
+
+		$("#messages").velocity({ 
 			scrollTop: $("#messages").prop("scrollHeight") + $("#messages").height() 
 		}, 10);
+
 		textarea.value = '';
-	});
+	};
+
+	socket.on('send chat message', receive_chat_message);
+
+	var handle_new_event = function(event){
+		var eventStream = document.getElementById("eventStream");
+		var eventPost_node = document.createElement("LI");
+
+		eventPost_node.className = 'event';
+
+		var textNode;
+
+		var eventPost_title = document.createElement("div");
+			eventPost_title.className = eventPost_title;
+			textNode = document.createTextNode(event.title);
+			eventPost_title.appendChild(textNode);
+
+		var eventPost_location = document.createElement("div");
+			eventPost_location.className = eventPost_location;
+			textNode = document.createTextNode(event.location);
+			eventPost_location.appendChild(textNode);
+
+		var eventPost_time = document.createElement("div");
+			eventPost_time.className = eventPost_time;
+			textNode = document.createTextNode(event.time);
+			eventPost_time.appendChild(textNode);
+			
+		var eventPost_description = document.createElement("div");
+			eventPost_description.className = eventPost_description;
+			textNode = document.createTextNode(event.description);
+			eventPost_description.appendChild(textNode);
+		
+	    eventPost_node.appendChild(eventPost_title);
+	    eventPost_node.appendChild(eventPost_location);
+	    eventPost_node.appendChild(eventPost_time);
+	    eventPost_node.appendChild(eventPost_description);
+
+	    if(eventStream.childNodes[0].id === 'noEventFiller'){
+	    	eventStream.replaceChild(eventPost_node, eventStream.childNodes[0]);
+	    }else{
+	    	eventStream.appendChild(eventPost_node);
+	    }
+	};
+
+	socket.on('new event', handle_new_event);
 
 	socket.on('disconnect',function(){
 		console.log("User disconnected")
 	})
-}
+};

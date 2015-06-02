@@ -2,7 +2,6 @@ doctype html
 extends layout
 block head
   script(type = 'text/javascript', src = 'https://apis.google.com/js/client:platform.js', async, defer)
-  script(type = 'text/javascript', src = 'http://static.ak.fbcdn.net/connect/en_US/core.js')
   script(type = 'text/javascript', src = '/javascripts/sources/particles.min.js')
   link(rel ='stylesheet', href = 'stylesheets/pages/login/login_page.css')  
 block body
@@ -15,8 +14,9 @@ block body
           | Google &nbsp;
           i.fa.fa-google-plus
       span#facebook_login.login_buttons
-        //- a(href='/auth/facebook')
-        a(href='/home')
+        //- .fb-login-button(data-max-rows='1', data-size='medium', data-show-faces='false', data-auto-logout-link='false')
+        a(href='/auth/facebook')
+          //- a(href='/home')
           | Facebook &nbsp;
           i.fa.fa-facebook-official
    footer#aboutus 
@@ -31,4 +31,3 @@ block body
       i#github-icon.fa.fa-github.fa-2x 
    script(type = 'text/javascript', src = '/javascripts/pages/login/auth.js')
    script(type = 'text/javascript', src = '/javascripts/pages/login/particles_login.js')
-   

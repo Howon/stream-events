@@ -1,17 +1,18 @@
 doctype html
 extends layout
 block head
- link(rel = 'stylesheet', href = 'stylesheets/pages/main/event_bar.css') 
- link(rel = 'stylesheet', href = 'stylesheets/pages/main/event_home.css') 
- link(rel = 'stylesheet', href = 'stylesheets/pages/main/event_thread.css')
- link(rel = 'stylesheet', href = 'stylesheets/pages/main/event_chat.css')    
- link(rel = 'stylesheet', href = 'stylesheets/pages/main/main_body.css')        
- link(rel = 'stylesheet', href = 'stylesheets/pages/main/map_control.css')        
+ //- link(rel = 'stylesheet', href = 'stylesheets/pages/main/event_bar.css') 
+ //- link(rel = 'stylesheet', href = 'stylesheets/pages/main/event_home.css') 
+ //- link(rel = 'stylesheet', href = 'stylesheets/pages/main/event_thread.css')
+ //- link(rel = 'stylesheet', href = 'stylesheets/pages/main/event_chat.css')    
+ //- link(rel = 'stylesheet', href = 'stylesheets/pages/main/main_body.css')        
+ //- link(rel = 'stylesheet', href = 'stylesheets/pages/main/map_styling.css')    
+ link(rel = 'stylesheet', href = 'stylesheets/pages/main/combined_main.css')    
  link(rel = 'stylesheet', href = 'http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css')
- script(type = 'text/javascript', src = '//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js')
  script(type = 'text/javascript', src = 'http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js')
+ script(src = 'https://cdn.socket.io/socket.io-1.2.0.js')
+ script(src = "//cdn.jsdelivr.net/velocity/1.2.2/velocity.min.js")
 block header
-  - if(everyauth.loggedIn)
    div#bringEvents
     span#bringButton Events &nbsp;
      i.fa.fa-chevron-right 
@@ -19,8 +20,8 @@ block header
     span#calendarView 
      i.fa.fa-calendar.fa-lg
    div#userToggle
-    a.btn.btn-primary#userName
-     p= everyauth.google.user.name
+    a.btn.btn-primary#userNameContainer
+      p#userName= user.facebook.email || user.google.email
     a.btn.btn-primary.dropdown-toogle#userMenu(data-toggle = 'dropdown')
       span.fa.fa-caret-down.fa-lg   
       ul.dropdown-menu#list
@@ -33,11 +34,8 @@ block header
            i.fa.fa-cogs    
         li.divider
         li
-          a(href='/') Log Out &nbsp;
+          a(href='/logout') Log Out &nbsp;
            i.fa.fa-sign-out
-  - else //- automatically redirects to homepage if not logged in
-    script(type='text/javascript'). 
-      window.location = "/"
 block body
   div#panel
    div#body 
@@ -52,52 +50,47 @@ block body
         p New York City
        i.fa.fa-globe.fa-lg#mapButton
       div.eventHome#description
-     div#thread
-     div#chatarea
+     div#threadArea
+     div#chatArea
       ul#messages
       div#inputBar     
-       input.messaging#text(type = 'text', name = 'chat message', placeholder = 'Type your message')
+       textarea#messageInput(type = 'text', name = 'chat message', placeholder = 'Event Name')
      div#mapPost
       div#mapMenu
+       i(id = 'close_map').fa.fa-times.fa-lg
       div#map
    div#menuSelector
-    div.menu#eventThread
+    div.menu#bringThread
       i.fa.fa-list-alt.fa-2x
-    div.menu#messageStream
+    div.menu#bringChat
       i.fa.fa-comments-o.fa-2x
    div#eventBar
      div#eventBarMenu
-      i.fa.fa-plus.fa-lg
+      i.fa.fa-plus.fa-lg(id = 'post_event')
      ul#eventStream
-      li.event 1  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis adipisci a earum voluptatem ipsum, non, laboriosam laudantium est ea, corporis ut explicabo doloribus dolor optio placeat, aliquam officiis assumenda obcaecati.
-      li.event 2  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo ab placeat veniam ratione hic atque impedit facilis, possimus, tenetur praesentium earum doloremque deleniti illum totam optio deserunt dolorem aperiam repellat.
-      li.event 3  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptate optio aspernatur obcaecati quidem doloribus odit dolores saepe ullam architecto qui sed eum, distinctio a ex hic dolor corporis fugiat eligendi.
-      li.event 4  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi reiciendis ducimus at ipsam, possimus accusantium ratione aliquam laboriosam perspiciatis esse nam minus quasi, dicta recusandae atque mollitia? Aperiam, corporis, possimus.
-      li.event 5  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt quas iure veniam consequuntur nulla, aspernatur temporibus, numquam quis ex, recusandae dolorum aut laborum in ipsam velit fuga voluptatum iste. Quidem.
-      li.event 6  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos aut, ipsam modi excepturi possimus odio, enim iste incidunt aperiam voluptate ex, beatae blanditiis id consectetur voluptatibus libero. Atque, architecto, dolorum?
-     //- a.btn.btn-danger(id = "post_event") Post Event &nbsp 
-     //-  i.fa.fa-plus.fa-lg
+      li.event#noEventFiller Looks like nothign is happening around you :(
   div#eventPostArea
-   div#closePosting.glyphicon.glyphicon-remove
-   input.eventPost#Name(type = 'text', name = 'event name', placeholder = 'Event Name')
+   div#closePosting
+    i.fa.fa-times.fa-lg
+   textarea.eventPost#Name(type = 'text', name = 'event name', placeholder = 'Event Name')
    div.eventPost#Location
      i.fa.fa-globe.fa-2x#locationSelectorButton
-     input#locDescript(type = 'text', name = 'event location', placeholder = 'Event Location')
+     textarea#locDescript(type = 'text', name = 'event location', placeholder = 'Event Location')
      p#display_name
      p#coordinates
    i.fa.fa-calendar-o.fa-2x#timeSelector
-   input.eventPost#Time(type = 'text', name = 'event time', placeholder = 'Event Time')
-   input.eventPost#Description(type = 'text', name = 'event description', placeholder = 'Event Description')
+   textarea.eventPost#Time(type = 'text', name = 'event time', placeholder = 'Event Time')
+   textarea.eventPost#Description(type = 'text', name = 'event description', placeholder = 'Event Description')
    div.eventPost#Image
      i.fa.fa-file-image-o.fa-2x
    div.eventPost#menu
     span#alert.alert.alert-danger
     span#submit submit &nbsp;
      i.fa.fa-check-square-o
+  //- script(type = 'text/javascript', src = '/javascripts/pages/main/main_closure_compiled.js')
+  script(type = 'text/javascript', src = '/javascripts/sources/geocoder_min.js')
   script(type = 'text/javascript', src = '/javascripts/pages/main/home.js')
-  script(type = 'text/javascript', src = '/javascripts/sources/Control.Geocoder.js')
-  //- credit to https://github.com/perliedman/leaflet-control-geocoder
-  script(type = 'text/javascript', src = '/javascripts/pages/main/leaflet.js')
+  script(type = 'text/javascript', src = '/javascripts/pages/main/map_control.js')
 
 
 

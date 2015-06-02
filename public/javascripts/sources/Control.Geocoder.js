@@ -200,6 +200,7 @@
 	};
 
 	L.Control.Geocoder.callbackId = 0;
+	
 	L.Control.Geocoder.jsonp = function(url, params, callback, context, jsonpParam) {
 		var callbackId = '_l_geocoder_' + (L.Control.Geocoder.callbackId++);
 		params[jsonpParam || 'callback'] = callbackId;

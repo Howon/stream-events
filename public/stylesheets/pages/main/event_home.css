@@ -1,4 +1,6 @@
 #eventHome{
+  	font-family: 'Roboto', sans-serif;
+	font-size: 15px;
 	float: left;
 	margin: 0;
 	position: absolute;
@@ -65,7 +67,7 @@ div.eventHome#location #mapButton{
 }
 
 div.eventHome#location #mapButton:hover{
-	color: #93D167;
+	color: #43A047;
 }
 
 div.eventHome#description{
