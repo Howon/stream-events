@@ -1,21 +1,5 @@
 # stream-events
 
-Immediate goals: <br>
-1. Better UI<br>
-2. Loading up previous messages<br>
-3. User authentication (Ken)<br>
-4. Figure out how to detect user disconnect
-5. User color picker (?) <br>
-6. Finish chat service <br>
-7. Event posting (Howon)<br>
-8. Facebook API (Howon and Danny)<br>
-9. Polish Code (Ben)
-
-Long-term goals:<br>
-1. Register domain <br>
-2. Image support? <br>
-3. Store event-/topic-specific keywords in chat for search later<br> 
-
 Collaborators: <br>
 Howon Byun <br>
 Ken Aizawa <br>
