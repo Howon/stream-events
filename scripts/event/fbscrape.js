@@ -1,40 +1,53 @@
-var fbgraph = require('fbgraphapi');
-app.use(fbgraph.auth( {
-        appId : "...",
-        appSecret : "...",
-        redirectUri : "http://0.0.0.0:3000/",
-        apiVersion: "v2.2"
-    }));
+// https://developers.facebook.com/tools/explorer/145634995501895/?method=GET&path=me%2Ffriends&
+var graph = require('fbgraph');
+var Event = require('./event');
+var config = require('../config');
+var noodle = require('noodlejs');
 
-app.get('/login', function(req, res) {
-    console.log('Start login');
-    fbgraph.redirectLoginForm(req, res);    
-});
+module.exports = function(user){
+	graph.setAccessToken(user.token);
 
-app.get('/', function(req, res) {
-    if (!req.hasOwnProperty('facebook')) {
-        console.log('You are not logged in');
-        return res.redirect('/login');
-    }
-    /* See http://developers.facebook.com/docs/reference/api/ for more */
-    req.facebook.graph('/me', function(err, me) {
-        console.log(me);
-    });
 
-    req.facebook.graph('/me?fields=id,name', function(err, me) {
-        console.log(me);
-    });
+	graph.get("me/events", function(err, res) {
+		var data_arr = res.data;
+		for(var i = 0; i < data_arr.length ; i++){
+			store_event(data_arr[i]);
+		}
+	});
 
-    req.facebook.me(function(err, me) {
-        console.log(me);
-    });
+	var store_event = function(data){
+		var event_id = data.id;
+		var location_data;
+		var event_description = '';
 
-    // /me/likes
-    req.facebook.my.likes(function(err, likes) {
-        console.log(likes);
-    });
+		graph.get(event_id, function(err, res){
+			event_description = res.description;
+		});
 
-    res.end("Check console output");
-});
+		graph.get(event_id + '/?fields=place', function(err, res){
+			location_data = res.place.location;
+			var newEvent = new Event({
+				title : data.name,
+	          	location : location_data.street + ", " + location_data.city + ", " + location_data.state + ", " + location_data.country,
+	          	time : data.start_time,
+	          	description : event_description,
+	          	latitude : location_data.latitude,
+	          	longitude : location_data.longitude
+			});
 
-server.listen(3000);
+			console.log(newEvent);
+			// newEvent.save(function(err, user){
+			// 	if(err){ 
+   //              	return console.error(err)
+   //              }
+   //        	})
+			return res;
+		})
+	};
+
+	var get_events = function(event_id){
+		graph.get(event_id + '/?fields=place', function(err, res){
+			return res;
+		})
+	};
+}

@@ -14,7 +14,7 @@ var session      = require('express-session');
 
 var config = require('./scripts/config');
 
-require('./scripts/auth/passport')(passport);
+require('./scripts/auth/authenticate')(passport);
 
 var io = require('socket.io')(server);
 
@@ -22,8 +22,7 @@ var mongoose = require('mongoose');
 	mongoose.connect(config.mongoose.url);
 
 var chat_service = require('./scripts/chat/chat_tester');
-var event_handler = require('./scripts/event/event_handler')
-var scraper = require('./scripts/event/scrape');
+require('./scripts/event/event_handler')(io, mongoose);
 
 server.listen(port);
 
@@ -38,14 +37,12 @@ app.use(session({ secret: 'ilovescotchscotchyscotchscotch' })); // session secre
 app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
 app.use(flash()); // use connect-flash for flash messages stored in session
+app.use(express.static(path.join(__dirname, 'public')));
 
 chat_service.setChatService(io, mongoose);
-event_handler.handle_events(io, mongoose);
-
-app.use(express.static(path.join(__dirname, 'public')));
-// scraper.scrape("http://oldevents.columbia.edu/event/lunch-bytes-innovation-showcase-warpwire-78504");
 
 require('./scripts/routes/routes')(app, passport);
+require('./scripts/event/scrape').scrape();
 
 console.log("*****************************");
 console.log("* App running at port: " + port + " *");

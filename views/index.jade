@@ -1,13 +1,13 @@
 doctype html
 extends layout
 block head
- //- link(rel = 'stylesheet', href = 'stylesheets/pages/main/event_bar.css') 
- //- link(rel = 'stylesheet', href = 'stylesheets/pages/main/event_home.css') 
- //- link(rel = 'stylesheet', href = 'stylesheets/pages/main/event_thread.css')
- //- link(rel = 'stylesheet', href = 'stylesheets/pages/main/event_chat.css')    
- //- link(rel = 'stylesheet', href = 'stylesheets/pages/main/main_body.css')        
- //- link(rel = 'stylesheet', href = 'stylesheets/pages/main/map_styling.css')    
- link(rel = 'stylesheet', href = 'stylesheets/pages/main/combined_main.css')    
+ link(rel = 'stylesheet', href = 'stylesheets/pages/main/event_bar.css') 
+ link(rel = 'stylesheet', href = 'stylesheets/pages/main/event_home.css') 
+ link(rel = 'stylesheet', href = 'stylesheets/pages/main/event_thread.css')
+ link(rel = 'stylesheet', href = 'stylesheets/pages/main/event_chat.css')    
+ link(rel = 'stylesheet', href = 'stylesheets/pages/main/main_body.css')        
+ link(rel = 'stylesheet', href = 'stylesheets/pages/main/map_styling.css')    
+ //- link(rel = 'stylesheet', href = 'stylesheets/pages/main/combined_main.css')    
  link(rel = 'stylesheet', href = 'http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css')
  script(type = 'text/javascript', src = 'http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js')
  script(src = 'https://cdn.socket.io/socket.io-1.2.0.js')
@@ -21,7 +21,7 @@ block header
      i.fa.fa-calendar.fa-lg
    div#userToggle
     a.btn.btn-primary#userNameContainer
-      p#userName= user.facebook.email || user.google.email
+      p#userName= user.facebook.name || user.google.name
     a.btn.btn-primary.dropdown-toogle#userMenu(data-toggle = 'dropdown')
       span.fa.fa-caret-down.fa-lg   
       ul.dropdown-menu#list

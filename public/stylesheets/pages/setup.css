@@ -105,5 +105,10 @@ header#bar #userToggle .dropdown-men li a{
 	padding: 0;
 	border-style: solid;
 }
+/* Miscellaneous */
 /*-----------------------------------*/
 
+textarea{
+	resize: none;
+	overflow: auto;
+}

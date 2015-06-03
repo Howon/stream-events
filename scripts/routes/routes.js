@@ -1,3 +1,5 @@
+var fbgraph = require('../event/fbscrape');
+
 module.exports = function(app, passport){
 	app.get('/', function(req, res) {
 		if (req.isAuthenticated()){ 
@@ -17,11 +19,11 @@ module.exports = function(app, passport){
 		}
 	});
 
-	app.get('/auth/facebook', passport.authenticate('facebook', { scope : 'email' }));
+	app.get('/auth/facebook', passport.authenticate('facebook', { scope : ['user_events']}));
 	
 	app.get('/auth/facebook/callback', passport.authenticate('facebook', { failureRedirect : '/'}),
 		function(req, res){
-			console.log(req.user);
+			fbgraph(req.user.facebook);
 			res.redirect('/home');
 		});
 
@@ -29,7 +31,6 @@ module.exports = function(app, passport){
 
 	app.get('/auth/google/callback', passport.authenticate('google', { failureRedirect: '/' }),
 		  function(req, res) {
-		  	console.log(req.user)
 		    res.redirect('/home');
 		  });
 

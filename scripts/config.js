@@ -2,6 +2,8 @@ module.exports = {
 	mongoose: {
 		url: 'mongodb://localhost:27017/data/'
 	},
+    facebook_access_token: "CAACEdEose0cBALRVwLnJ3fzaVzqDp1V10KpUPiy9xGSxkoOphoansIJbgc6jNYtvefhNb9P2fG3fJPa3jXXIJrMKyes8Jpcy5kpneBZAZAmpM8GTph0SN8YRAea6iZBu8D5N6EDRz5Fr5foHWqIHIzlo6b9ldNZB1a7Hr55RSZAqh1GZBZCWaKxe1aDDZC664djjUYuov0DHE4TMXNofu3a68bVAbH5VH1gZD"
+    ,
     fbAuth: {
         appID         : '1500930803526110', 
         appSecret     : '85669778b0c8d2f9fdc5fcdb3087d48c',
