@@ -42,7 +42,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 chat_service.setChatService(io, mongoose);
 
 require('./scripts/routes/routes')(app, passport);
-require('./scripts/event/scrape').scrape();
 
 console.log("*****************************");
 console.log("* App running at port: " + port + " *");
