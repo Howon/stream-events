@@ -2,7 +2,6 @@
 var graph = require('fbgraph');
 var Event = require('./event');
 var config = require('../config');
-var noodle = require('noodlejs');
 
 module.exports = function(user){
 	graph.setAccessToken(user.token);

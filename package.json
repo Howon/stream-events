@@ -16,7 +16,6 @@
     "mongodb": "~2.0",
     "mongoose": "^4.0.4",
     "morgan": "^1.5.3",
-    "noodlejs": "^0.3.2",
     "passport": "^0.2.2",
     "passport-facebook": "*",
     "passport-google": "^0.3.0",
