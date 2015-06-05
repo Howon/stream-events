@@ -48,16 +48,16 @@ block body
       div.eventHome#location 
        span#where 
         p New York City
-       i.fa.fa-globe.fa-lg#mapButton
+       i.fa.fa-map-marker.fa-lg#mapButton
       div.eventHome#description
      div#threadArea
      div#chatArea
-      ul#messages
-      div#inputBar     
-       textarea#messageInput(type = 'text', name = 'chat message', placeholder = 'Event Name')
+      ul.chatArea#messages
+      textarea.chatArea#messageInput(type = 'text', name = 'chat message', placeholder = 'Event Name')
      div#mapPost
       div#mapMenu
        i(id = 'close_map').fa.fa-times.fa-lg
+       i(id = 'submit_map').fa.fa-check.fa-lg 
       div#map
    div#menuSelector
     div.menu#bringThread
@@ -70,23 +70,21 @@ block body
      ul#eventStream
       li.event#noEventFiller Looks like nothign is happening around you :(
   div#eventPostArea
-   div#closePosting
-    i.fa.fa-times.fa-lg
-   textarea.eventPost#Name(type = 'text', name = 'event name', placeholder = 'Event Name')
-   div.eventPost#Location
-     i.fa.fa-globe.fa-2x#locationSelectorButton
-     textarea#locDescript(type = 'text', name = 'event location', placeholder = 'Event Location')
-     p#display_name
-     p#coordinates
-   i.fa.fa-calendar-o.fa-2x#timeSelector
-   textarea.eventPost#Time(type = 'text', name = 'event time', placeholder = 'Event Time')
-   textarea.eventPost#Description(type = 'text', name = 'event description', placeholder = 'Event Description')
-   div.eventPost#Image
-     i.fa.fa-file-image-o.fa-2x
-   div.eventPost#menu
-    span#alert.alert.alert-danger
-    span#submit submit &nbsp;
-     i.fa.fa-check-square-o
+    div#closePosting
+      i.fa.fa-times.fa-lg
+    textarea.eventPost#Name(type = 'text', name = 'event name', placeholder = 'Event Name')
+    i.fa.fa-globe.fa-2x#locationSelectorButton
+    textarea.eventPost#locDescript(type = 'text', name = 'event location', placeholder = 'Event Location')
+    i.fa.fa-calendar-o.fa-2x#timeSelector
+    textarea.eventPost#Time(type = 'text', name = 'event time', placeholder = 'Event Time')
+    textarea.eventPost#Description(type = 'text', name = 'event description', placeholder = 'Event Description')
+    div.eventPost#Image
+      input#imageUploadButton(type="file")
+      i#imageUploadIcon.fa.fa-file-image-o.fa-2x
+    div.eventPost#menu
+      span#alert.alert.alert-danger
+      span#submit submit &nbsp;
+        i.fa.fa-check-square-o
   //- script(type = 'text/javascript', src = '/javascripts/pages/main/main_closure_compiled.js')
   script(type = 'text/javascript', src = '/javascripts/sources/geocoder_min.js')
   script(type = 'text/javascript', src = '/javascripts/pages/main/home.js')

@@ -3,9 +3,18 @@ var graph = require('fbgraph');
 var Event = require('./event');
 var config = require('../config');
 
-module.exports = function(user){
-	graph.setAccessToken(user.token);
+module.exports = function(user, io){
+	// Event.remove({}, function(err) { 
+	//    console.log('collection removed') 
+	// });
+    var printDb = function(){
+        Event.find(function(err, ms) {
+            if (err) return console.error(err);
+            console.dir(ms);
+        })
+    }();
 
+	graph.setAccessToken(user.token);
 
 	graph.get("me/events", function(err, res) {
 		var data_arr = res.data;
@@ -25,21 +34,32 @@ module.exports = function(user){
 
 		graph.get(event_id + '/?fields=place', function(err, res){
 			location_data = res.place.location;
-			var newEvent = new Event({
-				title : data.name,
-	          	location : location_data.street + ", " + location_data.city + ", " + location_data.state + ", " + location_data.country,
-	          	time : data.start_time,
-	          	description : event_description,
-	          	latitude : location_data.latitude,
-	          	longitude : location_data.longitude
-			});
 
-			console.log(newEvent);
-			// newEvent.save(function(err, user){
-			// 	if(err){ 
-   //              	return console.error(err)
-   //              }
-   //        	})
+			Event.findOne({ 'event_id.facebook' : event_id }, function(err, event) {
+                    if (err){
+                        return done(err);
+                    }
+                    if (event) {
+                    	console.log('duplicate');
+                    } else {
+                        var newEvent = new Event({
+							title : data.name,
+				          	location : location_data.street + ", " + location_data.city + ", " + location_data.state + ", " + location_data.country,
+				          	time : data.start_time,
+				          	description : event_description,
+				          	latitude : location_data.latitude,
+				          	longitude : location_data.longitude
+						});
+
+                        newEvent.event_id.facebook = event_id;
+
+						newEvent.save(function(err, user){
+							if(err){ 
+			                	return console.error(err)
+			                }
+			          	})
+                    }
+            });
 			return res;
 		})
 	};

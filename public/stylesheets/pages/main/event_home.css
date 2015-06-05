@@ -6,7 +6,7 @@
 	position: absolute;
     width: 40%;
     height: 100%;
-    background-color: #FFF4F7;
+    background-color: #FFFDE7;
 }
 
 #eventHome p{
@@ -15,55 +15,63 @@
 }
 
 div.eventHome{
-    border : 1px solid #4B8CB1;
+    background-color: white;
 	position: absolute;
-	width: 98%;
-	left:1%;
+	left: 8px;
+	width: calc(100% - 16px);
+	-webkit-box-shadow: 1px 1px 2px 2px rgba(0,0,0,0.15);
+	-moz-box-shadow: 1px 1px 2px 2px rgba(0,0,0,0.15);
+	box-shadow: 1px 1px 2px 2px rgba(0,0,0,0.15);
+	padding: 3px;
+	padding-left: 5px;
+	padding-right: 5px;
+}
+
+div.eventHome:hover{
+	-webkit-box-shadow: 1px 1px 2px 2px rgba(0,0,0,0.3);
+	-moz-box-shadow: 1px 1px 2px 2px rgba(0,0,0,0.3);
+    box-shadow: 1px 2px 2px 2px rgba(0,0,0,0.3);
 }
 
 div.eventHome#title{
-	top: 1%;
-	height: 5%;
-	padding: 1%;
-	border-style: solid;
+	top: 8px;
+	height: 4%;
 }
 
 div.eventHome#picture{
 	top: 7%;
-	height: 32%;
+	height: 33%;
 }
 
 div.eventHome#picture #image{
 	position: absolute;
-	padding: 0;
-	height: 100%;
+	height: calc(100% - 6px);
 	left: 0;
 	right: 0;
 	margin: auto;
 }
 
 div.eventHome#time{
-	top: 40%;
-	left: 1%;
-	padding: 1%;
-	height: 8%;
-	width: 98%;
+	top: 41%;
+	height: 5%;
 }
 
 div.eventHome#location{
-	top: 49%;
-	height: 5%;
+	top: 47%;
+	height: 8%;
+	vertical-align: center;
 }
+
 div.eventHome#location #where{
 	float: left;
-	padding: 1%;
 }
 
 div.eventHome#location #mapButton{
 	float: right;
-	padding-top: 2%;
-	padding-right: 1%;
+	margin-top: 2.5%;
+	margin-right: 1%;
 	cursor: pointer;
+	font-size: 25px;
 }
 
 div.eventHome#location #mapButton:hover{
@@ -71,6 +79,6 @@ div.eventHome#location #mapButton:hover{
 }
 
 div.eventHome#description{
-	top: 55%;
-	height: 44%;
+	top: 56%;
+	height: 42.5%;
 }

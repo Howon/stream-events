@@ -1,6 +1,6 @@
 var fbgraph = require('../event/fbscrape');
 
-module.exports = function(app, passport){
+module.exports = function(app, passport, io){
 	app.get('/', function(req, res) {
 		if (req.isAuthenticated()){ 
 			res.redirect('/home');
@@ -23,7 +23,7 @@ module.exports = function(app, passport){
 	
 	app.get('/auth/facebook/callback', passport.authenticate('facebook', { failureRedirect : '/'}),
 		function(req, res){
-			fbgraph(req.user.facebook);
+			fbgraph(req.user.facebook, io);
 			res.redirect('/home');
 		});
 

@@ -1,154 +1,231 @@
 var socket = io(),
-	userID;
+	userID,
+	display_name,
+	current_lat,
+	current_lon,
+	map;
 
 $(window).load(function() {
+	getLocation();
 	manipulate_elements();
+
+	initiated = false;
+
 	socket_handling();
 });
 
-var manipulate_elements = function(){
-	control_sidebar();
-	control_main_body_load();
-}
+function manipulate_elements(){
+	var control_sidebar = function(){
+		var eventBar = document.getElementById('eventBar'),
+			bringButton = document.getElementById('bringButton');
 
-var control_sidebar = function(){
-	var eventBar = document.getElementById('eventBar'),
-		bringButton = document.getElementById('bringButton');
+		var eventbar_on = function(){
+			    $("#body, #menuSelector").velocity('stop').velocity({
+			    	"opacity":"0.4"
+			    },{duration: 400});
 
-	var eventbar_on = function(){
-		    $("#body, #menuSelector").velocity('stop').velocity({
-		    	"opacity":"0.4"
-		    },{duration: 400});
+			    $('#eventBar').velocity('stop').velocity({
+			    	translateX: "315px"
+			    },{duration: 400});
 
-		    $('#eventBar').velocity('stop').velocity({
-		    	translateX: "307px"
-		    },{duration: 400});
+			    bringButton.style.paddingBottom = '30px';
 
-		    bringButton.style.paddingBottom = '30px';
+			    $("#bringButton").velocity('stop').velocity({
+			    	"padding-left":"3%"
+			    }, {duration: 400});
 
-		    $("#bringButton").velocity('stop').velocity({
-		    	"padding-left":"3%"
-		    }, {duration: 400});
+			    $("#blank, #eventBarMenu, #calendarView").css({
+			    	"display": 'block'
+			    });
 
-		    $("#blank, #eventBarMenu, #calendarView").css({
-		    	"display": 'block'
-		    });
-
-		    bringButton.innerHTML = "<i class='fa fa-chevron-left'></i>&nbsp; Events ";
-	}
-
-	var eventbar_out = function(){
-		    $("#body, #menuSelector").velocity('stop').velocity({
-		    	opacity:1
-		    }, {duration: 450});
-
-		    $('#eventBar').velocity('stop').velocity({
-		    	translateX: "0"
-		    }, {duration: 450});
-
-		    bringButton.style.paddingBottom = '0'
-
-		    $("#bringButton").velocity('stop').velocity({
-		    	"padding-left":"0"
-		    },{duration: 400});
-
-		    $("#blank, #eventBarMenu, #calendarView").css({
-		    	"display": 'none'
-		    });
-
-		    bringButton.innerHTML = "Events &nbsp;<i class='fa fa-chevron-right'></i>";
-	}
-
-	$("#bringButton, #eventBar, #calendarView, #blank").hover(eventbar_on, eventbar_out);
-
-	var control_post_Area = function(){
-		$("#eventPostArea").velocity({ opacity: 1 }, { display: "block" }, {duration: 200});
-		eventbar_out();
-		close_event_posting();
-	};
-
-	document.getElementById('post_event').onclick = control_post_Area;
-}
-
-var close_event_posting = function(){
-	var container = $('#eventPostArea');
-
-	window.onkeyup = function(e){
-		if(!$("#map").is(':visible') && e.keyCode == 27){
-			container.velocity({ opacity: 0 }, { display: "none" }, {duration: 200});
+			    bringButton.innerHTML = "<i class='fa fa-chevron-left'></i>&nbsp; Events ";
 		}
-	};
-	
-	document.getElementById("closePosting").onclick = function(){
-		container.velocity({ opacity: 0 }, { display: "none" }, {duration: 200});
-	};
+
+		var eventbar_out = function(){
+			    $("#body, #menuSelector").velocity('stop').velocity({
+			    	opacity:1
+			    }, {duration: 450});
+
+			    $('#eventBar').velocity('stop').velocity({
+			    	translateX: "0"
+			    }, {duration: 450});
+
+			    bringButton.style.paddingBottom = '0'
+
+			    $("#bringButton").velocity('stop').velocity({
+			    	"padding-left":"0"
+			    },{duration: 400});
+
+			    $("#blank, #eventBarMenu, #calendarView").css({
+			    	"display": 'none'
+			    });
+
+			    bringButton.innerHTML = "Events &nbsp;<i class='fa fa-chevron-right'></i>";
+		}
+
+		$("#bringButton, #eventBar, #calendarView, #blank").hover(eventbar_on, eventbar_out);
+
+		var control_post_Area = function(){
+			$("#eventPostArea").velocity({ opacity: 1 }, { display: "block" }, {duration: 200});
+			eventbar_out();
+			var close_event_posting = function(){
+				var container = $('#eventPostArea');
+
+				window.onkeydown = function(e){
+					if(!$("#map").is(":visible") && e.keyCode == 27){
+						container.velocity({ opacity: 0 }, { display: "none" }, {duration: 200});
+					}
+				};
+
+				document.getElementById("closePosting").onclick = function(){
+					container.velocity({ opacity: 0 }, { display: "none" }, {duration: 200});
+				};
+
+				document.getElementById("Name").value = '';
+				document.getElementById("Time").value = '';
+				document.getElementById("locDescript").value = '';
+				document.getElementById("Description").value = '';
+			}();
+		};
+
+		document.getElementById('post_event').onclick = control_post_Area;
+	}();
+
+	var control_main_body_load = function(){
+		var bringThread = document.getElementById('bringThread'),
+		    bringChat = document.getElementById('bringChat'),
+			threadArea = document.getElementById('threadArea'),
+			chatArea = document.getElementById('chatArea');
+
+		var removeChat = function(){	
+						$("#bringMessages, #inputBar").css('display','none');   
+						chatArea.style.zIndex = "-1";
+						threadArea.style.zIndex = "0";
+						chatArea.style.display = 'none';
+		};
+
+		var removeThread = function(){	
+						chatArea.style.zIndex = "0";
+						threadArea.style.zIndex = "-1";
+						threadArea.style.display = 'none';
+		};
+
+	    bringThread.onclick = function(){
+				threadArea.style.display = 'block';
+				bringChat.style.color = "#000000";
+				chatArea.style.zIndex = "-2";
+
+				bringThread.style.color = "#00BCD4";
+				threadArea.style.zIndex = "-1";
+
+				$("#threadArea").velocity({
+					"margin-left": "40%",
+					"width": "60%"
+				}, {duration: 300});
+
+				$("#chatArea").velocity({
+					"margin-left": "100%",
+					"width" : "0"
+				},{duration: 1, delay: 300});
+				setTimeout(removeChat, 300);
+		};
+
+	    bringChat.onclick = function(){
+				chatArea.style.display = 'block';
+				chatArea.style.zIndex = "-1";
+				bringChat.style.color = "#E91E63";
+
+				threadArea.style.zIndex = "-2";
+				bringThread.style.color = "#000000";
+
+				$("#bringMessages, #inputBar").delay(50).queue( 
+				  	function(next){ 
+					    $(this).css('display','block'); 
+					    next(); 
+				});
+
+				$("#chatArea").velocity({
+					"margin-left": "40%",
+					"width": "60%"
+				}, {duration: 300});
+
+				$("#threadArea").velocity({
+					"margin-left": "100%",
+					"width" : "0"
+				}, {duration: 1, delay: 300});
+
+				setTimeout(removeThread, 300);
+		};
+	}();
+
+	var control_map = function(){
+		var add_event_map = function(){
+			controlMap(40.807536, -73.962573, 'map');
+			initiated = true;
+		};
+
+		document.getElementById("mapButton").onclick = add_event_map;
+
+		var add_post_map = function(){
+			drawmap(current_lat, current_lon);
+		};
+
+		document.getElementById("locationSelectorButton").onclick = add_post_map;
+
+		var createMap = function(lat, lon, id){
+			if(initiated){
+				map.remove();
+			}
+
+			map = new L.Map("map").setView(new L.LatLng(lat, lon), 17);
+
+			L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+			    	attribution: '&copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors'
+				}).addTo(map);
+
+			if(id === 'mapPost'){
+				L.Control.geocoder().addTo(map);
+				document.getElementById('submit_map').style.display = 'block';
+			}
+			
+			var marker = L.marker([lat, lon]).addTo(map);
+			    marker.setLatLng(map.getCenter());
+		};
+
+		var controlMap = function(lat, lon, map_id){
+			var container = $("#mapPost");
+			container.fadeIn(200);
+
+			createMap(lat, lon, map_id);
+			
+			window.onkeyup = function(e){
+				if(e.keyCode == 27){
+					container.fadeOut(200);
+				}
+			};
+
+			window.onmouseup = function (e){
+				if (!container.is(e.target) && container.has(e.target).length === 0 ||
+					e.target === document.getElementById('close_map') || 
+					e.target === document.getElementById('submit_map')){
+		 			container.fadeOut(200);
+			    }
+			};
+		}
+
+		function drawmap(current_lat, current_lon){
+			controlMap(current_lat, current_lon, 'mapPost');
+			initiated = true;
+
+		    map.on('GeoCoder_getLatLonName', function (result) {		
+	    		display_name = result.result.display_name;
+	    		console.log(display_name)
+			});
+		}
+	}();
 }
 
-var control_main_body_load = function(){
-	var bringThread = document.getElementById('bringThread'),
-	    bringChat = document.getElementById('bringChat'),
-		threadArea = document.getElementById('threadArea'),
-		chatArea = document.getElementById('chatArea');
-
-	var removeChat = function(){	
-					$("#bringMessages, #inputBar").css('display','none');   
-					chatArea.style.zIndex = "-1";
-					threadArea.style.zIndex = "0";
-	};
-
-	var removeThread = function(){	
-					chatArea.style.zIndex = "0";
-					threadArea.style.zIndex = "-1";
-	};
-
-    bringThread.onclick = function(){
-			bringChat.style.color = "#000000";
-			chatArea.style.zIndex = "-2";
-
-			bringThread.style.color = "#00BCD4";
-			threadArea.style.zIndex = "-1";
-
-			$("#threadArea").velocity({
-				"margin-left": "40%",
-				"width": "60%"
-			}, {duration: 300});
-
-			$("#chatArea").velocity({
-				"margin-left": "100%",
-				"width" : "0"
-			},{duration: 1, delay: 300});
-			setTimeout(removeChat, 300);
-	};
-
-    bringChat.onclick = function(){
-			chatArea.style.zIndex = "-1";
-			bringChat.style.color = "#E91E63";
-
-			threadArea.style.zIndex = "-2";
-			bringThread.style.color = "#000000";
-
-			$("#bringMessages, #inputBar").delay(50).queue( 
-			  	function(next){ 
-				    $(this).css('display','block'); 
-				    next(); 
-			});
-
-			$("#chatArea").velocity({
-				"margin-left": "40%",
-				"width": "60%"
-			}, {duration: 300});
-
-			$("#threadArea").velocity({
-				"margin-left": "100%",
-				"width" : "0"
-			}, {duration: 1, delay: 300});
-
-			setTimeout(removeThread, 300);
-			
-	};
-};
-
-var socket_handling = function(){
+function socket_handling(){
 	var redirect_home = function(){
 		window.location = '/home'
 	};
@@ -157,25 +234,7 @@ var socket_handling = function(){
 
 	var textarea = document.getElementById("messageInput");
 	var person = document.getElementById('userName').innerHTML;
-	
-	// $('#bringMessages').off().click(function(){
-	// 	console.log("pressed")	/* Act on the event */
-	// 	socket.emit("bring previous messages");
 
-	// 	socket.on("bring previous messages", function(data){
-	// 	  if(data.length){
-	// 		for(var i=0; i< data.length; i++){
-	// 			var message = document.createElement('li');
-	// 			message.setAttribute('class', 'chat-message');
-	// 			message.textContent = data[i].name+ ": " + data[i].message;
-	// 			// console.log(data[i].message)
-	// 			var messages = document.querySelector("#messages");
-	// 			messages.appendChild(message);
-	// 			messages.insertBefore(message, messages.firstChild);
-	// 		}
-	// 	  }
-	//   });
-	// });
 	var send_message = function(event){
 		var self = this;
 
@@ -191,7 +250,38 @@ var socket_handling = function(){
 
 	textarea.addEventListener('keydown', send_message);
 
-	var post_submit_handler = function(){
+	var imageUpload = document.getElementById("imageUploadButton");
+
+	document.getElementById('imageUploadIcon').onclick = function(){
+		imageUpload.click();
+		imageUpload.onchange = function function_name (argument) {
+			var txt = "";
+		    if ('files' in imageUpload) {
+		    	for(var i = 0; i < imageUpload.files.length; i++) {
+		                var file = imageUpload.files[i];
+		                if ('size' in file) {
+		                	if(file.size > 500000)
+		                    console.log('too big');
+		                }
+		            }
+		        }
+		    } 
+	};
+
+	var event_lat,
+		event_lon,
+		display_name;
+
+	document.getElementById('submit_map').onclick = function(){
+		event_lat = map.getCenter().lat;
+		event_lon = map.getCenter().lng;
+
+		display_name = document.getElementById('display_name').innerHTML;
+		console.log(event_lat + " " + event_lon);
+		console.log(display_name);
+	};
+
+	var event_submit_handler = function(){
 		var event_name = document.getElementById("Name").value,
 			event_time = document.getElementById("Time").value,
 			event_location = document.getElementById("locDescript").value,
@@ -223,7 +313,9 @@ var socket_handling = function(){
 				title : event_name,
 				location: event_location,
 				time : event_time,
-				description: event_description
+				description: event_description,
+				lat : event_lat,
+				lon : event_lon
 			});
 			$("#eventPostArea").velocity({ opacity: 0 }, { display: "none" }, {duration: 300});
 		}
@@ -240,13 +332,7 @@ var socket_handling = function(){
 		alert = null;
 	};
 
-	document.getElementById("submit").onclick = post_submit_handler;
-
-    var close_post_area = function(){
-    	$("#eventPostArea").velocity({ opacity: 0 }, { display: "none" }, {duration: 300});
-    };
-
-    document.getElementById("closePosting").onclick = close_post_area;
+	document.getElementById("submit").onclick = event_submit_handler;
 
     var receive_chat_message = function(msg, user){
 		var messages = document.getElementById('messages');
@@ -263,7 +349,7 @@ var socket_handling = function(){
 
 		messages.appendChild(message);
 
-		$("#messages").velocity({ 
+		$("#messages").animate({ 
 			scrollTop: $("#messages").prop("scrollHeight") + $("#messages").height() 
 		}, 10);
 
@@ -299,11 +385,25 @@ var socket_handling = function(){
 			eventPost_description.className = eventPost_description;
 			textNode = document.createTextNode(event.description);
 			eventPost_description.appendChild(textNode);
+
+		var eventPost_lat = document.createElement("div");
+			eventPost_lat.className = eventPost_lat;
+			eventPost_lat.style.display = 'none';
+			textNode = document.createTextNode(event_lat);
+			eventPost_lat.appendChild(textNode);
+
+		var eventPost_lon = document.createElement("div");
+			eventPost_lon.className = eventPost_lon;
+			eventPost_lon.style.display = 'none';
+			textNode = document.createTextNode(event_lon);
+			eventPost_lon.appendChild(textNode);		
 		
 	    eventPost_node.appendChild(eventPost_title);
 	    eventPost_node.appendChild(eventPost_location);
 	    eventPost_node.appendChild(eventPost_time);
 	    eventPost_node.appendChild(eventPost_description);
+	    eventPost_node.appendChild(eventPost_lat);
+	    eventPost_node.appendChild(eventPost_lon);
 
 	    if(eventStream.childNodes[0].id === 'noEventFiller'){
 	    	eventStream.replaceChild(eventPost_node, eventStream.childNodes[0]);
@@ -318,3 +418,15 @@ var socket_handling = function(){
 		console.log("User disconnected")
 	})
 };
+
+function getLocation() {
+	function showPosition(position) {
+	   	current_lat = position.coords.latitude;
+	    current_lon = position.coords.longitude;
+	}
+
+    if (navigator.geolocation){
+        navigator.geolocation.getCurrentPosition(showPosition);
+    }
+}
+

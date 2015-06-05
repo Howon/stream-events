@@ -1,6 +1,6 @@
 var current_lat,
 	current_lon,
-	map1;
+	map;
 
 window.onload = function() {
 	getLocation();
@@ -34,6 +34,7 @@ var createMap = function(lat, lon, id){
 
 	if(id === 'mapPost'){
 		L.Control.geocoder().addTo(map);
+		document.getElementById('submit_map').style.display = 'block';
 	}
 	
 	var marker = L.marker([lat, lon]).addTo(map);
@@ -54,7 +55,8 @@ var controlMap = function(lat, lon, map_id){
 
 	window.onmouseup = function (e){
 		if (!container.is(e.target) && container.has(e.target).length === 0 ||
-			e.target === document.getElementById('close_map')){ // ... nor a descendant of the container
+			e.target === document.getElementById('close_map') || 
+			e.target === document.getElementById('submit_map')){ // ... nor a descendant of the container
  			container.fadeOut(200);
 	    }
 	};
@@ -74,9 +76,15 @@ function showPosition(position) {
 function drawmap(current_lat, current_lon){
 	controlMap(current_lat, current_lon, 'mapPost');
 	initiated = true;
-    
-    map.on('GeoCoder_getLatLonName', function (result) {
-    	document.getElementById('display_name').innerHTML = result.result.display_name;
-	    document.getElementById('coordinates').innerHTML = result.result.lat + " " + result.result.lon;
+
+    map.on('GeoCoder_getLatLonName', function (result) {		
+    	var event_display_name = document.createElement("p");
+			event_display_name.className = 'eventPost';
+			event_display_name.id = 'display_name';
+			event_display_name.style.display = 'none';
+
+    		event_display_name.innerHTML = result.result.display_name;
+    		console.log(event_display_name.innerHTML)
+    	document.getElementById('eventPostArea').appendChild(event_display_name);
 	});
 }

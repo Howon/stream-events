@@ -1,5 +1,4 @@
 var mongoose = require('mongoose');
-
 // define the schema for our user model
 var eventSchema = mongoose.Schema({
     title : String,
@@ -7,7 +6,11 @@ var eventSchema = mongoose.Schema({
     time : String,
     description : String,
     latitude : Number,
-    longitude : Number
+    longitude : Number,
+    event_id : {
+    	facebook : String,
+    	user : String
+    }
     // img: { data: Buffer, contentType: String }
 });
 

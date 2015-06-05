@@ -19,13 +19,15 @@ module.exports = function(io, mongoose){
 		          	longitude : data.lon
 		        });
 
+		        newEvent.event_id.user = '_' + Math.random().toString(36).substr(2, 9);
+
 	          	newEvent.save(function(err, user){
 					if(err){ 
                     	return console.error(err)
                     }
                     console.log(newEvent);
 	          	})
-	          	io.emit('new event', data);
+	          	io.emit('new event', newEvent);
 	        })
     	})
 }	

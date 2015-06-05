@@ -3,7 +3,6 @@ var app = express();
 var http = require('http');
 var server = http.createServer(app);
 var path = require('path');
-var port = process.env.PORT || 3000;
 
 var passport = require('passport');
 var flash    = require('connect-flash');
@@ -24,7 +23,7 @@ var mongoose = require('mongoose');
 var chat_service = require('./scripts/chat/chat_tester');
 require('./scripts/event/event_handler')(io, mongoose);
 
-server.listen(port);
+server.listen(config.port);
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
@@ -41,8 +40,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 chat_service.setChatService(io, mongoose);
 
-require('./scripts/routes/routes')(app, passport);
+require('./scripts/routes/routes')(app, passport, io);
 
 console.log("*****************************");
-console.log("* App running at port: " + port + " *");
+console.log("* App running at port: " + config.port + " *");
 console.log("*****************************");
