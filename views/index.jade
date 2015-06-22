@@ -1,17 +1,18 @@
 doctype html
 extends layout
 block head
- link(rel = 'stylesheet', href = 'stylesheets/pages/main/event_bar.css') 
- link(rel = 'stylesheet', href = 'stylesheets/pages/main/event_home.css') 
- link(rel = 'stylesheet', href = 'stylesheets/pages/main/event_thread.css')
- link(rel = 'stylesheet', href = 'stylesheets/pages/main/event_chat.css')    
- link(rel = 'stylesheet', href = 'stylesheets/pages/main/main_body.css')        
- link(rel = 'stylesheet', href = 'stylesheets/pages/main/map_styling.css')    
- //- link(rel = 'stylesheet', href = 'stylesheets/pages/main/combined_main.css')    
- link(rel = 'stylesheet', href = 'http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css')
- script(type = 'text/javascript', src = 'http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js')
- script(src = 'https://cdn.socket.io/socket.io-1.2.0.js')
- script(src = "//cdn.jsdelivr.net/velocity/1.2.2/velocity.min.js")
+  //- link(rel = 'stylesheet', href = 'stylesheets/pages/main/event_bar.css') 
+  //- link(rel = 'stylesheet', href = 'stylesheets/pages/main/event_home.css') 
+  //- link(rel = 'stylesheet', href = 'stylesheets/pages/main/event_thread.css')
+  //- link(rel = 'stylesheet', href = 'stylesheets/pages/main/event_chat.css')    
+  //- link(rel = 'stylesheet', href = 'stylesheets/pages/main/main_body.css')        
+  //- link(rel = 'stylesheet', href = 'stylesheets/pages/main/map_styling.css')        
+  //- link(rel = 'stylesheet', href = 'stylesheets/pages/main/calendar_styling.css')    
+  link(rel = 'stylesheet', href = 'stylesheets/pages/main/minified_main.css')    
+  link(rel = 'stylesheet', href = 'http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css')
+  script(type = 'text/javascript', src = 'http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js')
+  script(type = 'text/javascript', src = 'https://cdn.socket.io/socket.io-1.2.0.js')
+  script(type = 'text/javascript', src = "//cdn.jsdelivr.net/velocity/1.2.2/velocity.min.js")
 block header
    div#bringEvents
     span#bringButton Events &nbsp;
@@ -19,56 +20,51 @@ block header
     span#blank
     span#calendarView 
      i.fa.fa-calendar.fa-lg
-   div#userToggle
+   div#userMenu
+    a(href='/logout', id = 'logout')
+     i.fa.fa-sign-out
     a.btn.btn-primary#userNameContainer
-      p#userName= user.facebook.name || user.google.name
-    a.btn.btn-primary.dropdown-toogle#userMenu(data-toggle = 'dropdown')
-      span.fa.fa-caret-down.fa-lg   
-      ul.dropdown-menu#list
-        li
-          a() Edit   
-        li
-          a() Delete 
-        li
-          a() Settings &nbsp;
-           i.fa.fa-cogs    
-        li.divider
-        li
-          a(href='/logout') Log Out &nbsp;
-           i.fa.fa-sign-out
+      p(data-id = user.facebook.id || user.google.id)#userName= user.facebook.name || user.google.name
 block body
   div#panel
-   div#body 
-     div#eventHome
-      div.eventHome#title 
-       p#content Danny's Birthday Party
-      div.eventHome#picture 
-       img#image(src = 'http://lsc.org/wp-content/uploads/2013/09/birthday-candles-460x300.png?bab04c')
-      div.eventHome#time 6pm April 13th 2015
-      div.eventHome#location 
-       span#where 
-        p New York City
-       i.fa.fa-map-marker.fa-lg#mapButton
-      div.eventHome#description
-     div#threadArea
-     div#chatArea
-      ul.chatArea#messages
-      textarea.chatArea#messageInput(type = 'text', name = 'chat message', placeholder = 'Event Name')
-     div#mapPost
-      div#mapMenu
-       i(id = 'close_map').fa.fa-times.fa-lg
-       i(id = 'submit_map').fa.fa-check.fa-lg 
-      div#map
-   div#menuSelector
-    div.menu#bringThread
-      i.fa.fa-list-alt.fa-2x
-    div.menu#bringChat
-      i.fa.fa-comments-o.fa-2x
-   div#eventBar
+    div#body 
+      div#eventHome
+        div.eventHome#title 
+          p Danny's Birthday Party
+        div.eventHome#picture 
+          img#image(src = 'http://lsc.org/wp-content/uploads/2013/09/birthday-candles-460x300.png?bab04c')
+        div.eventHome#time 
+          p 6pm April 13th 2015
+        div.eventHome#location 
+          span#where 
+            p New York City
+          i(id = 'mapButton').fa.fa-map-marker.fa-lg
+        div.eventHome#description
+      div#threadArea
+        i(id = 'showThreadPost').fa.fa-pencil-square-o.fa-lg
+        ul.threadArea#threads
+        textarea.threadArea#threadInput(type = 'text', name = 'thread message', placeholder = 'Type to leave a comment')
+        div#submit_thread
+          i.fa.fa-check-square-o
+        div#cancel_thread_post
+          i.fa.fa-times
+      div#chatArea
+        ul.chatArea#messages
+        textarea.chatArea#messageInput(type = 'text', name = 'chat message', placeholder = 'Type to chat')
+      div#mapPost
+        div#mapMenu
+         i(id = 'close_map').fa.fa-times.fa-lg
+         i(id = 'submit_map').fa.fa-check.fa-lg 
+        div#map
+    div#menuSelector
+      div.menu#bringThread
+        i.fa.fa-list-alt.fa-2x
+      div.menu#bringChat
+        i.fa.fa-comments-o.fa-2x
+    div#eventBar
      div#eventBarMenu
       i.fa.fa-plus.fa-lg(id = 'post_event')
      ul#eventStream
-      li.event#noEventFiller Looks like nothign is happening around you :(
   div#eventPostArea
     div#closePosting
       i.fa.fa-times.fa-lg
@@ -80,15 +76,14 @@ block body
     textarea.eventPost#Description(type = 'text', name = 'event description', placeholder = 'Event Description')
     div.eventPost#Image
       input#imageUploadButton(type="file")
-      i#imageUploadIcon.fa.fa-file-image-o.fa-2x
+      i(id = 'imageUploadIcon').fa.fa-file-image-o.fa-2x
     div.eventPost#menu
       span#alert.alert.alert-danger
-      span#submit submit &nbsp;
+      span#submitNewEvent submit&nbsp;
         i.fa.fa-check-square-o
-  //- script(type = 'text/javascript', src = '/javascripts/pages/main/main_closure_compiled.js')
   script(type = 'text/javascript', src = '/javascripts/sources/geocoder_min.js')
+  //- script(type = 'text/javascript', src = '/javascripts/pages/main/minified_main.js')
   script(type = 'text/javascript', src = '/javascripts/pages/main/home.js')
-  script(type = 'text/javascript', src = '/javascripts/pages/main/map_control.js')
 
 
 

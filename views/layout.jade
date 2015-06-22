@@ -1,15 +1,21 @@
 html
   head
    title Venter
-   link(rel = 'stylesheet', href = 'stylesheets/pages/setup.css') 
+   link(rel = 'stylesheet', href = '/stylesheets/pages/setup.css') 
    link(rel = 'stylesheet', href = '//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css') 
    link(rel = 'stylesheet', href = 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css')
    script(type = 'text/javascript', src = '//code.jquery.com/jquery-1.11.3.min.js')
-   script(type = 'text/javascript', src = "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js")
    meta(name = 'viewport', content = 'width=device-width, initial-scale=1')
    block head
   body
    header#bar
      block header
-     span#title Venter
+     span#app_name Venter
+     script(type='text/javascript').
+        document.getElementById('app_name').onclick = function(){
+          window.location.reload();
+          console.log('click');
+        }
    block body 
+  script(type = 'text/jsx', src = "https://cdnjs.cloudflare.com/ajax/libs/react/0.13.0/react.js")
+  script(type = 'text/jsx', src = "https://cdnjs.cloudflare.com/ajax/libs/react/0.13.0/JSXTransformer.js")

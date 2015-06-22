@@ -1,4 +1,8 @@
-var fbgraph = require('../event/fbscrape');
+var fbgraph = require('../event/facebook_event'),
+	event_handler = require('../event/event_handler'),
+	React = require('react/addons'),
+	HomePage = React.createFactory(require('../render/pages/main/HomePage')),
+	EventPage = React.createFactory(require('../render/pages/event/EventPage'));
 
 module.exports = function(app, passport, io){
 	app.get('/', function(req, res) {
@@ -13,7 +17,29 @@ module.exports = function(app, passport, io){
 
 	app.get('/home', function(req, res){
 		if (req.isAuthenticated()){ 
-			res.render('index', {title: 'Venter', user : req.user});
+			res.render('index', {title: 'Venter', user : req.user.info});
+		}else{
+			res.redirect('/');
+		}
+	});
+
+	app.get('/test', function(req, res){
+		if (req.isAuthenticated()){ 
+			var props = {
+           	 	user : req.user.info
+          	};
+			var reactBody = React.renderToString(HomePage(props));
+			res.render('react_test', {title: 'Venter', user : req.user.info, body: reactBody, APP_PROPS: props});
+		}else{
+			res.redirect('/');
+		}
+	});
+
+	app.get('/event/:id', function(req, res){
+		if (req.isAuthenticated()){ 
+          	var id = req.params.id;
+          	console.log(id);
+			event_handler.Req_Event(id, req, res, EventPage);
 		}else{
 			res.redirect('/');
 		}
@@ -23,16 +49,16 @@ module.exports = function(app, passport, io){
 	
 	app.get('/auth/facebook/callback', passport.authenticate('facebook', { failureRedirect : '/'}),
 		function(req, res){
-			fbgraph(req.user.facebook, io);
-			res.redirect('/home');
+			fbgraph(req.user.info, io);
+			res.redirect('/test');
 		});
 
-	app.get('/auth/google', passport.authenticate('google', { scope : 'https://www.googleapis.com/auth/plus.login' }));
+	// app.get('/auth/google', passport.authenticate('google', { scope : ['profile', 'email']  }));
 
-	app.get('/auth/google/callback', passport.authenticate('google', { failureRedirect: '/' }),
-		  function(req, res) {
-		    res.redirect('/home');
-		  });
+	// app.get('/auth/google/callback', passport.authenticate('google', { failureRedirect: '/' }),
+	// 	  function(req, res) {
+	// 	    res.redirect('/home');
+	// 	  });
 
 	app.get('/logout', function(req, res){
 		req.logout();

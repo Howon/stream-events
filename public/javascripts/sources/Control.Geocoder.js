@@ -96,7 +96,10 @@
 				.bindPopup(result.html || result.name)
 				.addTo(this._map)
 				.openPopup();
-
+			
+			this._map.fireEvent('GeoCoder_getLatLonName', {
+	          result : result.properties
+	        });
 			return this;
 		},
 

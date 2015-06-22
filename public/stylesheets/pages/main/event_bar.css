@@ -2,7 +2,6 @@
 /*-----------------------------------*/
 header#bar #bringEvents{
 	position: absolute;
-	/*left: 60px;*/
 	height: 100%;
 	width: 310px;
 	min-width: 150px;
@@ -14,8 +13,8 @@ header#bar #bringEvents{
 header#bar #bringButton{
 	float: left;
     left: 100px;
-	font: 15px Helvetica;
-	top: 15px;
+	font: 17px Helvetica;
+	top: 12px;
 	height: 20px;
 	position: relative;
     cursor: pointer;
@@ -25,7 +24,7 @@ header#bar #blank{
 	float: left;
 	z-index: -10;
 	position: relative;
-	top: 8px;
+	top: 12px;
 	padding-top: 10px;
 	width: 70%;
 	height: 40px;
@@ -34,20 +33,11 @@ header#bar #blank{
 
 header#bar #calendarView{
 	right: 30px;
-	top: 18px;
+	top: 12px;
 	height: 40%;
 	position: absolute;
 	display: none;
 	cursor: pointer;
-}
-/*-----------------------------------*/
-
-/*Firefox compatibility*/
-/*-----------------------------------*/
-@-moz-document url-prefix() {	
-	header#bar #post_event{
-		top: 36%;	
-	}
 }
 /*-----------------------------------*/
 
@@ -56,15 +46,15 @@ header#bar #calendarView{
 div#eventbar{
 	position: absolute;
 	height: 100%;
-	background-color: #FFF9E8;
-	opacity: 0.97;
-	left: -315px;
-	width: 310px;
+	background-color: #FFFDE7;
+	opacity: 0.99;
+	left: -335px;
+	width: 320px;
 	margin: 0;
 	padding: 0;
-	-webkit-box-shadow: 3px 0px 2px 1px rgba(0,0,0,0.5);
-	-moz-box-shadow: 3px 0px 2px 1px rgba(0,0,0,0.5);
-	box-shadow: 3px 0px 2px 1px rgba(0,0,0,0.5);
+	-webkit-box-shadow: 3px 0px 15px 10px rgba(0,0,0,0.1);
+	-moz-box-shadow: 3px 0px 15px 10px rgba(0,0,0,0.1);
+	box-shadow: 3px 0px 15px 10px rgba(0,0,0,0.1);
 }
 /*Each event element*/
 /*-----------------------------------*/
@@ -77,21 +67,32 @@ div#eventbar ul#eventStream{
 	margin-left: auto;
 	margin-right: auto;
 	overflow: auto;
-	width: 97%;
+	width: 100%;
 	height: 93%;
 }
 
 div#eventbar ul#eventStream li.event{
-	padding-left: 5px;
-	padding-right: 5px;
-	width: 100%;
-	height: 19%;
+	padding-left: 3px;
+	padding-right: 3px;
+	margin-left: 10px;
+	margin-top: 5px;
+	margin-bottom: 10px;
+	width: calc(95% - 7px);
+	height: 120px;
 	min-height: 90px;
-	margin-bottom: 3px;
-	background-color: #F9F9F9;
-	border: 1px #BBBBBB solid;
-	border-radius: 4px;
+	background-color: #FFFFFF;
 	overflow: auto;
+	cursor: pointer;
+	-webkit-box-shadow: 1px 1px 2px 2px rgba(0,0,0,0.2);
+	-moz-box-shadow: 1px 1px 2px 2px rgba(0,0,0,0.2);
+	box-shadow: 1px 1px 2px 2px rgba(0,0,0,0.1);
+	border: 1px white solid;
+}
+
+div#eventbar ul#eventStream li.event:hover{
+	-webkit-box-shadow: 1px 1px 2px 2px rgba(0,0,0,0.15);
+	-moz-box-shadow: 1px 1px 2px 2px rgba(0,0,0,0.15);
+	box-shadow: 1px 1px 2px 2px rgba(0,0,0,0.15);
 }
 /*-----------------------------------*/
 
@@ -109,7 +110,6 @@ div#eventBarMenu{
 	border: 0;
 	background-color: transparent;
 	border: 0;	
-	/*display: none;*/
 	color: #FFEC6A;
 }
 
@@ -125,6 +125,7 @@ div#eventBarMenu #post_event{
 /*Event posting form*/
 /*-----------------------------------*/
 div#eventPostArea{
+	z-index: 5;
 	display: none;
 	position: absolute;
 	top: 25%;
@@ -163,7 +164,7 @@ div#eventPostArea{
 .eventPost#Image{
 	position: absolute;
 	float: left;
-	top: 26px;
+	top: 25px;
 	left: 15px;
 	width: 0;
 	height: 0;
@@ -205,10 +206,10 @@ div#eventPostArea{
 #locationSelectorButton{
 	position: absolute;
 	float: left;
-	left: 16px;
-	top: 67px;
+	left: 15px;
+	top: 64px;
 	cursor: pointer;
-	font-size: 28px;
+	font-size: 29px;
 	color: #FFEB3B;
 }
 
@@ -233,7 +234,7 @@ div#eventPostArea{
 	left: 16px;
 	top: 106px;
 	cursor: pointer;
-	font-size: 25px;
+	font-size: 27px;
 	color: #FFEB3B;
 }
 
@@ -252,14 +253,15 @@ div#eventPostArea{
 	padding-top: 5px;
 }
 
-div#eventPostArea #closePosting{
+#eventPostArea #closePosting{
+	color: #FFEB3B;
 	position: absolute;
-	font-size: 15px;
+	font-size: 18px;
 	left: 94.5%;
 	top: 2%;
 }
 
-div#eventPostArea #closePosting:hover{
+#eventPostArea #closePosting:hover{
 	color: #FF4241;
 	cursor: pointer;
 }
@@ -273,7 +275,7 @@ div#eventPostArea #closePosting:hover{
 	color: white;
 	height: 20px;
 	top: 235px;
-	left: 5%;
+	left: 8%;
 	width: 90%;
     box-shadow: none;
 }
@@ -281,22 +283,24 @@ div#eventPostArea #closePosting:hover{
 .eventPost#menu span{
 	cursor: pointer;
 }
-.eventPost#menu #submit{
+
+.eventPost#menu #submitNewEvent{
 	float: right;
 	font-size: 17px;
-	color: black;
+	color: #FFEB3B;
 }
 
-.eventpost#menu #submit:hover{
-	color: #66BB6A;
+.eventpost#menu #submitNewEvent:hover{
+	color: white;
 }
-
+/*
 .eventpost#menu span#alert{
 	position: absolute;
 	height: 100%;
 	padding: 0;
-	padding-left: 5px;
+	padding-left: 2px;
 	display: none;
-	width: 76%;
+	width: 73.5%;
 	margin: 0;
 }
+*/

@@ -10,9 +10,9 @@ Danny Benett
 
 
 links to use:
-http://www.sarahmei.com/blog/2013/11/11/why-you-should-never-use-mongodb/
-http://blog.webkid.io/nodejs-scraping-libraries/
-https://github.com/vanng822/facebook-nodejs
 https://www.google.com/design/spec/style/color.html#color-ui-color-application
 http://closure-compiler.appspot.com/home
 https://developers.google.com/speed/articles/optimizing-javascript
+https://github.com/larsenwork/Gidole
+
+future: http://www.smashingmagazine.com/2015/04/21/react-to-the-future-with-isomorphic-apps/

@@ -5,22 +5,28 @@ body{
 div#panel{
     position: absolute;
     width: 100%;
-    height: calc(100% - 45px);
+    min-height: 700px;
+    height: calc(100% - 40px);
+    min-width: 900px;
 }
 
 div#body{
     float: left;
     position: absolute;
-    top: 7%;
-    width: 80%;
-    min-width: 800px;
-    left: 10%;
-    height: 85%;
-    min-height: 520px;
+    width: 86%;
+    min-width: 700px;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    height: 95%;
+    min-height: 500px;
     padding: 0;
-    -webkit-box-shadow: 4px 3px 15px 4px rgba(0,0,0,0.25);
-    -moz-box-shadow: 4px 3px 15px 4px rgba(0,0,0,0.25);
-    box-shadow: 4px 3px 15px 4px rgba(0,0,0,0.25);
+    -webkit-box-shadow: 0px 0px 10px 2px rgba(0,0,0,0.2);
+    -moz-box-shadow: 0px 0px 10px 2px rgba(0,0,0,0.2);
+    box-shadow: 0px 2px 10px 2px rgba(0,0,0,0.2);
+    border: 1px solid #DCDCDC;
 }
 
 div#menuSelector{
@@ -28,7 +34,7 @@ div#menuSelector{
     position: absolute;
     top: 9%;
     width: 3%;
-    right: 6.5%;
+    right: 3%;
     height: 20%;
     min-height: 80px;
 }
@@ -43,7 +49,7 @@ div.menu{
 }
 
 #bringThread{
-    color: #00BCD4;
+    color: #69F75F;
 }
 
 #bringChat{

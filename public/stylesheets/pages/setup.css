@@ -4,6 +4,7 @@
 body { 
 	font-family: 'Roboto', sans-serif;
 	font-size: 15px;
+	min-width: 900px;
 }
 
 * { 
@@ -16,7 +17,7 @@ body {
 /*-----------------------------------*/
 header#bar{
 	width: 100%;
-	height: 45px;
+	height: 40px;
 	background: -webkit-linear-gradient(top, #5CADDB, #57A4CF);
 	background: linear-gradient(90deg, #5CADDB, #57A4CF);
 	text-align: center;
@@ -28,18 +29,17 @@ header#bar{
 
 /*Title button*/
 /*-----------------------------------*/
-header#bar #title{
+header#bar #app_name{
 	font-family: 'Roboto', sans-serif;
 	font-size: 25px;
 	position: absolute;
 	padding: 0;
-	top: 7px;
+	top: 3px;
 	width: 10%;
 	left: 45%;
 	right: 45%;
 	bottom: 0;
 	margin: auto;
-	z-index: -500;
     cursor: pointer;
 }
 
@@ -47,64 +47,37 @@ header#bar #title{
 
 /*User*/
 /*-----------------------------------*/
-header#bar #userToggle{
-	z-index: 5;
+header#bar #userMenu{
 	position: absolute;
 	border-radius: 0;
 	margin: 0;
-	top: 10px;
-	width: 12%;
+	top: 8px;
 	float: right;
-	right: 5.5%;
+	right: 3%;
 }
 
-header#bar #userToggle #userNameContainer{
+header#bar #userMenu #userNameContainer{
 	font-family: 'Roboto', sans-serif;
-	font-size: 15px;
-	width: 87%;
+	float: right;
+	font-size: 17px;
 	border-radius: 0;
 	border: 0;
 	padding: 0;
-	padding-top: 5px;
 	background-color: transparent;
     color: #FFEB3B;
 }
 
-header#bar #userToggle #userMenu{
-	z-index: 10;
-	width: 13%;
+header#bar #userMenu #logout{
+	float: right;
 	border-radius: 0;
 	margin: 0;
 	padding: 0;
 	border: 0;
 	background-color: transparent;
-    color: #FFEB3B;
-    z-index: 10;
+    font-size: 25px;
+    margin-left: 30px;
 }
 
-
-header#bar #userToggle #list{
-	z-index: 10;
-	margin-top: 10px;
-	border-radius: 0;
-	padding: 0;
-	padding-bottom: 5%;
-	left: 5%;
-	position: absolute;
-	border: 1px solid #4B8CB1;
-}
-
-header#bar #userToggle .dropdown-men li{
-	z-index: 10;
-	width: 50%;
-	border-style: solid;
-}
-
-header#bar #userToggle .dropdown-men li a{
-	width: 100%;
-	padding: 0;
-	border-style: solid;
-}
 /* Miscellaneous */
 /*-----------------------------------*/
 
