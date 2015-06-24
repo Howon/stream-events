@@ -83,7 +83,6 @@ div.eventHome#location #where p{
 }
 
 div.eventHome#location #mapButton{
-	display: none;
 	float: right;
 	right: 10px;
 	position: absolute;

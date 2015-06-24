@@ -51,11 +51,15 @@ module.exports = {
                 return console.error(err)
             }
             var props = {
-                user : req.user.info,
+                user : {
+                    id : req.user.info.id,
+                    name : req.user.info.name,
+                    email : req.user.info.email
+                },
                 event : data
             };
             var reactBody = React.renderToString(EventPage(props));
-            res.render('react_event', {title: 'Venter', user : req.user.info, body: reactBody, APP_PROPS: props});
+            res.render('event', {title: 'Venter', user : req.user.info, body: reactBody, APP_PROPS: props});
         });
     }
 }

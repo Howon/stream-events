@@ -1,15 +1,23 @@
 /** @jsx React.DOM */
 var React = require('react/addons'),
-    map = require('./Map');
-    
+    Map = require('./Map');
+
 var EventHome = React.createClass({
   render : function(){
+    var img_source = '';
+    if(this.props.home.img === 'data:image/jpeg;base64,'){
+      img_source = '/images/placeholder.png';
+    }else{
+      img_source = this.props.home.img;
+    };
     return (
-         <div id="eventHome" data-lat = {this.props.home.latitude} data-lon = {this.props.home.longitude}>
+         <div id="eventHome">
             <div id="title" className="eventHome">
               <p>{this.props.home.title}</p>
             </div>
-            <div id="picture" className="eventHome"> <img id="image" src={this.props.home.img}/></div>
+            <div id="picture" className="eventHome"> 
+              <img id="image" src={img_source}/>
+            </div>
             <div id="time" className="eventHome">
               <p>{this.props.home.time}</p>
             </div>
@@ -17,8 +25,12 @@ var EventHome = React.createClass({
               <span id="where">
                 <p>{this.props.home.location}</p>
               </span>
-              <i id="mapButton" className="fa fa-map-marker fa-lg"></i></div>
+              { this.props.home.latitude ? 
+                <i id="mapButton" className="fa fa-map-marker fa-lg"></i>
+                : null }
+            </div>
             <div id="description" className="eventHome"></div>
+            <Map />
           </div>
     )
   }

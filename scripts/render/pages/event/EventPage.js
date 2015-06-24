@@ -5,7 +5,7 @@ var React = require('react/addons'),
 var EventHome = require('../../components/js/EventHome'),
     EventThread = require('../../components/js/EventThread'),
     EventChat = require('../../components/js/EventChat');
-    MapPost = require('../../components/js/Map'),
+    Map = require('../../components/js/Map'),
     MenuSelector = require('../../components/js/MenuSelector'),
     EventBar = require('../../components/js/EventBar'),
     EventPostArea = require('../../components/js/EventPostArea');
@@ -85,21 +85,20 @@ var Body = React.createClass({displayName: "Body",
         });
       },
       render : function(){
-          return (
-              React.createElement("div", null, 
-                 React.createElement("div", {id: "panel"}, 
-                    React.createElement("div", {id: "body"}, 
-                        React.createElement(EventHome, {home: this.state.home}), 
-                        React.createElement(EventThread, {thread: this.state.thread, postThread: this.postThread}), 
-                        React.createElement(EventChat, {messages: this.state.messages, postMessage: this.postMessage}), 
-                        React.createElement(MapPost, null)
-                    ), 
-                    React.createElement(EventBar, {events: this.state.events}), 
-                    React.createElement(MenuSelector, null)
-                  ), 
-                  React.createElement(EventPostArea, {postEvent: this.postEvent})
-              )
+        return (
+          React.createElement("div", null, 
+             React.createElement("div", {id: "panel"}, 
+                React.createElement("div", {id: "body"}, 
+                  React.createElement(EventHome, {home: this.state.home}), 
+                  React.createElement(EventThread, {thread: this.state.thread, postThread: this.postThread}), 
+                  React.createElement(EventChat, {messages: this.state.messages, postMessage: this.postMessage})
+                ), 
+                React.createElement(EventBar, {events: this.state.events}), 
+                React.createElement(MenuSelector, null)
+              ), 
+              React.createElement(EventPostArea, {postEvent: this.postEvent})
           )
+      )
   }
 });
 

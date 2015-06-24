@@ -1,6 +1,5 @@
 /** @jsx React.DOM */
 var React = require('react/addons');
-var Router = require('react-router');
 
 var Event = React.createClass({
   handleEventSwitch : function(e){

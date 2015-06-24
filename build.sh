@@ -1,4 +1,4 @@
-# npm install 
+npm install 
 gulp
 echo 'build successful'
 

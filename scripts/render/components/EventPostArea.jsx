@@ -1,6 +1,6 @@
 /** @jsx React.DOM */
-var React = require('react/addons'),
-    map = require('./Map');
+var React = require('react/addons');
+    // Map = require('./Map');
 
 var EventTitleForm = React.createClass({
     getInitialState: function(){

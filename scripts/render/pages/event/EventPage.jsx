@@ -5,7 +5,7 @@ var React = require('react/addons'),
 var EventHome = require('../../components/js/EventHome'),
     EventThread = require('../../components/js/EventThread'),
     EventChat = require('../../components/js/EventChat');
-    MapPost = require('../../components/js/Map'),
+    Map = require('../../components/js/Map'),
     MenuSelector = require('../../components/js/MenuSelector'),
     EventBar = require('../../components/js/EventBar'),
     EventPostArea = require('../../components/js/EventPostArea');
@@ -83,23 +83,22 @@ var Body = React.createClass({
           uploader : this.props.user.id,
           content : data
         });
-      },3
+      },
       render : function(){
-          return (
-              <div>
-                 <div id = 'panel'>
-                    <div id="body">
-                        <EventHome home = {this.state.home}/>
-                        <EventThread thread = {this.state.thread} postThread = {this.postThread}/>
-                        <EventChat messages = {this.state.messages} postMessage = {this.postMessage}/>
-                        <MapPost />
-                    </div>
-                    <EventBar events = {this.state.events}/>
-                    <MenuSelector />
-                  </div>
-                  <EventPostArea postEvent = {this.postEvent}/>
+        return (
+          <div>
+             <div id = 'panel'>
+                <div id="body">
+                  <EventHome home = {this.state.home}/>
+                  <EventThread thread = {this.state.thread} postThread = {this.postThread}/>
+                  <EventChat messages = {this.state.messages} postMessage = {this.postMessage}/>
+                </div>
+                <EventBar events = {this.state.events}/>
+                <MenuSelector />
               </div>
-          )
+              <EventPostArea postEvent = {this.postEvent}/>
+          </div>
+      )
   }
 });
 

@@ -2,7 +2,7 @@
 var User = require('../data_schemas/user');
 
 var FacebookStrategy = require('passport-facebook').Strategy;
-var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
+// var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 
 var config =  require('../config');
 
