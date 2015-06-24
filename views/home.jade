@@ -1,0 +1,36 @@
+extends layout
+block head
+  link(rel = 'stylesheet', href = '/stylesheets/pages/main/minified_main.css')     
+  link(rel = 'stylesheet', href = 'http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css')
+  script(type = 'text/javascript', src = 'http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js')
+  script(type = 'text/javascript', src = 'https://cdn.socket.io/socket.io-1.2.0.js')
+  script(type = 'text/javascript', src = "//cdn.jsdelivr.net/velocity/1.2.2/velocity.min.js")
+block header
+   div#bringEvents
+    span#bringButton Events &nbsp;
+     i.fa.fa-chevron-right 
+    span#blank
+    span#calendarView 
+     i.fa.fa-calendar.fa-lg
+   div#userMenu
+    a(href='/logout', id = 'logout')
+     i.fa.fa-sign-out
+    a.btn.btn-primary#userNameContainer
+      p#userName= user.name
+block body
+  div#mount_point
+  script(type='text/javascript').
+    var APP_PROPS = !{JSON.stringify(APP_PROPS)};
+    (function get_user_location() {
+    function showPosition(position) {
+        APP_PROPS.user.userLat = position.coords.latitude;
+        APP_PROPS.user.userLon = position.coords.longitude;
+    }
+
+      if (navigator.geolocation){
+          navigator.geolocation.getCurrentPosition(showPosition);
+      }
+    }());
+  script(type = 'text/javascript', src = '/javascripts/pages/homepage.js')
+  script(type="text/javascript" src="/javascripts/sources/geocoder_min.js")
+  script(type="text/javascript" src="/javascripts/pages/main/home.js")

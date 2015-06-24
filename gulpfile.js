@@ -30,11 +30,11 @@ gulp.task('scripts', function () {
         debug: true,
         transform: [ 'reactify' ]
     }))
-    .pipe(gulp.dest('./public/javascripts/test'));
+    .pipe(gulp.dest('./public/javascripts/pages/'));
 });
 
 gulp.task('minify_js', ['clean'], function(done) {
-	return gulp.src('./public/javascripts/pages/main/home.js')
+	return gulp.src('./public/javascripts/pages/main/*.js')
 	.pipe(jshint())
 	.pipe(jshint.reporter('default'))
 	.pipe(uglify())
