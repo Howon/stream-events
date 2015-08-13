@@ -35,15 +35,9 @@ var Body = React.createClass({
   },
   render : function(){
       return (
-          <div>
-             <div id = 'panel'>
-                <div id="body">
-                    <EventHome home = {this.state.home}/>
-                </div>
-              <EventBar events = {this.state.events}/>
-              </div>
-              <EventPostArea postEvent = {this.postEvent}/>
-          </div>
+        <div id="container">
+            <video autoPlay="true" id="videoElement"></video>
+        </div>
       )
   }
 });

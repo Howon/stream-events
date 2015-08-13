@@ -6,7 +6,7 @@ var EventHome = require('../../components/js/EventHome'),
     EventBar = require('../../components/js/EventBar'),
     EventPostArea = require('../../components/js/EventPostArea');
 
-var Body = React.createClass({displayName: "Body",
+var Body = React.createClass({
    getInitialState: function(){
       return {
         events : [],
@@ -35,15 +35,9 @@ var Body = React.createClass({displayName: "Body",
   },
   render : function(){
       return (
-          React.createElement("div", null, 
-             React.createElement("div", {id: "panel"}, 
-                React.createElement("div", {id: "body"}, 
-                    React.createElement(EventHome, {home: this.state.home})
-                ), 
-              React.createElement(EventBar, {events: this.state.events})
-              ), 
-              React.createElement(EventPostArea, {postEvent: this.postEvent})
-          )
+        <div id="container">
+            <video autoPlay="true" id="videoElement"></video>
+        </div>
       )
   }
 });

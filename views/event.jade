@@ -18,7 +18,7 @@ block header
     a.btn.btn-primary#userNameContainer
       p#userName= user.name
 block body
-  div#mount_point = body
+  div#mount_point= body
   script(type='text/javascript').
     var APP_PROPS = !{JSON.stringify(APP_PROPS)};
     (function get_user_location() {
