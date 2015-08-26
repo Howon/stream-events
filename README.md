@@ -6,7 +6,7 @@
 $ sh setup.sh
 # start up mongodb
 $ sh startDB.sh
-# run
+# run (new window please)
 $ sh run.sh
 ```
 
