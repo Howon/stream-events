@@ -9,8 +9,19 @@ var eventSchema = mongoose.Schema({
         location : String,
         time : Date,
         description : String,
-        latitude : Number,
-        longitude : Number,
+        location:{
+            name : String,
+            address : {
+                street : String,
+                city : String,
+                state : String,
+                country : String
+            },
+            latlng : {
+                latitude : Number,
+                longitude : Number,
+            }
+        },   
         img: Schema.Types.Mixed
     }
 });

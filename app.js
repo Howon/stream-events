@@ -20,7 +20,8 @@ var mongoose = require('mongoose');
 	// 	mongoose.connection.db.dropDatabase();
 	// });
 
-require("node-jsx").install();
+
+require('node-jsx').install({ harmony: true, extension: '.jsx' });
 
 server.listen(config.port);
 

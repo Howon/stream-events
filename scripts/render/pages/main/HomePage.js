@@ -1,21 +1,18 @@
 /** @jsx React.DOM */
-var React = require('react/addons'),
-    socket = require('socket.io-client')('http://localhost:3000');
+var React = require('react');
+
+var socket = require('socket.io-client')('http://localhost:3000');
 
 var EventHome = require('../../components/js/EventHome'),
     EventBar = require('../../components/js/EventBar'),
+    MenuSelector = require('../../components/js/MenuSelector'),
     EventPostArea = require('../../components/js/EventPostArea');
 
-var Body = React.createClass({
+var Body = React.createClass({displayName: "Body",
    getInitialState: function(){
       return {
-        events : [],
-        home : {
-          title : 'Original',
-          picture : 'http://lsc.org/wp-content/uploads/2013/09/birthday-candles-460x300.png?bab04c',
-          time : new Date(),
-          location : 'California'
-        }
+        home : {},
+        events : []
       };
   },
   componentDidMount : function(){
@@ -35,9 +32,16 @@ var Body = React.createClass({
   },
   render : function(){
       return (
-        <div id="container">
-            <video autoPlay="true" id="videoElement"></video>
-        </div>
+        React.createElement("div", null, 
+             React.createElement("div", {id: "panel"}, 
+                React.createElement("div", {id: "body"}, 
+                  React.createElement(EventHome, {home: this.state.home})
+                ), 
+                React.createElement(EventBar, {events: this.state.events}), 
+                React.createElement(MenuSelector, null)
+              ), 
+              React.createElement(EventPostArea, {postEvent: this.postEvent})
+          )
       )
   }
 });

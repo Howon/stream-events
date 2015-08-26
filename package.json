@@ -20,26 +20,31 @@
     "passport-facebook": "*",
     "passport-google": "^0.3.0",
     "passport-google-oauth": "^0.2.0",
-    "react": "^0.13.3",
-    "react-tools": "^0.13.3",
-    "socket.io": "*"
+    "socket.io": "*",
+    "node-jsx": "^0.13.3",
+    "react": "^0.14.0-beta3"
   },
   "subdomain": "stream-events",
   "engines": {
     "node": "0.10.x"
   },
   "devDependencies": {
-    "browserify": "~3.20.0",
-    "del": "^1.2.0",
-    "gulp": "^3.9.0",
-    "gulp-browserify": "~0.5.0",
-    "gulp-concat": "^2.5.2",
-    "gulp-jshint": "^1.11.0",
-    "gulp-minify-css": "^1.1.6",
-    "gulp-rename": "^1.2.2",
-    "gulp-uglify": "^1.2.0",
-    "node-jsx": "~0.2.0",
-    "react-tools": "^0.12.0",
-    "reactify": "0.15.2"
+    "babel": "^5.6.10",
+    "babel-core": "^5.6.11",
+    "babel-loader": "^5.2.2",
+    "css-loader": "^0.15.1",
+    "electron-packager": "^4.1.3",
+    "electron-rebuild": "^0.2.2",
+    "jsx-loader": "^0.13.2",
+    "node-libs-browser": "^0.5.2",
+    "node-sass": "^3.2.0",
+    "sass": "^0.5.0",
+    "sass-loader": "^2.0.1",
+    "style-loader": "^0.12.3",
+    "webpack": "^1.9.12",
+    "webpack-dev-server": "^1.9.0"
+  },
+  "scripts": {
+    "watch": "./node_modules/.bin/webpack-dev-server"
   }
 }

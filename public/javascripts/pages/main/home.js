@@ -159,15 +159,16 @@ function manipulate_elements(){
 var map = function(){
 	var map;
 	var map_initialized = false;
-	console.log(APP_PROPS);
+
 	var mapButton = document.getElementById("mapButton");
-	if(mapButton){
-		mapButton.onclick = function(){
-		var event_lat = APP_PROPS.event.data.latitude,
-			event_lon = APP_PROPS.event.data.longitude;
-		controlMap(event_lat, event_lon, 'map');
-	};
 	
+	if(APP_PROPS.event.data.location.latlng){
+		mapButton.style.display = "block";
+		mapButton.onclick = function(){			
+			var event_lat = APP_PROPS.event.data.location.latlng.latitude,
+				event_lon = APP_PROPS.event.data.location.latlng.longitude;
+			controlMap(event_lat, event_lon, 'map');
+		};
 	}
 
 	document.getElementById("locationSelectorButton").onclick = function(){

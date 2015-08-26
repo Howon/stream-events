@@ -10,7 +10,7 @@ var Event = React.createClass({
     return(
         <li className = "event" data-id = {this.props.id} onClick = {this.handleEventSwitch}>
           <div className = 'eventPost_title'>{this.props.title}</div> 
-          <div className = 'eventPost_location'>{this.props.location}</div>
+          <div className = 'eventPost_location'>{this.props.location.name}</div>
           <div className = 'eventPost_time'>{this.props.time}</div>
         </li>
     )

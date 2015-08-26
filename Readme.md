@@ -1,12 +1,13 @@
 # stream-events
 
-Collaborators: <br>
-Howon Byun <br>
-Ken Aizawa <br>
-Ben Low <br>
-Danny Benett
 
-Isomorphic Javascript web app using Nodejs for server, React for server-side rendering, express for convenient routing
-and MongoDB for database
+```bash
+# setup your system so that you can actually run and develop this
+$ sh setup.sh
+# start up mongodb
+$ sh startDB.sh
+# run
+$ sh run.sh
+```
 
 © OpenStreetMap contributors

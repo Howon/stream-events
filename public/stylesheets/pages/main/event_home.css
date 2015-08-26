@@ -52,6 +52,7 @@ div.eventHome#picture #image{
 	right: 0;
 	margin: auto;
 	height: calc(100% - 6px);
+	overflow: auto;
 }
 
 div.eventHome#time{
@@ -89,6 +90,7 @@ div.eventHome#location #mapButton{
 	top: calc(60% - 13px);
 	cursor: pointer;
 	font-size: 26px;
+	display: none;
 }
 
 div.eventHome#location #mapButton:hover{

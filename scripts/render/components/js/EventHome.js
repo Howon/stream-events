@@ -5,7 +5,7 @@ var React = require('react/addons'),
 var EventHome = React.createClass({displayName: "EventHome",
   render : function(){
     var img_source = '';
-    if(this.props.home.img === 'data:image/jpeg;base64,'){
+    if(!this.props.home.img){
       img_source = '/images/placeholder.png';
     }else{
       img_source = this.props.home.img;
@@ -23,11 +23,9 @@ var EventHome = React.createClass({displayName: "EventHome",
             ), 
             React.createElement("div", {id: "location", className: "eventHome"}, 
               React.createElement("span", {id: "where"}, 
-                React.createElement("p", null, this.props.home.location)
+                React.createElement("p", null, this.props.home.location ? this.props.home.location.name : "")
               ), 
-               this.props.home.latitude ? 
-                React.createElement("i", {id: "mapButton", className: "fa fa-map-marker fa-lg"})
-                : null
+              this.props.home.location ? React.createElement("i", {id: "mapButton", className: "fa fa-map-marker fa-lg"}) : null
             ), 
             React.createElement("div", {id: "description", className: "eventHome"}), 
             React.createElement(Map, null)

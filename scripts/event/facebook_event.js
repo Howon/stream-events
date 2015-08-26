@@ -2,7 +2,8 @@
 var graph = require('fbgraph');
 	Event = require('../data_schemas/event'),
     User = require('../data_schemas/user'),
-	config = require('../config');
+	config = require('../config'),
+	async = require('async');
 
 module.exports = function(user, io){
 	graph.setAccessToken(user.token);
@@ -14,40 +15,63 @@ module.exports = function(user, io){
 		}
 	});
 
-	var store_event = function(data){
-		var event_id = data.id;
-		var location_data;
-		var event_description = '';
-		var img_url = '';
+	function store_event(data){
+		function get_desc(data){
+			var event_id = data.id;					
+			var newEvent = new Event({
+	        	_id : event_id,
+	        	uploader : user.id,
+				data : {
+					title : data.name,				          	
+		          	time : data.start_time	          	
+		         }
+			});		
 
-		graph.get(event_id, function(err, res){
-			event_description = res.description;
-		});
+			graph.get(event_id, function(err, res){
+				if(res.hasOwnProperty('description')){
+					newEvent.data.description = res.description;
+				}
+				get_image(event_id, newEvent);
+			})
+		}
 
-		graph.get(event_id + '/?fields=cover', function(err, res){
-			img_url = res.cover.source;
-		});
+		get_desc(data);
 
-		graph.get(event_id + '/?fields=place', function(err, res){
-			location_data = res.place.location;
+		function get_image(event_id, newEvent){
+			graph.get(event_id + '/?fields=cover', function(err, res){
+				if(res.hasOwnProperty('cover')){
+					newEvent.data.img = res.cover.source;
+				}
+				get_location(event_id, newEvent);
+			});
+		}
 
-			Event.findOne({ '_id' : event_id }, function(err, event) {
-                if (err){
-                    console.dir(err);
-                }else if(!event){
-                    var newEvent = new Event({
-                    	_id : event_id,
-                    	uploader : user.id,
-						data : {
-							title : data.name,
-				          	location : location_data.street + ", " + location_data.city + ", " + location_data.state + ", " + location_data.country,
-				          	time : data.start_time,
-				          	description : event_description,
-				          	latitude : location_data.latitude,
-				          	longitude : location_data.longitude,
-				          	img : img_url
-				         }
-					});
+		function get_location(event_id, newEvent){
+			graph.get(event_id + '/?fields=place', function(err, res){
+				if(res.hasOwnProperty('place')){
+					var place = res.place
+					newEvent.data.location = {}
+					newEvent.data.location.name = place.name				
+					
+					if(place.hasOwnProperty('location')){	
+						newEvent.data.location.latlng = {}			
+						newEvent.data.location.address.street = place.location.street		
+						newEvent.data.location.address.city = place.location.city
+						newEvent.data.location.address.state = place.location.state
+						newEvent.data.location.address.country = place.location.country
+						newEvent.data.location.latlng.latitude = place.location.latitude
+						newEvent.data.location.latlng.longitude = place.location.longitude
+					}
+					push_to_db(event_id, newEvent)
+				}	
+			})		
+		}
+
+		function push_to_db(event_id, newEvent){
+ 			Event.findOne({ '_id' : event_id }, function(err, event) {
+	            if (err){
+	                console.dir(err);
+	            }else if(!event){                    
 					newEvent.save(function(err, user){
 						if(err){ 
 		                	return console.error(err)
@@ -62,9 +86,8 @@ module.exports = function(user, io){
 	                    );
 		          	})
 		            io.emit('new event', newEvent);
-                }
-            });
-			return res;
-		})
-	};
+	            }
+	        });
+ 		};	
+	} 											
 }

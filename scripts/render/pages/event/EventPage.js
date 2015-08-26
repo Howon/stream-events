@@ -23,7 +23,6 @@ var Body = React.createClass({displayName: "Body",
         this.setState({
           home : this.props.event.data
         });
-
         socket.emit('load:thread', this.props.event._id);
         socket.emit('load:events');
         socket.on('load:thread', this.loadThread);
