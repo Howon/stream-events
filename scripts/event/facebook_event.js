@@ -2,8 +2,7 @@
 var graph = require('fbgraph');
 	Event = require('../data_schemas/event'),
     User = require('../data_schemas/user'),
-	config = require('../config'),
-	async = require('async');
+	config = require('../config');
 
 module.exports = function(user, io){
 	graph.setAccessToken(user.token);
