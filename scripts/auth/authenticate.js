@@ -26,24 +26,24 @@ module.exports = function(passport) {
 
         function(token, refreshToken, profile, done) {
             User.findOne({ 'info.id' : profile.id }, function(err, user) {
-                    if (err){
-                        return done(err);
-                    }
-                    if (user) {
-                        return done(null, user);
-                    } else {
-                        var newUser = new User();
-                        newUser.info.id    = profile.id;
-                        newUser.info.token = token;
-                        newUser.info.name  = profile.name.givenName + ' ' + profile.name.familyName;
-                        newUser.info.email = profile.emails[0].value;
-                        console.log(newUser);
-                        newUser.save(function(err) {
-                            if (err)
-                                throw err;
-                            return done(null, newUser);
-                        });
-                    }
+                if (err){
+                    return done(err);
+                }
+                if (user) {
+                    return done(null, user);
+                } else {
+                    var newUser = new User();
+                    newUser.info.id    = profile.id;
+                    newUser.info.token = token;
+                    newUser.info.name  = profile._json.first_name + ' ' + profile._json.last_name;
+                    newUser.info.email = profile._json.email
+                    console.log(newUser)
+                    newUser.save(function(err) {
+                        if (err)
+                            throw err;
+                        return done(null, newUser);
+                    });
+                }
             });
         }
     ));

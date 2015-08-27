@@ -15,10 +15,10 @@ var config = require('./scripts/config');
 var io = require('socket.io')(server);
 
 var mongoose = require('mongoose');
-	mongoose.connect(config.mongoose.url);
-	// mongoose.connect(config.mongoose.url, function(){
-	// 	mongoose.connection.db.dropDatabase();
-	// });
+	// mongoose.connect(config.mongoose.url);
+	mongoose.connect(config.mongoose.url, function(){
+		mongoose.connection.db.dropDatabase();
+	});
 
 
 require('node-jsx').install({ harmony: true, extension: '.jsx' });
