@@ -16,13 +16,14 @@
     "mongodb": "~2.0",
     "mongoose": "^4.0.4",
     "morgan": "^1.5.3",
+    "node-jsx": "^0.13.3",
     "passport": "^0.2.2",
     "passport-facebook": "*",
     "passport-google": "^0.3.0",
     "passport-google-oauth": "^0.2.0",
+    "react": "^0.14.0-beta3",
     "socket.io": "*",
-    "node-jsx": "^0.13.3",
-    "react": "^0.14.0-beta3"
+    "socket.io-client": "^1.3.6"
   },
   "subdomain": "stream-events",
   "engines": {
