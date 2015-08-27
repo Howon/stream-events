@@ -22,5 +22,5 @@ if [ ! -d data ]
 		echo "db directory created"
 fi
 
-npm install 
+sudo npm install 
 echo 'node modules downloaded'
